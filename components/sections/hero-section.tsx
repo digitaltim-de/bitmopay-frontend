@@ -15,34 +15,34 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-emerald-900 to-emerald-950 text-white pt-16 pb-32 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-emerald-900 to-emerald-950 dark:from-gray-900 dark:to-gray-950 text-white pt-16 pb-32 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-700/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-600/20 dark:bg-emerald-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-700/20 dark:bg-emerald-700/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left column - Hero content */}
           <div>
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-800/70 text-emerald-300 font-medium text-sm mb-6 backdrop-blur-sm border border-emerald-700/50">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-800/70 dark:bg-emerald-900/50 text-emerald-300 dark:text-emerald-400 font-medium text-sm mb-6 backdrop-blur-sm border border-emerald-700/50 dark:border-emerald-800/50">
               <span className="flex h-2 w-2 mr-2">
-                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-emerald-400 dark:bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 dark:bg-emerald-400"></span>
               </span>
               #1 CRYPTO PAYMENT GATEWAY
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
               <span className="block">Start accepting</span>
-              <span className="bg-gradient-to-r from-white to-emerald-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-emerald-300 dark:from-gray-100 dark:to-emerald-400 bg-clip-text text-transparent">
                 crypto payments
               </span>
             </h1>
 
-            <p className="text-gray-300 mb-8 max-w-xl font-semibold text-2xl">
+            <p className="text-gray-300 dark:text-gray-200 mb-8 max-w-xl font-semibold text-2xl">
               Adding a crypto checkout to your website or online store is easy
               with our automated cryptocurrency payment gateway, and your
               customers will love it.
@@ -57,10 +57,10 @@ export function HeroSection() {
               </Button>
             </form>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-sm text-gray-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-sm text-gray-300 dark:text-gray-200">
               <div className="flex items-center">
                 <svg
-                  className="h-5 w-5 text-emerald-400 mr-2 flex-shrink-0"
+                  className="h-5 w-5 text-emerald-400 dark:text-emerald-500 mr-2 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -76,7 +76,7 @@ export function HeroSection() {
               </div>
               <div className="flex items-center">
                 <svg
-                  className="h-5 w-5 text-emerald-400 mr-2 flex-shrink-0"
+                  className="h-5 w-5 text-emerald-400 dark:text-emerald-500 mr-2 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

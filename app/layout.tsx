@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Overpass, Outfit } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 // Optimize font loading
@@ -56,9 +57,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
       <body className={`${overpass.className} antialiased`}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
