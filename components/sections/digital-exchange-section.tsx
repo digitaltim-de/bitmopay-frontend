@@ -75,65 +75,144 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
     { value: "18%", label: "Annual Growth" }
   ];
 
+  // Benefits list
+  const benefits = [
+    "Instant settlement in your preferred currency",
+    "No chargebacks or fraud risks",
+    "Global payments with low fees",
+    "Easy integration with your existing systems"
+  ];
+
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto bg-gray px-20 rounded-2xl">
-        {/* Section Headline - Centered */}
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 my-4 pt-10">Why Bitmopay?</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10">
-            Simple, reliable and made for developers.
-          </p>
-        </div>
+    <section className="py-20 bg-white">
+      <div className="container mx-auto">
+        {/* Hero Section with Background */}
+        <div className="relative overflow-hidden bg-gradient-to-r from-emerald-900 to-emerald-700 rounded-3xl mb-16">
+          <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+              <path fill="#FFFFFF" d="M47.7,-57.2C59.1,-45.8,64.4,-28.5,68.1,-10.1C71.8,8.3,74,27.8,65.8,41.8C57.6,55.8,39,64.3,19.9,69.9C0.7,75.5,-19,78.3,-36.1,71.6C-53.2,64.9,-67.7,48.7,-73.5,30.1C-79.2,11.5,-76.2,-9.5,-67.1,-26.1C-58,-42.7,-42.8,-54.9,-27.4,-64.4C-12,-73.9,3.6,-80.7,17.8,-76.9C32,-73.1,44.9,-58.7,47.7,-57.2Z" transform="translate(100 100)" />
+            </svg>
+          </div>
 
-        {/* KPI Cards - 4 equal columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {displayStats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center"
-            >
-              <div className="bg-emerald-50 p-3 rounded-full mb-4">
-                {statIcons[index]}
-              </div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-              <div className="text-gray-500">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-        {/* Process Steps - How it works */}
-        <div>
-          <h3 className="text-2xl font-semibold text-center mb-12">How It Works</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="relative mb-4">
-                  {/* Circle with icon */}
-                  <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mb-2">
-                    {step.icon}
-                  </div>
-
-                  {/* Step number */}
-                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                    {index + 1}
-                  </div>
-
-                  {/* Arrow for all but the last step */}
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-8 h-0.5 bg-gray-200 transform translate-x-1">
-                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-gray-200 rotate-45"></div>
-                    </div>
-                  )}
+          <div className="relative z-10 px-8 py-16 md:px-16 md:py-24 text-white">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="md:w-1/2 mb-10 md:mb-0">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-emerald-100 font-medium text-sm mb-6 backdrop-blur-sm">
+                  <span className="flex h-2 w-2 mr-2">
+                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
+                  </span>
+                  TRUSTED BY 1,000+ BUSINESSES
                 </div>
-                <h4 className="text-lg font-medium text-gray-900 mb-2">{step.title}</h4>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                  Why Choose <span className="text-emerald-300">Bitmopay</span>?
+                </h2>
+
+                <p className="text-emerald-100 text-lg md:text-xl mb-8 max-w-xl">
+                  Simple, reliable cryptocurrency payment solutions built for modern businesses and developers.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="h-6 w-6 text-emerald-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
+
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md">
+                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-500/20 rounded-full blur-xl"></div>
+                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-emerald-400/20 rounded-full blur-xl"></div>
+
+                  <div className="relative bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <div className="grid grid-cols-2 gap-4">
+                      {displayStats.map((stat, index) => (
+                        <div 
+                          key={index} 
+                          className="bg-white/5 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+                        >
+                          <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                          <div className="text-emerald-200 text-sm">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Light divider at the bottom */}
-        <div className="mt-16 border-t border-gray-100"></div>
+        {/* Process Steps - How it works */}
+        <div className="bg-gray rounded-3xl px-8 py-16 md:px-16">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">How It Works</h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Our streamlined process makes accepting crypto payments simple and secure
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connection line */}
+            <div className="hidden lg:block absolute top-24 left-0 w-full h-1 bg-emerald-100"></div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              {processSteps.map((step, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-emerald-200 transition-all duration-300 flex flex-col h-full group"
+                >
+                  <div className="flex items-center mb-6">
+                    <div className="relative">
+                      {/* Circle with icon */}
+                      <div className="w-16 h-16 bg-emerald-50 group-hover:bg-emerald-100 rounded-full flex items-center justify-center transition-colors duration-300">
+                        {step.icon}
+                      </div>
+
+                      {/* Step number */}
+                      <div className="absolute -top-2 -right-2 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm group-hover:bg-emerald-600 transition-colors duration-300">
+                        {index + 1}
+                      </div>
+                    </div>
+
+                    <h4 className="text-xl font-semibold text-gray-900 ml-4">{step.title}</h4>
+                  </div>
+
+                  <p className="text-gray-600">{step.description}</p>
+
+                  {/* Arrow for all but the last step */}
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-24 left-full w-8 h-8 transform -translate-x-1/2">
+                      <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+            <h4 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h4>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join thousands of businesses already using Bitmopay for their cryptocurrency payment needs
+            </p>
+            <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 inline-flex items-center">
+              Start accepting crypto payments
+              <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   )
