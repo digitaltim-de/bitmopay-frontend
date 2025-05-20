@@ -32,7 +32,7 @@ export function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-emerald-400 dark:bg-emerald-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 dark:bg-emerald-400"></span>
               </span>
-              #1 CRYPTO PAYMENT GATEWAY
+              Trusted by 1,000+ businesses in 32 countries
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
@@ -43,9 +43,9 @@ export function HeroSection() {
             </h1>
 
             <p className="text-gray-300 dark:text-gray-200 mb-8 max-w-xl font-semibold text-2xl">
-              Adding a crypto checkout to your website or online store is easy
-              with our automated cryptocurrency payment gateway, and your
-              customers will love it.
+              Accept one-time or recurring crypto payments.
+              Enable buyer protection with optional 7-day escrow.
+              100% crypto. No chargebacks. Paid out in minutes once the minimum payout threshold is reached.
             </p>
 
             <form
