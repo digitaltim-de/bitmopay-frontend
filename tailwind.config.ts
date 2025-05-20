@@ -20,6 +20,10 @@ const config = {
     },
     extend: {
       colors: {
+        gray: {
+            DEFAULT: "#f9f8fd",
+            foreground: "hsl(var(--slate-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
