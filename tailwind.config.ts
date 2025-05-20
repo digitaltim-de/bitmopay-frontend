@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -13,7 +13,7 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
         "2xl": "1400px",
       },
@@ -21,8 +21,8 @@ const config = {
     extend: {
       colors: {
         gray: {
-            DEFAULT: "#f9f8fd",
-            foreground: "hsl(var(--slate-foreground))",
+          DEFAULT: "#f9f8fd",
+          foreground: "hsl(var(--slate-foreground))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -96,7 +96,7 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "scroll": {
+        scroll: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
@@ -104,11 +104,11 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "scroll": "scroll 30s linear infinite",
+        scroll: "scroll 30s linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
 
-export default config
+export default config;
