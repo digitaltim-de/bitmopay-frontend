@@ -16,6 +16,7 @@ import {features, integrations, partners, stats, supportedCoins} from "@/lib/dat
 import {useEffect, useState} from "react"
 import StartAccepting from "@/components/sections/start-accepting";
 import {HowCustomerPay} from "@/components/sections/how-customer-pay";
+import HowIntegrate from "@/components/sections/how-integrate";
 
 export default function Home() {
     return (
@@ -39,6 +40,10 @@ export default function Home() {
 
                 <section id="exchange" className="scroll-mt-20">
                     <DigitalExchangeSection partners={partners} stats={stats}/>
+                </section>
+
+                <section id="how-integrate" className="scroll-mt-20">
+                    <HowIntegrate/>
                 </section>
 
                 <section id="how-it-works" className="scroll-mt-20">

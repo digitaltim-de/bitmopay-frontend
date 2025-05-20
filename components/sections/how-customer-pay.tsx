@@ -1,15 +1,16 @@
 import Image from "next/image"
 
 export function HowCustomerPay() {
+  // Customer journey steps
   const steps = [
     {
       number: 1,
-      title: "Invoice",
-      description: "We generate a detailed invoice for your customer with all payment options.",
+      title: "Choose Products",
+      description: "Browse and select products from an online store that uses Bitmopay.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M20 8H4V6H20V8ZM20 12H4V10H20V12ZM20 16H4V14H20V16ZM22 2H2V22H22V2ZM20 4V20H4V4H20Z"
+            d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
             fill="currentColor"
           />
         </svg>
@@ -17,8 +18,21 @@ export function HowCustomerPay() {
     },
     {
       number: 2,
-      title: "Payment",
-      description: "Your customer pays the invoice at a fixed exchange rate.",
+      title: "Checkout",
+      description: "At checkout, select 'Pay with Cryptocurrency' as your payment method.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"
+            fill="currentColor"
+          />
+        </svg>
+      ),
+    },
+    {
+      number: 3,
+      title: "Choose Crypto",
+      description: "Select your preferred cryptocurrency from the available options.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -29,26 +43,13 @@ export function HowCustomerPay() {
       ),
     },
     {
-      number: 3,
-      title: "Conversion",
-      description: "We convert the payment into your preferred currency.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM15 6.5V9H11V11H15V13.5L19 10L15 6.5ZM9 17.5V15H13V13H9V10.5L5 14L9 17.5Z"
-            fill="currentColor"
-          />
-        </svg>
-      ),
-    },
-    {
       number: 4,
-      title: "Settlement",
-      description: "We send the funds to your bank account whenever you request.",
+      title: "Complete Payment",
+      description: "Scan the QR code or copy the wallet address to complete your payment.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M19 14V6C19 4.9 18.1 4 17 4H3C1.9 4 1 4.9 1 6V14C1 15.1 1.9 16 3 16H17C18.1 16 19 15.1 19 14ZM17 14H3V6H17V14ZM10 7C8.34 7 7 8.34 7 10C7 11.66 8.34 13 10 13C11.66 13 13 11.66 13 10C13 8.34 11.66 7 10 7ZM23 7V18C23 19.1 22.1 20 21 20H4C4 19 4 19.1 4 18H21V7C22.1 7 22 7 23 7Z"
+            d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
             fill="currentColor"
           />
         </svg>
@@ -56,20 +57,65 @@ export function HowCustomerPay() {
     },
   ]
 
-  // Features list for the secondary section
-  const features = [
-    "Integrate our API with just a few lines of code",
-    "Accept Bitcoin, Ethereum, and 50+ cryptocurrencies",
-    "Get paid in crypto or have it automatically converted to fiat",
-    "No chargebacks or fraud risks"
+  // Customer benefits
+  const benefits = [
+    "Fast and secure payments with cryptocurrencies",
+    "Support for Bitcoin, Ethereum, and 50+ other digital currencies",
+    "No need to create an account or share personal information",
+    "Transparent exchange rates with no hidden fees"
   ]
 
   return (
     <section className="py-20 bg-gray overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Hero Section with Gradient Background */}
+        <h2 className="text-5xl font-bold text-gray-900 text-center mb-16">
+          How customers pay with Bitmopay
+        </h2>
 
-        {/* Secondary Section with Glass Effect */}
+        {/* Customer Journey Steps with Connection Line */}
+        <div className="relative mb-16">
+          {/* Connection line */}
+          <div className="hidden lg:block absolute top-24 left-0 w-full h-1 bg-emerald-100 z-0"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            {steps.map((step, index) => (
+              <div 
+                key={step.number} 
+                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-emerald-200 transition-all duration-300 flex flex-col h-full group"
+              >
+                <div className="flex items-center mb-6">
+                  <div className="relative">
+                    {/* Circle with icon */}
+                    <div className="w-16 h-16 bg-emerald-50 group-hover:bg-emerald-100 rounded-full flex items-center justify-center transition-colors duration-300">
+                      <div className="text-emerald-600">{step.icon}</div>
+                    </div>
+
+                    {/* Step number */}
+                    <div className="absolute -top-2 -right-2 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm group-hover:bg-emerald-600 transition-colors duration-300">
+                      {step.number}
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-semibold text-gray-900 ml-4">{step.title}</h3>
+                </div>
+
+                <p className="text-gray-600">{step.description}</p>
+
+                {/* Arrow for all but the last step */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-24 left-full w-8 h-8 transform -translate-x-1/2">
+                    <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Secondary Section with Glass Effect - Customer Checkout UI */}
         <div className="relative rounded-3xl p-8 md:p-12 overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
@@ -78,13 +124,13 @@ export function HowCustomerPay() {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-100">
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">How Bitmopay Works</h3>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Customer Benefits</h3>
                 <p className="text-gray-600 mb-8">
-                  Our payment gateway makes it easy to accept cryptocurrency payments in just a few simple steps.
+                  Your customers will enjoy these advantages when paying with cryptocurrency at your store:
                 </p>
 
                 <ul className="space-y-4 mb-8">
-                  {features.map((feature, index) => (
+                  {benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start">
                       <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
                         <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
@@ -95,20 +141,20 @@ export function HowCustomerPay() {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700">{benefit}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center">
-                    Get Started
+                    See Demo Checkout
                     <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </button>
                   <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                    View Pricing
+                    Learn More
                   </button>
                 </div>
               </div>
@@ -120,7 +166,7 @@ export function HowCustomerPay() {
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-emerald-300/20 rounded-2xl blur-xl"></div>
                 <Image
                   src="/mobile-payment-app.png"
-                  alt="Bitmopay mobile interface"
+                  alt="Bitmopay customer checkout interface"
                   width={350}
                   height={450}
                   className="mx-auto rounded-2xl shadow-xl border border-white/20 relative z-10"
