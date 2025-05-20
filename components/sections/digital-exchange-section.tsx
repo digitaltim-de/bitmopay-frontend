@@ -30,8 +30,8 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
   // Process steps data
   const processSteps = [
     {
-      title: "Rechnung erstellen",
-      description: "Kunden erhalten eine individuelle Rechnung mit allen Optionen",
+      title: "Create Invoice",
+      description: "Customers receive a personalized invoice with all options",
       icon: (
         <svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -39,8 +39,8 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
       )
     },
     {
-      title: "Zahlung erhalten",
-      description: "Kunden bezahlen in Bitcoin, Ethereum oder USDT",
+      title: "Receive Payment",
+      description: "Customers pay in Bitcoin, Ethereum or USDT",
       icon: (
         <svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -48,8 +48,8 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
       )
     },
     {
-      title: "Automatische Konvertierung",
-      description: "Wir tauschen den Betrag automatisch in Stablecoins oder FIAT",
+      title: "Automatic Conversion",
+      description: "We automatically convert the amount to stablecoins or FIAT",
       icon: (
         <svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -57,8 +57,8 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
       )
     },
     {
-      title: "Auszahlung",
-      description: "Du erhältst das Geld auf dein Wallet oder Konto",
+      title: "Payout",
+      description: "You receive the money in your wallet or account",
       icon: (
         <svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -67,12 +67,12 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
     }
   ];
 
-  // German translations for stats
-  const germanStats = [
-    { value: "94%", label: "Kundenzufriedenheit" },
-    { value: "1.000+", label: "aktive Händler" },
-    { value: "$105", label: "Ø Transaktionswert" },
-    { value: "18%", label: "jährliches Wachstum" }
+  // Stats for display
+  const displayStats = [
+    { value: "94%", label: "Customer Satisfaction" },
+    { value: "1,000+", label: "Active Merchants" },
+    { value: "$105", label: "Avg. Transaction Value" },
+    { value: "18%", label: "Annual Growth" }
   ];
 
   return (
@@ -80,15 +80,15 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
       <div className="container mx-auto bg-gray-50 px-20 rounded-2xl">
         {/* Section Headline - Centered */}
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 my-4 pt-10">Warum Bitmopay?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 my-4 pt-10">Why Bitmopay?</h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10">
-            Einfach, zuverlässig und für Entwickler gemacht.
+            Simple, reliable and made for developers.
           </p>
         </div>
 
         {/* KPI Cards - 4 equal columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {germanStats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <div 
               key={index} 
               className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center"
@@ -101,28 +101,9 @@ export function DigitalExchangeSection({ partners, stats }: DigitalExchangeSecti
             </div>
           ))}
         </div>
-
-        {/* Partner Logos */}
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold text-center mb-8">Vertrauen von führenden Unternehmen</h3>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {partners.map((partner, index) => (
-              <div key={index} className="group">
-                <Image
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Process Steps - How it works */}
         <div>
-          <h3 className="text-2xl font-semibold text-center mb-12">So funktioniert's</h3>
+          <h3 className="text-2xl font-semibold text-center mb-12">How It Works</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="flex flex-col items-center text-center">

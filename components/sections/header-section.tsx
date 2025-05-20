@@ -97,7 +97,7 @@ export function HeaderSection() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex ml-10 space-x-8">
-              <NavItem href="#" label="Produkte" hasDropdown>
+              <NavItem href="#" label="Products" hasDropdown>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
                     API
@@ -106,27 +106,27 @@ export function HeaderSection() {
                     Plugins
                   </Link>
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
-                    Zahlungen
+                    Payments
                   </Link>
                 </div>
               </NavItem>
 
-              <NavItem href="#" label="Lösungen" hasDropdown>
+              <NavItem href="#" label="Solutions" hasDropdown>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
                     E-Commerce
                   </Link>
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
-                    Unternehmen
+                    Business
                   </Link>
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
-                    Entwickler
+                    Developers
                   </Link>
                 </div>
               </NavItem>
 
-              <NavItem href="#" label="Ressourcen" />
-              <NavItem href="#" label="Preise" />
+              <NavItem href="#" label="Resources" />
+              <NavItem href="#" label="Pricing" />
             </nav>
           </div>
 
@@ -136,10 +136,10 @@ export function HeaderSection() {
               href="#"
               className="text-gray-300 hover:text-white border border-gray-600 hover:border-gray-400 rounded-md px-4 py-2 transition-colors duration-200"
             >
-              Kontakt
+              Contact
             </Link>
             <Button className="bg-emerald-500 hover:bg-emerald-600 text-white transition-all duration-200 hover:shadow-lg">
-              Kostenlos testen
+              Free Trial
             </Button>
           </div>
 
@@ -179,15 +179,15 @@ export function HeaderSection() {
       >
         <div className="container mx-auto px-4 py-6">
           <nav className="flex flex-col space-y-6">
-            <MobileNavItem href="#" label="Produkte" />
-            <MobileNavItem href="#" label="Lösungen" />
-            <MobileNavItem href="#" label="Ressourcen" />
-            <MobileNavItem href="#" label="Preise" />
-            <MobileNavItem href="#" label="Kontakt" />
+            <MobileNavItem href="#" label="Products" />
+            <MobileNavItem href="#" label="Solutions" />
+            <MobileNavItem href="#" label="Resources" />
+            <MobileNavItem href="#" label="Pricing" />
+            <MobileNavItem href="#" label="Contact" />
 
             <div className="pt-6 border-t border-emerald-800">
               <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3">
-                Kostenlos testen
+                Free Trial
               </Button>
             </div>
           </nav>

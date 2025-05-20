@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button"
 
 export function SandboxSection() {
   const features = [
-    "Schnelle API + Sandbox",
-    "Niedrige Gebühren (nur 0.5%)",
-    "Kein Chargeback-Risiko",
+    "Fast API + Sandbox",
+    "Low Fees (only 0.5%)",
+    "No Chargeback Risk",
     "Self-Hosted Wallet Option",
   ]
 
@@ -35,7 +35,7 @@ console.log(data.payment_url);`
           <div>
             <h2 className="text-3xl font-bold mb-4">Demo & Sandbox</h2>
             <p className="text-gray-500 mb-6">
-              Testen Sie unsere API direkt im Browser und erleben Sie, wie einfach die Integration ist.
+              Test our API directly in the browser and experience how easy the integration is.
             </p>
             <div className="space-y-4">
               {features.map((feature, index) => (
@@ -45,7 +45,7 @@ console.log(data.payment_url);`
                 </div>
               ))}
             </div>
-            <Button className="mt-6 bg-emerald-600 hover:bg-emerald-700">API testen</Button>
+            <Button className="mt-6 bg-emerald-600 hover:bg-emerald-700">Test API</Button>
           </div>
           <div className="bg-gray-900 text-gray-100 p-6 rounded-lg">
             <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">

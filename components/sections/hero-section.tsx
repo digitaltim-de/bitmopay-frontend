@@ -43,7 +43,7 @@ export function HeroSection() {
                             <span className="bg-gradient-to-r from-white to-emerald-300 bg-clip-text text-transparent">crypto payments</span>
                         </h1>
 
-                        <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-xl font-semibold">
+                        <p className="text-gray-300 mb-8 max-w-xl font-semibold text-2xl">
                             Adding a crypto checkout to your website or online store is easy with our automated
                             cryptocurrency payment gateway, and your customers will love it.
                         </p>

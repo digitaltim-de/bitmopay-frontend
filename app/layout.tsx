@@ -25,21 +25,21 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Bitmopay - Global Crypto Payment Gateway",
   description:
-    "Akzeptiere Bitcoin, Ethereum, USDT und mehr mit einer einfachen API-Integration. Withdraw funds automatically each billing cycle.",
+    "Accept Bitcoin, Ethereum, USDT and more with a simple API integration. Withdraw funds automatically each billing cycle.",
   generator: 'v0.dev',
   metadataBase: new URL('https://bitmopay.com'),
   openGraph: {
     type: 'website',
-    locale: 'de_DE',
+    locale: 'en_US',
     url: 'https://bitmopay.com',
     title: 'Bitmopay - Global Crypto Payment Gateway',
-    description: 'Akzeptiere Bitcoin, Ethereum, USDT und mehr mit einer einfachen API-Integration.',
+    description: 'Accept Bitcoin, Ethereum, USDT and more with a simple API integration.',
     siteName: 'Bitmopay',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Bitmopay - Global Crypto Payment Gateway',
-    description: 'Akzeptiere Bitcoin, Ethereum, USDT und mehr mit einer einfachen API-Integration.',
+    description: 'Accept Bitcoin, Ethereum, USDT and more with a simple API integration.',
   },
 }
 
@@ -56,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`}>
       <body className={`${overpass.className} antialiased`}>
         {children}
       </body>

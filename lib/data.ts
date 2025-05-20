@@ -27,21 +27,21 @@ export const partners: Partner[] = [
 
 export const features: Feature[] = [
     {
-        title: "Globale Zahlungsoptimierung",
+        title: "Global Payment Optimization",
         description:
-            "Verbessere Autorisierungsraten, optimiere Checkout-Konversionen und biete lokale Zahlungsmethoden weltweit an.",
+            "Improve authorization rates, optimize checkout conversions, and offer local payment methods worldwide.",
         icon: "Globe"
     },
     {
-        title: "Kontinuierliche Einnahmen",
+        title: "Continuous Revenue",
         description:
-            "Fördere wiederkehrende Zahlungen, löse Zahlungsprobleme automatisch und verbessere das Management und die Effizienz.",
+            "Promote recurring payments, automatically resolve payment issues, and improve management and efficiency.",
         icon: "Zap"
     },
     {
-        title: "Einheitliches Zahlungssystem",
+        title: "Unified Payment System",
         description:
-            "Baue ein integriertes Zahlungserlebnis auf, das Transaktionen rationalisiert und die Kundenzufriedenheit verbessert.",
+            "Build an integrated payment experience that streamlines transactions and improves customer satisfaction.",
         icon: "Shield"
     }
 ]

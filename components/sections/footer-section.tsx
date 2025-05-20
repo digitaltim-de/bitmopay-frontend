@@ -31,9 +31,9 @@ export function FooterSection() {
 
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-xl">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Bleiben Sie auf dem Laufenden</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Stay Updated</h2>
               <p className="text-emerald-100">
-                Abonnieren Sie unseren Newsletter, um über die neuesten Funktionen, Updates und Angebote informiert zu werden.
+                Subscribe to our newsletter to stay informed about the latest features, updates, and offers.
               </p>
             </div>
 
@@ -43,7 +43,7 @@ export function FooterSection() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Ihre E-Mail-Adresse"
+                  placeholder="Your email address"
                   required
                   className="w-full px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-emerald-700/50 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
                 />
@@ -52,7 +52,7 @@ export function FooterSection() {
                 type="submit"
                 className="bg-white text-emerald-900 hover:bg-emerald-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg"
               >
-                Abonnieren
+                Subscribe
               </Button>
             </form>
           </div>
@@ -98,7 +98,7 @@ export function FooterSection() {
               </span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-xs">
-              Die einfachste Möglichkeit, Krypto-Zahlungen zu akzeptieren. Sicher, schnell und zuverlässig.
+              The easiest way to accept crypto payments. Secure, fast, and reliable.
             </p>
             <div className="flex gap-5">
               <SocialLink href="#" icon="facebook" />
@@ -109,66 +109,66 @@ export function FooterSection() {
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="font-semibold text-white text-lg mb-4">Produkte</h3>
+            <h3 className="font-semibold text-white text-lg mb-4">Products</h3>
             <ul className="space-y-3">
               <FooterLink href="#" label="API" />
               <FooterLink href="#" label="Plugins" />
-              <FooterLink href="#" label="Zahlungen" />
+              <FooterLink href="#" label="Payments" />
               <FooterLink href="#" label="Terminal" />
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="font-semibold text-white text-lg mb-4">Lösungen</h3>
+            <h3 className="font-semibold text-white text-lg mb-4">Solutions</h3>
             <ul className="space-y-3">
               <FooterLink href="#" label="E-Commerce" />
-              <FooterLink href="#" label="Unternehmen" />
-              <FooterLink href="#" label="Entwickler" />
-              <FooterLink href="#" label="Marktplätze" />
+              <FooterLink href="#" label="Business" />
+              <FooterLink href="#" label="Developers" />
+              <FooterLink href="#" label="Marketplaces" />
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="font-semibold text-white text-lg mb-4">Ressourcen</h3>
+            <h3 className="font-semibold text-white text-lg mb-4">Resources</h3>
             <ul className="space-y-3">
-              <FooterLink href="#" label="Dokumentation" />
-              <FooterLink href="#" label="Entwickler" />
+              <FooterLink href="#" label="Documentation" />
+              <FooterLink href="#" label="Developers" />
               <FooterLink href="#" label="Blog" />
               <FooterLink href="#" label="Support" />
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="font-semibold text-white text-lg mb-4">Rechtliches</h3>
+            <h3 className="font-semibold text-white text-lg mb-4">Legal</h3>
             <ul className="space-y-3">
-              <FooterLink href="#" label="AGB" />
-              <FooterLink href="#" label="Datenschutz" />
-              <FooterLink href="#" label="Impressum" />
+              <FooterLink href="#" label="Terms of Service" />
+              <FooterLink href="#" label="Privacy Policy" />
+              <FooterLink href="#" label="Imprint" />
               <FooterLink href="#" label="Cookies" />
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-400">© 2024 Bitmopay. Alle Rechte vorbehalten.</p>
+          <p className="text-sm text-gray-400">© 2024 Bitmopay. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-6 mt-4 md:mt-0">
             <Link 
               href="#" 
               className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
             >
-              Nutzungsbedingungen
+              Terms of Use
             </Link>
             <Link 
               href="#" 
               className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
             >
-              Datenschutz
+              Privacy Policy
             </Link>
             <Link 
               href="#" 
               className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
             >
-              Cookie-Einstellungen
+              Cookie Settings
             </Link>
           </div>
         </div>
