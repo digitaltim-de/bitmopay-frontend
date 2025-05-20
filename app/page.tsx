@@ -5,7 +5,6 @@ import {FeaturesSection} from "@/components/sections/features-section"
 import {FooterSection} from "@/components/sections/footer-section"
 import {HeaderSection} from "@/components/sections/header-section"
 import {HeroSection} from "@/components/sections/hero-section"
-import {HowItWorksSection} from "@/components/sections/how-it-works-section"
 import {IntegrationsSection} from "@/components/sections/integrations-section"
 import {SandboxSection} from "@/components/sections/sandbox-section"
 import {SupportedCoinsSection} from "@/components/sections/supported-coins-section"
@@ -16,6 +15,7 @@ import {Button} from "@/components/ui/button"
 import {features, integrations, partners, stats, supportedCoins} from "@/lib/data"
 import {useEffect, useState} from "react"
 import StartAccepting from "@/components/sections/start-accepting";
+import {HowCustomerPay} from "@/components/sections/how-customer-pay";
 
 export default function Home() {
     return (
@@ -42,7 +42,7 @@ export default function Home() {
                 </section>
 
                 <section id="how-it-works" className="scroll-mt-20">
-                    <HowItWorksSection/>
+                    <HowCustomerPay/>
                 </section>
 
                 <section id="coins" className="scroll-mt-20">
