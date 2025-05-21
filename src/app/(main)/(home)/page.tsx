@@ -74,10 +74,6 @@ export default function Home() {
         <SandboxSection />
       </section>
 
-      <section id="cta" className="scroll-mt-20">
-        <CtaSection />
-      </section>
-
       {/* Scroll to top button */}
       <ScrollToTopButton />
     </>
