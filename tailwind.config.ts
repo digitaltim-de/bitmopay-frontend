@@ -15,6 +15,8 @@ const config = {
       center: true,
       padding: "1rem",
       screens: {
+        "lg": "1024px",
+        "xl": "1280px",
         "2xl": "1400px",
       },
     },
@@ -58,16 +60,15 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         emerald: {
-          50: "#ecfdf5",
-          100: "#d1fae5",
-          200: "#a7f3d0",
-          300: "#6ee7b7",
-          400: "#34d399",
-          500: "#10b981",
-          600: "#059669",
-          700: "#047857",
-          800: "#065f46",
-          900: "#064e3b",
+          100: "#b2f0dd", // Çok açık mint/yeşil
+          200: "#7ae3c1",
+          300: "#41d6a4",
+          400: "#24c293", // 500'e yaklaşan canlı ton
+          500: "#17a57a",
+          600: "#14856a", // Biraz daha koyu
+          700: "#11645a", // Orta koyuluk
+          800: "#0e444b", // Daha koyu ve griye dönük
+          900: "#19353c",
         },
         indigo: {
           50: "#eef2ff",
