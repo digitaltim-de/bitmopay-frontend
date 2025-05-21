@@ -39,7 +39,7 @@ export default function Home() {
 
       <section
         id="start-accepting"
-        className="flex container  justify-between items-center mt-12 w-full"
+        className="flex container  justify-b  etween items-center mt-12 w-full"
       >
         <StartAccepting />
       </section>
