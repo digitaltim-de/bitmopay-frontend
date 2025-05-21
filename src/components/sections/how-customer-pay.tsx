@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { Section } from "../shared/section";
 
 const steps = [
   {
@@ -36,123 +37,123 @@ const benefits = [
 ];
 
 // StepCard component
-const StepCard = ({ step }: { step: typeof steps[0] }) => (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-emerald-200 transition-all duration-300 relative group">
-      <div className="flex items-center mb-6">
-        <div className="relative">
-          <div className="w-16 h-16 bg-emerald-50 group-hover:bg-emerald-100 rounded-full flex items-center justify-center text-xl">
-            {step.icon}
-          </div>
-          <div className="absolute -top-2 -right-2 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm group-hover:bg-emerald-600 transition-colors duration-300">
-            {step.number}
-          </div>
+const StepCard = ({ step }: { step: (typeof steps)[0] }) => (
+  <div
+    className="group relative rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300
+      hover:border-emerald-200 hover:shadow-md"
+  >
+    <div className="mb-6 flex items-center">
+      <div className="relative">
+        <div
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-xl
+            group-hover:bg-emerald-100"
+        >
+          {step.icon}
         </div>
-        <h3 className="text-xl font-semibold text-gray-900 ml-4">
-          {step.title}
-        </h3>
+        <div
+          className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500
+            text-xs font-bold text-white shadow-sm transition-colors duration-300 group-hover:bg-emerald-600"
+        >
+          {step.number}
+        </div>
       </div>
-      <p className="text-gray-600">{step.description}</p>
+      <h3 className="ml-4 text-xl font-semibold text-gray-900">{step.title}</h3>
     </div>
+    <p className="text-gray-600">{step.description}</p>
+  </div>
 );
 
 // Benefit item
 const BenefitItem = ({ text }: { text: string }) => (
-    <li className="flex items-start">
-      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
-        <svg
-            className="h-4 w-4 text-emerald-600"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-        >
-          <path
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clipRule="evenodd"
-          />
-        </svg>
-      </div>
-      <span className="text-gray-700">{text}</span>
-    </li>
+  <li className="flex items-start">
+    <div className="mr-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100">
+      <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fillRule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+    <span className="text-gray-700">{text}</span>
+  </li>
 );
 
 export function HowCustomerPay() {
   return (
-      <section className="py-20 bg-gray overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <h2 className="text-5xl font-bold text-gray-900 text-center mb-16">
-            How customers pay with Bitmopay
-          </h2>
+    <Section className="bg-gray">
+      <h2 className="title !mb-16 text-center">How customers pay with Bitmopay</h2>
 
-          {/* Steps */}
-          <div className="relative mb-16">
-            <div className="hidden lg:block absolute top-24 left-0 w-full h-1 bg-emerald-100 z-0"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              {steps.map((step, index) => (
-                  <StepCard key={index} step={step} />
-              ))}
+      {/* Steps */}
+      <div className="relative mb-16">
+        <div className="absolute left-0 top-24 z-0 hidden h-1 w-full bg-emerald-100 lg:block"></div>
+        <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, index) => (
+            <StepCard key={index} step={step} />
+          ))}
+        </div>
+      </div>
+
+      {/* Checkout UI + Benefits */}
+      <div className="relative overflow-hidden rounded-3xl sm:p-8 md:p-12">
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl"></div>
+
+        <div className="relative z-10 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          {/* Benefits */}
+          <div className="order-2 md:order-1">
+            <div className="rounded-2xl border border-gray-100 bg-white/80 p-8 shadow-xl backdrop-blur-sm">
+              <h3 className="mb-4 text-3xl font-bold text-gray-900">Customer Benefits</h3>
+              <p className="mb-8 text-gray-600">
+                Crypto payments are not only easy – they’re better:
+              </p>
+              <ul className="mb-8 space-y-4">
+                {benefits.map((text, index) => (
+                  <BenefitItem key={index} text={text} />
+                ))}
+              </ul>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button>
+                  See Demo Checkout
+                  <svg
+                    className="ml-2 h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </Button>
+                <Button variant="outline">Learn More</Button>
+              </div>
             </div>
           </div>
 
-          {/* Checkout UI + Benefits */}
-          <div className="relative rounded-3xl sm:p-8 md:p-12 overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
-
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Benefits */}
-              <div className="order-2 md:order-1">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-100">
-                  <h3 className="text-3xl font-bold mb-4 text-gray-900">
-                    Customer Benefits
-                  </h3>
-                  <p className="text-gray-600 mb-8">
-                    Crypto payments are not only easy – they’re better:
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    {benefits.map((text, index) => (
-                        <BenefitItem key={index} text={text} />
-                    ))}
-                  </ul>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button>
-                      See Demo Checkout
-                      <svg
-                          className="ml-2 w-5 h-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                      >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </Button>
-                    <Button variant="outline">Learn More</Button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Image */}
-              <div className="order-1 md:order-2 relative">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl"></div>
-                <div className="relative transform hover:scale-105 transition-transform duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-emerald-300/20 rounded-2xl blur-xl"></div>
-                  <Image
-                      src="/mobile-payment-app.png"
-                      alt="Bitmopay customer checkout interface"
-                      width={350}
-                      height={450}
-                      className="mx-auto rounded-2xl shadow-xl border border-white/20 relative z-10"
-                  />
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-emerald-500/30 rounded-full blur-xl"></div>
-                </div>
-              </div>
+          {/* Image */}
+          <div className="relative order-1 md:order-2">
+            <div
+              className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 transform rounded-full
+                bg-emerald-400/20 blur-3xl"
+            ></div>
+            <div className="relative transform transition-transform duration-500 hover:scale-105">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/20 to-emerald-300/20 blur-xl"></div>
+              <Image
+                src="/mobile-payment-app.png"
+                alt="Bitmopay customer checkout interface"
+                width={350}
+                height={450}
+                className="relative z-10 mx-auto rounded-2xl border border-white/20 shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-emerald-500/30 blur-xl"></div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </Section>
   );
 }

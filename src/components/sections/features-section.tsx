@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { Section } from "../shared/section";
 
 // Optional: Typdefinition für Klarheit
 interface Feature {
@@ -42,20 +43,17 @@ const features: Feature[] = [
   {
     icon: "Zap",
     title: "Fast Settlements",
-    description:
-      "Receive crypto payouts in minutes depending on network congestion and fees.",
+    description: "Receive crypto payouts in minutes depending on network congestion and fees.",
   },
   {
     icon: "LinkIcon",
     title: "Easy API Integration",
-    description:
-      "Integrate our REST API and Webhooks in minutes. Includes sandbox and test tools.",
+    description: "Integrate our REST API and Webhooks in minutes. Includes sandbox and test tools.",
   },
   {
     icon: "Coins",
     title: "Multi-Chain Support",
-    description:
-      "Support for BTC, ETH, USDT, USDC, BNB, TRON and more – all crypto, no fiat.",
+    description: "Support for BTC, ETH, USDT, USDC, BNB, TRON and more – all crypto, no fiat.",
   },
 ];
 
@@ -81,37 +79,32 @@ const renderIcon = (iconName: string) => {
 
 export function FeaturesSection() {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">
-            What Bitmopay can do for you
-          </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto">
-            Explore powerful features designed for developers, merchants, and
-            Web3 apps.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="border-none shadow-sm">
-              <CardContent className="p-6">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 mb-4">
-                  {renderIcon(feature.icon)}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-500 text-sm">{feature.description}</p>
-                <Link
-                  href="#"
-                  className="inline-flex items-center text-emerald-600 mt-4 text-sm font-medium hover:underline"
-                >
-                  Learn more <ChevronRight className="h-4 w-4 ml-1" />
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <Section className="bg-gray-50">
+      <div className="mb-12 text-center">
+        <h2 className="title">What Bitmopay can do for you</h2>
+        <p className="mx-auto max-w-2xl text-gray-500">
+          Explore powerful features designed for developers, merchants, and Web3 apps.
+        </p>
       </div>
-    </section>
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+        {features.map((feature, index) => (
+          <Card key={index} className="border-none shadow-sm">
+            <CardContent className="p-6">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                {renderIcon(feature.icon)}
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
+              <p className="text-sm text-gray-500">{feature.description}</p>
+              <Link
+                href="#"
+                className="mt-4 inline-flex items-center text-sm font-medium text-emerald-600 hover:underline"
+              >
+                Learn more <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </Section>
   );
 }
