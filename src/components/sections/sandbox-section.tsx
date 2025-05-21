@@ -95,10 +95,10 @@ export function SandboxSection() {
   }
 
   return (
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-950 border-t border-slate-100 dark:border-slate-800">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-t border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
               {/* Left column - Content */}
               <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -107,15 +107,15 @@ export function SandboxSection() {
                   transition={{ duration: 0.5 }}
               >
                 <div className="flex items-center gap-2 mb-6">
-                  <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                    <Terminal className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+                  <div className="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                    <Terminal className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                   </div>
-                  <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Developer API</span>
+                  <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">Developer API</span>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Try Bitmopay in seconds</h2>
+                <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Try Bitmopay in seconds</h2>
 
-                <p className="text-slate-600 dark:text-slate-300 mb-8 text-lg">
+                <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
                   Experience our API without registration. Just paste your key and simulate a crypto payment flow
                   instantly.
                 </p>
@@ -130,13 +130,13 @@ export function SandboxSection() {
                         </div>
                         <div>
                           <p className="font-medium text-gray-900 dark:text-white">{feature.text}</p>
-                          <p className="text-sm text-slate-500 dark:text-slate-400">{feature.description}</p>
+                          <p className="text-base text-gray-600 dark:text-gray-300">{feature.description}</p>
                         </div>
                       </div>
                   ))}
                 </div>
 
-                <Button size="lg" className="group">
+                <Button size="lg" className="group bg-emerald-600 hover:bg-emerald-700">
                   Open Implementation Documentation
                   <Code2 className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
@@ -172,4 +172,3 @@ export function SandboxSection() {
       </section>
   )
 }
-

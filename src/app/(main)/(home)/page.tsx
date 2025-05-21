@@ -110,13 +110,14 @@ function ScrollToTopButton() {
       {isVisible && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 rounded-full p-3 bg-emerald-600 hover:bg-emerald-700 shadow-lg transition-all duration-300 animate-in fade-in"
+          size="icon"
+          className="fixed bottom-8 right-8 z-50 rounded-full w-12 h-12 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 shadow-lg transition-all duration-300 animate-in fade-in"
           aria-label="Scroll to top"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
