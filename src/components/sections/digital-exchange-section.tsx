@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "../shared/section";
+import HeadTitle from "@/components/shared/head-title";
 
 interface Stat {
   value: string;
@@ -115,11 +116,10 @@ export function DigitalExchangeSection() {
           >
             Why Choose Bitmopay
           </span>
-          <h2 className="title">The Future of Digital Exchange</h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            A crypto-first payment gateway designed for modern commerce. No banks. No legacy
-            systems.
-          </p>
+         <HeadTitle
+             title="The Future of Digital Exchange"
+             subtitle="A crypto-first payment gateway designed for modern commerce. No banks. No legacy
+            systems." />
         </div>
 
         {/* Main content */}
@@ -166,171 +166,6 @@ export function DigitalExchangeSection() {
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
-
-            {/* Todo baska yrede kullanilicak Benefits content */}
-            {/* <div className="space-y-6 mt-8">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Customer Benefits
-                  </h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        No account or KYC needed for customers
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Support for 50+ cryptocurrencies
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Transparent rates – no hidden fees
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Secure, fast blockchain settlement
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Merchant Benefits
-                  </h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Low transaction fees (only 0.5%)
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        No chargebacks or payment disputes
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Detailed analytics and reporting
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mr-3">
-                        <svg
-                          className="h-4 w-4 text-emerald-600 dark:text-emerald-400"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Global customer reach without borders
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-             */}
           </div>
 
           {/* Right side: Stats */}
