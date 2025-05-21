@@ -145,7 +145,7 @@ export default function InteractiveIntegrationGuide() {
 
 // Visualizations for each step
 const CodeVisual = () => (
-  <pre className="h-full overflow-x-auto text-xs text-emerald-600 dark:text-emerald-400 md:text-sm">
+  <pre className="h-full overflow-x-auto text-xs text-gray-900 md:text-sm">
     <code>{`// Example API integration
 import { BitmopayClient } from 'bitmopay';
 

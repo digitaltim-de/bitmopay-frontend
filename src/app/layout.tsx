@@ -32,15 +32,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://bitmopay.com",
     title: "Bitmopay - Global Crypto Payment Gateway",
-    description:
-      "Accept Bitcoin, Ethereum, USDT and more with a simple API integration.",
+    description: "Accept Bitcoin, Ethereum, USDT and more with a simple API integration.",
     siteName: "Bitmopay",
   },
   twitter: {
     card: "summary_large_image",
     title: "Bitmopay - Global Crypto Payment Gateway",
-    description:
-      "Accept Bitcoin, Ethereum, USDT and more with a simple API integration.",
+    description: "Accept Bitcoin, Ethereum, USDT and more with a simple API integration.",
   },
 };
 
@@ -62,7 +60,7 @@ export default function RootLayout({
       className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className={`${overpass.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }

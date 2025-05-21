@@ -30,7 +30,7 @@ export default function Home() {
       <HowIntegrate />
       <HowCustomerPay />
       <SupportedCoinsSection coins={supportedCoins} />
-      <IntegrationsSection integrations={integrations} />
+      {/* <IntegrationsSection integrations={integrations} /> */}
       <FeaturesSection features={features} />
       <SandboxSection />
       {/* Scroll to top button */}
