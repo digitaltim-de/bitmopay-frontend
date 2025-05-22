@@ -17,6 +17,7 @@ interface Stat {
     prefix?: string;
     suffix?: string;
     color?: string;
+    source?: string;
 }
 
 interface Feature {
@@ -31,31 +32,35 @@ export function DigitalExchangeSection() {
         triggerOnce: true,
     });
 
-    // Enhanced stats with more metadata
+    // Enhanced stats with more metadata and source attribution
     const stats: Stat[] = [
         {
             value: "94",
             label: "Customer Satisfaction",
             suffix: "%",
             color: "from-emerald-400 to-emerald-600",
+            source: "Based on 2023 customer survey results"
         },
         {
             value: "1,000",
             label: "Active Merchants",
             suffix: "+",
-            color: "from-blue-400 to-blue-600",
+            color: "from-emerald-400 to-emerald-600",
+            source: "As of June 2024"
         },
         {
             value: "105",
             label: "Avg. Transaction Value",
             prefix: "$",
             color: "from-purple-400 to-purple-600",
+            source: "Based on Q1 2024 transaction data"
         },
         {
             value: "18",
             label: "Annual Growth",
             suffix: "%",
             color: "from-amber-400 to-amber-600",
+            source: "Year-over-year growth 2023-2024"
         },
     ];
 

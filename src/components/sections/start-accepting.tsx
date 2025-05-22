@@ -222,7 +222,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
                 <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-xl">
                     <motion.div variants={imageVariants} className="h-full w-full">
                         <Image
-                            src={imageSrc || "/placeholde"}
+                            src={imageSrc || "/placeholder.svg"}
                             alt={imageAlt}
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

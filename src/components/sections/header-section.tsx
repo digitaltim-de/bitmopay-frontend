@@ -101,36 +101,44 @@ export function HeaderSection() {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex ml-10 space-x-8">
-                            <NavItem href="#" label="Products" hasDropdown isScrolled={isScrolled}>
+                            <NavItem href="/products" label="Products" hasDropdown isScrolled={isScrolled}>
                                 <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="products-menu">
                                     {[
-                                        {href: "#", label: "API"},
-                                        {href: "#", label: "Plugins"},
-                                        {href: "#", label: "Payments"}
+                                        {href: "/products/api", label: "API"},
+                                        {href: "/products/plugins", label: "Plugins"},
+                                        {href: "/products/payments", label: "Payments"}
                                     ].map((item, index) => (
                                         <Link
                                             key={index}
                                             href={item.href}
                                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
+                                            role="menuitem"
                                         >
                                             {item.label}
                                         </Link>
                                     ))}
                                 </div>
                             </NavItem>
-                            <NavItem href="#" label="Solutions" hasDropdown isScrolled={isScrolled}>
+                            <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled}>
                                 <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="solutions-menu">
                                     {[
-                                        {href: "#", label: "E-Commerce"},
-                                        {href: "#", label: "Business"},
-                                        {href: "#", label: "Developers"}
+                                        {href: "/solutions/e-commerce", label: "E-Commerce"},
+                                        {href: "/solutions/business", label: "Business"},
+                                        {href: "/solutions/developers", label: "Developers"}
                                     ].map((item, index) => (
                                         <Link
                                             key={index}
                                             href={item.href}
                                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
+                                            role="menuitem"
                                         >
                                             {item.label}
                                         </Link>
@@ -138,43 +146,46 @@ export function HeaderSection() {
                                 </div>
                             </NavItem>
 
-                            <NavItem href="#" label="Resources" isScrolled={isScrolled}/>
-                            <NavItem href="#" label="Pricing" isScrolled={isScrolled}/>
-                            <NavItem href="#" label="Contact" hasDropdown isScrolled={isScrolled}>
-                                <nav className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl w-64 p-4 space-y-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                            <NavItem href="/resources" label="Resources" isScrolled={isScrolled}/>
+                            <NavItem href="/pricing" label="Pricing" isScrolled={isScrolled}/>
+                            <NavItem href="/contact" label="Contact" hasDropdown isScrolled={isScrolled}>
+                                <nav className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl w-64 p-4 space-y-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                                     role="menu"
+                                     aria-orientation="vertical"
+                                     aria-labelledby="contact-menu">
                                   <ul className="space-y-2">
                                     <li>
-                                      <a href="https://discord.gg/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="https://discord.gg/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">Discord</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Join our community on Discord</p>
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="https://facebook.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">Facebook</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Follow us on Facebook</p>
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="https://twitter.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">Twitter</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Follow us on Twitter</p>
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="https://linkedin.com/company/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">LinkedIn</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Connect with us on LinkedIn</p>
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="https://github.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">GitHub</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Check out our code on GitHub</p>
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                      <a href="mailto:contact@bitmopay.com" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
                                         <div className="font-semibold text-gray-900">Email</div>
                                         <p className="text-sm text-gray-600 hidden md:block">Contact us via email</p>
                                       </a>
@@ -245,11 +256,11 @@ export function HeaderSection() {
             >
                 <div className="container mx-auto px-4 py-6">
                     <nav className="flex flex-col space-y-6">
-                        <MobileNavItem href="#" label="Products"/>
-                        <MobileNavItem href="#" label="Solutions"/>
-                        <MobileNavItem href="#" label="Resources"/>
-                        <MobileNavItem href="#" label="Pricing"/>
-                        <MobileNavItem href="#" label="Contact"/>
+                        <MobileNavItem href="/products" label="Products"/>
+                        <MobileNavItem href="/solutions" label="Solutions"/>
+                        <MobileNavItem href="/resources" label="Resources"/>
+                        <MobileNavItem href="/pricing" label="Pricing"/>
+                        <MobileNavItem href="/contact" label="Contact"/>
 
                         <div className="pt-6 border-t border-emerald-800 dark:border-gray-700 space-y-4">
                             <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3">
@@ -323,35 +334,43 @@ function MobileNavItem({href, label}: { href: string; label: string }) {
                         Discord
                     </Link>
                     <Link 
-                        href="#" 
+                        href="https://facebook.com/bitmopay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="text-white text-base hover:text-emerald-300 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                     >
                         Facebook
                     </Link>
                     <Link 
-                        href="#" 
+                        href="https://twitter.com/bitmopay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="text-white text-base hover:text-emerald-300 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                     >
                         Twitter
                     </Link>
                     <Link 
-                        href="#" 
+                        href="https://linkedin.com/company/bitmopay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="text-white text-base hover:text-emerald-300 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                     >
                         LinkedIn
                     </Link>
                     <Link 
-                        href="#" 
+                        href="https://github.com/bitmopay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="text-white text-base hover:text-emerald-300 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                     >
                         GitHub
                     </Link>
                     <Link 
-                        href="#" 
+                        href="mailto:contact@bitmopay.com" 
                         className="text-white text-base hover:text-emerald-300 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                     >

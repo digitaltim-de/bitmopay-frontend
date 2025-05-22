@@ -51,14 +51,14 @@ export function SupportedCoinsSection() {
 
                 <SupportedCoinsModal/>
             </div>
-            <div className="mx-auto max-w-3xl rounded-xl border border-blue-100 bg-white p-6 shadow-sm">
+            <div className="mx-auto max-w-3xl rounded-xl border border-emerald-100 bg-white p-6 shadow-sm">
                 <div className="flex flex-col items-center gap-4 md:flex-row">
-                    <div className="flex-shrink-0 rounded-full bg-blue-100 p-3">
+                    <div className="flex-shrink-0 rounded-full bg-emerald-100 p-3">
                         <svg
                             width="24"
                             height="24"
                             fill="currentColor"
-                            className="h-6 w-6 text-blue-600"
+                            className="h-6 w-6 text-emerald-600"
                             viewBox="0 0 24 24"
                         >
                             <path
