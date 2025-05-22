@@ -90,7 +90,7 @@ export function HowIntegrate() {
 
                             <div className="mb-6 flex flex-wrap gap-2">
                                 {steps[activeStep].tags.map((tag, i) => (
-                                    <Badge>
+                                    <Badge key={i}>
                                         {tag}
                                     </Badge>
                                 ))}

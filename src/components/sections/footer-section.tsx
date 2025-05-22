@@ -124,10 +124,11 @@ export function FooterSection() {
                     <div className="md:col-span-1">
                         <h3 className="font-semibold text-white text-lg mb-4">Legal</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="#" label="Terms of Service"/>
-                            <FooterLink href="#" label="Privacy Policy"/>
-                            <FooterLink href="#" label="Imprint"/>
-                            <FooterLink href="#" label="Cookies"/>
+                            <FooterLink href="/legal/terms" label="Terms of Service"/>
+                            <FooterLink href="/legal/privacy" label="Privacy Policy"/>
+                            <FooterLink href="/legal/cookies" label="Cookie Policy"/>
+                            <FooterLink href="/legal/refund" label="Refund Policy"/>
+                            <FooterLink href="/legal/imprint" label="Imprint"/>
                         </ul>
                     </div>
                 </div>
@@ -139,22 +140,28 @@ export function FooterSection() {
                     </p>
                     <div className="flex flex-wrap justify-center gap-6 mt-4 md:mt-0">
                         <Link
-                            href="#"
+                            href="/legal/terms"
                             className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
                         >
-                            Terms of Use
+                            Terms of Service
                         </Link>
                         <Link
-                            href="#"
+                            href="/legal/privacy"
                             className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
                         >
                             Privacy Policy
                         </Link>
                         <Link
-                            href="#"
+                            href="/legal/cookies"
                             className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
                         >
-                            Cookie Settings
+                            Cookie Policy
+                        </Link>
+                        <Link
+                            href="/legal/imprint"
+                            className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
+                        >
+                            Imprint
                         </Link>
                     </div>
                 </div>

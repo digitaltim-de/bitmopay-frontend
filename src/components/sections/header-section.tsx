@@ -1,13 +1,134 @@
 "use client";
 
 import {Button} from "@/components/ui/button";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import Link from "next/link";
-import {MessageCircle, ChevronDown} from "lucide-react";
+import {
+    MessageCircle, 
+    ChevronDown, 
+    Mail, 
+    Github, 
+    Linkedin, 
+    Twitter, 
+    Facebook, 
+    MessageSquare, 
+    ExternalLink,
+    CreditCard,
+    Shield,
+    Wallet,
+    FileText,
+    Smartphone,
+    ShoppingCart,
+    Instagram,
+    DiscIcon as Discord
+} from "lucide-react";
 
 export function HeaderSection() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [activeMenu, setActiveMenu] = useState<string | null>(null);
+    const contactTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const socialFeatures = [
+        {
+            title: "Twitter",
+            description: "Folgen Sie uns für die neuesten Updates und Ankündigungen.",
+            icon: <Twitter className="h-6 w-6 text-blue-500" />,
+            href: "https://twitter.com/bitmopay",
+            color: "bg-blue-50",
+        },
+        {
+            title: "Facebook",
+            description: "Verbinden Sie sich mit unserer Community und teilen Sie Ihre Erfahrungen.",
+            icon: <Facebook className="h-6 w-6 text-blue-600" />,
+            href: "https://facebook.com/bitmopay",
+            color: "bg-blue-50",
+        },
+        {
+            title: "Discord",
+            description: "Treten Sie unserem Discord-Server bei für direkten Support und Diskussionen.",
+            icon: <Discord className="h-6 w-6 text-indigo-500" />,
+            href: "https://discord.gg/bitmopay",
+            color: "bg-indigo-50",
+        },
+        {
+            title: "Instagram",
+            description: "Sehen Sie unsere visuellen Updates und Geschichten.",
+            icon: <Instagram className="h-6 w-6 text-pink-500" />,
+            href: "https://instagram.com/bitmopay",
+            color: "bg-pink-50",
+        },
+        {
+            title: "LinkedIn",
+            description: "Vernetzen Sie sich beruflich und bleiben Sie über Karrieremöglichkeiten informiert.",
+            icon: <Linkedin className="h-6 w-6 text-blue-700" />,
+            href: "https://linkedin.com/company/bitmopay",
+            color: "bg-blue-50",
+        },
+        {
+            title: "GitHub",
+            description: "Entdecken Sie unsere Open-Source-Projekte und tragen Sie bei.",
+            icon: <Github className="h-6 w-6 text-gray-800" />,
+            href: "https://github.com/bitmopay",
+            color: "bg-gray-50",
+        },
+    ];
+
+    const paymentFeatures = [
+        {
+            title: "Payment",
+            description: "Securely manage your payments with our convenient options.",
+            icon: <CreditCard className="h-6 w-6 text-blue-500" />,
+            href: "#payment",
+            color: "bg-blue-50",
+        },
+        {
+            title: "Security",
+            description: "Protect your transactions with our advanced security features.",
+            icon: <Shield className="h-6 w-6 text-green-500" />,
+            href: "#security",
+            color: "bg-green-50",
+        },
+        {
+            title: "Wallet",
+            description: "Effortlessly store and access your funds anytime, anywhere.",
+            icon: <Wallet className="h-6 w-6 text-red-500" />,
+            href: "#wallet",
+            color: "bg-red-50",
+        },
+        {
+            title: "Invoice",
+            description: "Simplify your billing process with our user-friendly invoicing tools.",
+            icon: <FileText className="h-6 w-6 text-yellow-500" />,
+            href: "#invoice",
+            color: "bg-yellow-50",
+        },
+        {
+            title: "Contactless",
+            description: "Experience fast and easy payments with contactless technology.",
+            icon: <Smartphone className="h-6 w-6 text-purple-500" />,
+            href: "#contactless",
+            color: "bg-purple-50",
+        },
+        {
+            title: "Checkout",
+            description: "Streamline your purchase process with our seamless checkout.",
+            icon: <ShoppingCart className="h-6 w-6 text-pink-500" />,
+            href: "#checkout",
+            color: "bg-pink-50",
+        },
+    ];
+
+    const getFeatures = (menuName: string) => {
+        switch (menuName) {
+            case "Solutions":
+                return paymentFeatures;
+            case "Contact":
+                return socialFeatures;
+            default:
+                return [];
+        }
+    };
 
     // Handle scroll event to create sticky header effect
     useEffect(() => {
@@ -48,6 +169,15 @@ export function HeaderSection() {
             document.body.style.overflow = "";
         };
     }, [isMenuOpen]);
+
+    // Cleanup contact timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (contactTimeoutRef.current) {
+                clearTimeout(contactTimeoutRef.current);
+            }
+        };
+    }, []);
 
     return (
         <header
@@ -102,70 +232,101 @@ export function HeaderSection() {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex ml-10 space-x-6">
-                            <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled}>
-                                <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-                                    role="menu"
-                                    aria-orientation="vertical"
-                                    aria-labelledby="solutions-menu">
-                                    {[
-                                        {href: "/solutions/ecommerce", label: "E-Commerce"},
-                                        {href: "/solutions/saas", label: "SaaS"},
-                                        {href: "/solutions/donations", label: "Donations"},
-                                        {href: "/solutions/membership", label: "Membership"},
-                                        {href: "/solutions/invoicing", label: "Invoicing"},
-                                        {href: "/solutions/digital-downloads", label: "Digital Downloads"},
-                                        {href: "/solutions/reseller", label: "Reseller"}
-                                    ].map((item, index) => (
-                                        <Link
-                                            key={index}
-                                            href={item.href}
-                                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
-                                            role="menuitem"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </NavItem>
-
-                            <NavItem href="/become-partner" label="Become a Partner" isScrolled={isScrolled}/>
-                            <NavItem href="/about" label="About Us" isScrolled={isScrolled}/>
-
-                            <NavItem href="#" label="More" hasDropdown isScrolled={isScrolled}>
-                                <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-                                    role="menu"
-                                    aria-orientation="vertical"
-                                    aria-labelledby="more-menu">
-                                    {[
-                                        {href: "/resources", label: "Resources"},
-                                        {href: "/pricing", label: "Pricing"}
-                                    ].map((item, index) => (
-                                        <Link
-                                            key={index}
-                                            href={item.href}
-                                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
-                                            role="menuitem"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </NavItem>
-
+                            <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
+                            <NavItem href="/pricing" label="Pricing" isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
+                            <NavItem href="/become-partner" label="Become a Partner" isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
+                            <NavItem href="#" label="More" hasDropdown isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
                         </nav>
                     </div>
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden md:flex items-center space-x-4">
-                        <Link
-                            href="/contact"
-                            className="flex items-center justify-center h-10 w-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white transition-colors"
-                            aria-label="Contact"
+                        {/* Contact Icon with Dropdown */}
+                        <div 
+                            className="relative group"
+                            onMouseEnter={() => {
+                                if (contactTimeoutRef.current) {
+                                    clearTimeout(contactTimeoutRef.current);
+                                    contactTimeoutRef.current = null;
+                                }
+                                setActiveMenu("Contact");
+                            }}
+                            onMouseLeave={() => {
+                                contactTimeoutRef.current = setTimeout(() => {
+                                    setActiveMenu(null);
+                                }, 500);
+                            }}
                         >
-                            <MessageCircle className="h-5 w-5" />
-                        </Link>
+                            <button 
+                                className={`flex items-center justify-center p-2 rounded-full ${
+                                    isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-emerald-800'
+                                } transition-colors`}
+                                aria-label="Contact"
+                            >
+                                <MessageCircle className="h-5 w-5" />
+                            </button>
+
+                            {activeMenu === "Contact" && (
+                                <div 
+                                    className="absolute right-0 z-10 mt-3 w-80 transform px-2 sm:px-0"
+                                    onMouseEnter={() => {
+                                        if (contactTimeoutRef.current) {
+                                            clearTimeout(contactTimeoutRef.current);
+                                            contactTimeoutRef.current = null;
+                                        }
+                                    }}
+                                    onMouseLeave={() => {
+                                        contactTimeoutRef.current = setTimeout(() => {
+                                            setActiveMenu(null);
+                                        }, 500);
+                                    }}
+                                >
+                                    <div className="overflow-hidden rounded-lg shadow-xl ring-1 ring-black ring-opacity-5">
+                                        <div className="relative bg-white p-6">
+                                            <div className="mb-4">
+                                                <h3 className="text-lg font-medium text-gray-900">Get in Touch</h3>
+                                                <p className="text-sm text-gray-500">We're here to help with any questions</p>
+                                            </div>
+                                            <div className="grid gap-4">
+                                                {socialFeatures.map((feature) => (
+                                                    <Link
+                                                        key={feature.title}
+                                                        href={feature.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                                                    >
+                                                        <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md ${feature.color}`}>
+                                                            {feature.icon}
+                                                        </div>
+                                                        <div className="ml-4">
+                                                            <p className="text-sm font-medium text-gray-900 flex items-center">
+                                                                {feature.title}
+                                                                <ExternalLink className="ml-1 h-3 w-3 text-gray-400" />
+                                                            </p>
+                                                            <p className="mt-1 text-xs text-gray-500">{feature.description}</p>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                                <Link
+                                                    href="/contact"
+                                                    className="flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                                                >
+                                                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-emerald-50">
+                                                        <Mail className="h-6 w-6 text-emerald-600" />
+                                                    </div>
+                                                    <div className="ml-4">
+                                                        <p className="text-sm font-medium text-gray-900">Contact Form</p>
+                                                        <p className="mt-1 text-xs text-gray-500">Send us a message directly</p>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
                         <Button variant="light">
                             Login
                         </Button>
@@ -224,11 +385,10 @@ export function HeaderSection() {
             >
                 <div className="container mx-auto px-4 py-6">
                     <nav className="flex flex-col space-y-6">
-                        <MobileNavItem href="/products" label="Products"/>
-                        <MobileNavItem href="/solutions" label="Solutions"/>
-                        <MobileNavItem href="/become-partner" label="Become a Partner"/>
-                        <MobileNavItem href="/about" label="About Us"/>
-                        <MobileNavItem href="#" label="More" isDropdown={true}>
+                        <MobileNavItem href="/solutions" label="Solutions" getFeatures={getFeatures}/>
+                        <MobileNavItem href="/pricing" label="Pricing" getFeatures={getFeatures}/>
+                        <MobileNavItem href="/become-partner" label="Become a Partner" getFeatures={getFeatures}/>
+                        <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>
                             <div className="grid grid-cols-1 gap-3 pl-4 mt-2">
                                 <Link 
                                     href="/resources"
@@ -238,15 +398,22 @@ export function HeaderSection() {
                                     Resources
                                 </Link>
                                 <Link 
-                                    href="/pricing"
+                                    href="/docs"
                                     className="text-white text-base hover:text-emerald-300 transition-colors"
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    Pricing
+                                    Documentation
+                                </Link>
+                                <Link 
+                                    href="/faq"
+                                    className="text-white text-base hover:text-emerald-300 transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    FAQ
                                 </Link>
                             </div>
                         </MobileNavItem>
-                        <MobileNavItem href="/contact" label="Contact" icon={<MessageCircle className="mr-2 h-5 w-5" />}/>
+                        <MobileNavItem href="/contact" label="Contact" getFeatures={getFeatures}/>
 
                         <div className="pt-6 border-t border-emerald-800 dark:border-gray-700 space-y-4">
                             <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3">
@@ -267,31 +434,119 @@ function NavItem({
                      hasDropdown = false,
                      children,
                      isScrolled,
+                     setActiveMenu,
+                     activeMenu,
+                     getFeatures,
                  }: {
     href: string;
     label?: string;
     hasDropdown?: boolean;
     children?: React.ReactNode;
     isScrolled?: boolean;
-}) {
+    setActiveMenu: (menu: string | null) => void;
+    activeMenu: string | null;
+    getFeatures?: (menuName: string) => any[];
+})  {
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const handleMouseLeave = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+
+        timeoutRef.current = setTimeout(() => {
+            setActiveMenu(null);
+        }, 500); // 500ms delay before closing the menu
+    };
+
+    const handleMouseEnter = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+        }
+
+        if (hasDropdown) {
+            setActiveMenu(label || null);
+        }
+    };
+
+    // Cleanup timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <div className="relative group">
+        <div 
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             <Link
                 href={href}
-                className={`${isScrolled ? 'hover:bg-gray-100' : 'hover:bg-emerald-950'} ${isScrolled ? 'text-gray-950' : 'text-white'} font-semibold font-outfit py-1 px-3 rounded-xl ${isScrolled ? 'hover:text-gray-950' : 'hover:text-white'} dark:text-gray-300 dark:hover:text-white flex items-center ${isScrolled ? 'group-hover:text-gray-950' : 'group-hover:text-white'} dark:group-hover:text-white transition-colors`}
+                className={`${isScrolled ? 'hover:bg-gray-100' : 'hover:bg-emerald-950'} ${isScrolled ? 'text-gray-950' : 'text-white'} font-semibold font-outfit py-1 px-3 rounded-xl ${isScrolled ? 'hover:text-gray-950' : 'hover:text-white'} dark:text-gray-300 dark:hover:text-white flex items-center transition-colors`}
             >
                 {label ? (
                     <>
                         {label}
                         {hasDropdown && (
-                            <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+                            <ChevronDown className="ml-1 h-4 w-4 transition-transform" />
                         )}
                     </>
                 ) : (
                     children && React.Children.toArray(children)[0]
                 )}
             </Link>
-            {label && children}
+            {hasDropdown && activeMenu === label && (
+                <div 
+                    className="absolute left-1/2 z-10 mt-3 w-screen max-w-4xl -translate-x-1/2 transform px-2 sm:px-0"
+                    onMouseEnter={() => {
+                        if (timeoutRef.current) {
+                            clearTimeout(timeoutRef.current);
+                            timeoutRef.current = null;
+                        }
+                    }}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                        <div className="relative grid gap-6 bg-white p-6 sm:gap-8 sm:p-8 grid-cols-3">
+                            {getFeatures(label || "").map((feature) => (
+                                <Link
+                                    key={feature.title}
+                                    href={feature.href}
+                                    className={`-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50 ${feature.color}`}
+                                >
+                                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md sm:h-12 sm:w-12">
+                                        {feature.icon}
+                                    </div>
+                                    <div className="ml-4">
+                                        <p className="text-sm font-medium text-gray-900">{feature.title}</p>
+                                        <p className="mt-1 text-xs text-gray-500">{feature.description}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                        <div className="bg-gray-50 p-5 sm:p-8">
+                            <div className="flow-root">
+                                <div className="-m-3">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-900">Ready to get started?</p>
+                                            <p className="text-sm text-gray-500">
+                                                Take the first step towards hassle-free transactions today.
+                                            </p>
+                                        </div>
+                                        <Button className="bg-blue-500 hover:bg-blue-600 text-white">Get free access</Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
@@ -302,72 +557,51 @@ function MobileNavItem({
     label, 
     icon, 
     isDropdown = false, 
-    children
+    children,
+    getFeatures
 }: { 
     href: string; 
     label: string; 
     icon?: React.ReactNode;
     isDropdown?: boolean;
     children?: React.ReactNode;
+    getFeatures?: (menuName: string) => any[];
 }) {
-    // Special case for Contact to show social links
-    if (label === "Contact" && !icon) {
+    // Special case for dropdown items with features
+    if (label === "Solutions" || label === "Contact") {
+        const features = getFeatures ? getFeatures(label) : [];
         return (
             <div className="space-y-3">
-                <div className="text-white text-xl font-medium">Contact</div>
-                <div className="grid grid-cols-2 gap-3 pl-4 mt-2">
-                    <Link 
-                        href="https://discord.gg/bitmopay" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        Discord
-                    </Link>
-                    <Link 
-                        href="https://facebook.com/bitmopay" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        Facebook
-                    </Link>
-                    <Link 
-                        href="https://twitter.com/bitmopay" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        Twitter
-                    </Link>
-                    <Link 
-                        href="https://linkedin.com/company/bitmopay" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        LinkedIn
-                    </Link>
-                    <Link 
-                        href="https://github.com/bitmopay" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        GitHub
-                    </Link>
-                    <Link 
-                        href="mailto:contact@bitmopay.com" 
-                        className="text-white text-base hover:text-emerald-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        Email
-                    </Link>
+                <div className="text-white text-xl font-medium flex items-center">
+                    {icon}
+                    {label}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                </div>
+                <div className="grid grid-cols-1 gap-4 pl-4 mt-2">
+                    {features.map((feature) => (
+                        <Link 
+                            key={feature.title}
+                            href={feature.href}
+                            target={feature.href.startsWith("http") ? "_blank" : undefined}
+                            rel={feature.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="flex items-center text-white hover:text-emerald-300 transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <span className="mr-2 text-emerald-400">
+                                {feature.icon}
+                            </span>
+                            <div>
+                                <div className="font-medium">{feature.title}</div>
+                                <div className="text-xs text-gray-400">{feature.description}</div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+                <div className="mt-4 pt-4 border-t border-emerald-800 dark:border-gray-700">
+                    <div className="text-white text-sm">Ready to get started?</div>
+                    <Button className="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white">
+                        Get free access
+                    </Button>
                 </div>
             </div>
         );
