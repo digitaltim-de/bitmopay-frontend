@@ -2,6 +2,7 @@ import Image from "next/image";
 import {Section} from "../shared/section";
 import {Check} from "lucide-react";
 import HeadTitle from "@/components/shared/head-title";
+import {Button} from "@/components/ui/button";
 
 const steps = [
     {
@@ -173,22 +174,9 @@ export function HowCustomerPay() {
                         </div>
 
                         <div className="mt-8 text-center md:text-left">
-                            <a
-                                href="#demo"
-                                className="inline-flex items-center px-6 py-3 bg-emerald-600 text-white rounded-full font-medium transition-colors hover:bg-emerald-700 shadow-md hover:shadow-lg"
-                            >
+                            <Button>
                                 Demo-Checkout ansehen
-                                <svg
-                                    className="ml-2 w-5 h-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
+                            </Button>
                         </div>
                     </div>
 

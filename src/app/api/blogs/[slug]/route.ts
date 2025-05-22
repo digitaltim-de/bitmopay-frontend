@@ -2,10 +2,17 @@ import fs from "fs";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 
+interface BlogPost {
+  slug: string;
+  title: string;
+  publishDate: string;
+  content: string;
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } }
-) {
+): Promise<NextResponse> {
   try {
     const slug = params.slug;
     const blogsDirectory = path.join(process.cwd(), "contents/blogs");
@@ -30,16 +37,15 @@ export async function GET(
     const publishDate = publishDateMatch ? publishDateMatch[1] : "Unknown date";
 
     // Return the blog post data
-    return NextResponse.json(
-      {
+    const blogPost: BlogPost = {
         slug,
         title,
         publishDate,
         content: fileContents,
-      },
-      { status: 200 }
-    );
-  } catch (error) {
+      };
+
+    return NextResponse.json(blogPost, { status: 200 });
+  } catch (error: unknown) {
     console.error("Error fetching blog post:", error);
     return NextResponse.json(
       { error: "Failed to fetch blog post" },

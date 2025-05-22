@@ -1,12 +1,14 @@
 "use client";
 
-import {useState} from "react";
-import {ChevronLeft, ChevronRight, Code, Coins, ExternalLink, Wallet} from "lucide-react";
+import React, {useState} from "react";
+import {ArrowRight, ChevronLeft, ChevronRight, Code, Coins, ExternalLink, Wallet} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {Section} from "../shared/section";
 import HeadTitle from "@/components/shared/head-title";
+import Badge from "@/components/shared/badge";
+import {Button} from "@/components/ui/button";
 
-export default function InteractiveIntegrationGuide() {
+export function HowIntegrate() {
     const [activeStep, setActiveStep] = useState(0);
 
     const nextStep = () => setActiveStep((prev) => (prev === steps.length - 1 ? 0 : prev + 1));
@@ -88,13 +90,9 @@ export default function InteractiveIntegrationGuide() {
 
                             <div className="mb-6 flex flex-wrap gap-2">
                                 {steps[activeStep].tags.map((tag, i) => (
-                                    <span
-                                        key={i}
-                                        className="rounded-full bg-emerald-50 px-3 py-1 text-sm text-emerald-600 dark:bg-emerald-900/20
-                      dark:text-emerald-400"
-                                    >
-                    {tag}
-                  </span>
+                                    <Badge>
+                                        {tag}
+                                    </Badge>
                                 ))}
                             </div>
                         </div>
@@ -131,16 +129,10 @@ export default function InteractiveIntegrationGuide() {
             </div>
 
             <div className="mt-12 text-center">
-                <a
-                    href="#"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 px-8
-            py-4 text-lg font-medium text-white shadow-lg shadow-emerald-200/50 transition-all
-            hover:from-emerald-500 hover:to-emerald-400 hover:shadow-xl hover:shadow-emerald-200/60
-            dark:shadow-emerald-900/30 dark:hover:shadow-emerald-900/40"
-                >
-                    Start Integration Now
-                    <ExternalLink className="h-5 w-5"/>
-                </a>
+                <Button>
+                    <span>Start Integration Now</span>
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"/>
+                </Button>
             </div>
         </Section>
     );

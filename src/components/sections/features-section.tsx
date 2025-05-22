@@ -6,51 +6,14 @@ import Link from "next/link";
 import {Section} from "../shared/section";
 import HeadTitle from "@/components/shared/head-title";
 
-// Optional: Typdefinition für Klarheit
+// Type definition for clarity
 interface Feature {
     icon: string;
     title: string;
     description: string;
 }
 
-// Array mit allen Features
-const features: Feature[] = [
-    {
-        icon: "Repeat",
-        title: "Recurring Payments",
-        description:
-            "Enable crypto subscriptions with 3/7/1-day reminders and automatic renewal support.",
-    },
-    {
-        icon: "ShieldCheck",
-        title: "Buyer Protection",
-        description:
-            "Freeze payments for 7 days and mark checkout as secured. Optional per transaction.",
-    },
-    {
-        icon: "Wallet",
-        title: "Self-Hosted Wallets",
-        description:
-            "Get full control over your funds using your own withdrawal wallet infrastructure.",
-    },
-    {
-        icon: "Zap",
-        title: "Fast Settlements",
-        description: "Receive crypto payouts in minutes depending on network congestion and fees.",
-    },
-    {
-        icon: "LinkIcon",
-        title: "Easy API Integration",
-        description: "Integrate our REST API and Webhooks in minutes. Includes sandbox and test tools.",
-    },
-    {
-        icon: "Coins",
-        title: "Multi-Chain Support",
-        description: "Support for BTC, ETH, USDT, USDC, BNB, TRON and more – all crypto, no fiat.",
-    },
-];
-
-// Icon-Auswahl-Funktion
+// Icon selection function
 const renderIcon = (iconName: string) => {
     switch (iconName) {
         case "Repeat":
@@ -61,8 +24,8 @@ const renderIcon = (iconName: string) => {
             return <Wallet className="h-5 w-5"/>;
         case "Zap":
             return <Zap className="h-5 w-5"/>;
-        case "Link":
-            return <Link className="h-5 w-5"/>;
+        case "LinkIcon":
+            return <LinkIcon className="h-5 w-5"/>;
         case "Coins":
             return <Coins className="h-5 w-5"/>;
         default:
@@ -70,14 +33,18 @@ const renderIcon = (iconName: string) => {
     }
 };
 
-export function FeaturesSection() {
+interface FeaturesSectionProps {
+    features: Feature[];
+}
+
+export function FeaturesSection({ features }: FeaturesSectionProps) {
     return (
         <Section className="bg-secondary">
             <HeadTitle
                 title="What Bitmopay can do for you"
                 htype="h2"
-                subtitle="Explore powerful features designed for developers, merchants, and Web3 apps.
-                    "/>
+                subtitle="Explore powerful features designed for developers, merchants, and Web3 apps."
+            />
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                 {features.map((feature, index) => (
                     <Card key={index} className="border-none shadow-sm">

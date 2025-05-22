@@ -2,22 +2,19 @@
 
 import { DigitalExchangeSection } from "@/components/sections/digital-exchange-section";
 import { FeaturesSection } from "@/components/sections/features-section";
-import { FooterSection } from "@/components/sections/footer-section";
-import { HeaderSection } from "@/components/sections/header-section";
 import { HeroSection } from "@/components/sections/hero-section";
-import { IntegrationsSection } from "@/components/sections/integrations-section";
 import { SandboxSection } from "@/components/sections/sandbox-section";
 import { SupportedCoinsSection } from "@/components/sections/supported-coins-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { TrustedPartnersSection } from "@/components/sections/trusted-partners-section";
 import { Button } from "@/components/ui/button";
-
-import { features, integrations, partners, stats, supportedCoins } from "@/lib/data";
-import { useEffect, useState } from "react";
-import StartAccepting from "@/components/sections/start-accepting";
 import { HowCustomerPay } from "@/components/sections/how-customer-pay";
-import HowIntegrate from "@/components/sections/how-integrate";
 import { StatsSection } from "@/components/sections/stats-section";
+import { StartAccepting } from "@/components/sections/start-accepting";
+import { HowIntegrate } from "@/components/sections/how-integrate";
+
+import { features, partners, stats, supportedCoins } from "@/lib/data";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
@@ -25,14 +22,14 @@ export default function Home() {
       <HeroSection />
       <TrustedPartnersSection partners={partners} />
       <StartAccepting />
-      <DigitalExchangeSection partners={partners} stats={stats} />
+      <DigitalExchangeSection />
       <StatsSection />
       <HowIntegrate />
       <HowCustomerPay />
-      <SupportedCoinsSection coins={supportedCoins} />
-      {/* <IntegrationsSection integrations={integrations} /> */}
+      <SupportedCoinsSection />
       <FeaturesSection features={features} />
       <SandboxSection />
+      <CtaSection />
       {/* Scroll to top button */}
       <ScrollToTopButton />
     </>
@@ -46,18 +43,14 @@ function ScrollToTopButton() {
   useEffect(() => {
     // Show button when page is scrolled down
     const toggleVisibility = () => {
-      if (window.scrollY > 500) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 500);
     };
 
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",

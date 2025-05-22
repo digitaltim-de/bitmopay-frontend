@@ -306,7 +306,7 @@ const itemVariants = {
 };
 
 // Modernized StartAccepting component with enhanced layout and animations
-const StartAccepting: React.FC = () => {
+export function StartAccepting() {
     const [activeTab, setActiveTab] = useState("all");
 
     // Filter cards based on active tab (for future expansion)
@@ -378,14 +378,11 @@ const StartAccepting: React.FC = () => {
                                 className="group inline-flex items-center bg-emerald-600 transition-all hover:bg-emerald-700"
                             >
                                 <span>View All Payment Solutions</span>
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"/>
                             </Button>
 
                             <Button
                                 variant="outline"
                                 size="lg"
-                                className="group inline-flex items-center border-emerald-200 transition-all hover:border-emerald-300
-                  dark:border-emerald-800 dark:hover:border-emerald-700"
                             >
                                 <span>Schedule a Demo</span>
                                 <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"/>
@@ -396,6 +393,4 @@ const StartAccepting: React.FC = () => {
             </div>
         </Section>
     );
-};
-
-export default StartAccepting;
+}

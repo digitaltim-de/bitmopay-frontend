@@ -173,15 +173,15 @@ export function DigitalExchangeSection() {
                                         src="https://cdn.dribbble.com/userupload/19248974/file/original-07317ffa368c0f97b2fc423f73d082ad.jpg?resize=1504x1128&vertical=center"
                                         alt="Crypto analytics dashboard visualization"
                                         fill
-                                        className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
+                                        className="object-cover transition-all duration-300 group-hover:scale-105 brightness-75 group-hover:brightness-125"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     />
 
-                                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                                        <h3 className="txt-shadow mb-2 text-2xl font-bold">
+                                    <div className="absolute bottom-4 left-4 right-4 text-white groupText">
+                                        <h3 className="mb-2 text-2xl font-bold">
                                             Real-time Analytics Dashboard
                                         </h3>
-                                        <p className="txt-shadow text-sm text-white/80">
+                                        <p className="text-sm text-white/80">
                                             Monitor your crypto transactions and performance metrics in one place
                                         </p>
                                     </div>

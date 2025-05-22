@@ -57,13 +57,7 @@ export function HeroSection() {
               Accept crypto payments with optional escrow and fast payouts. No chargebacks.
             </p>
 
-            <form onSubmit={handleSubmit} className="mb-8 flex flex-col gap-4 sm:flex-row">
-              <Button type="submit" size="xl">
-                Accept crypto payments in 10 minutes
-              </Button>
-            </form>
-
-            <div className="flex flex-col gap-4 text-sm text-gray-300 dark:text-gray-200 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-4 flex flex-col gap-4 text-sm text-gray-300 dark:text-gray-200 sm:flex-row sm:items-center sm:gap-6">
               <div className="flex items-center">
                 <svg
                   className="mr-2 h-5 w-5 flex-shrink-0 text-emerald-400 dark:text-emerald-500"

@@ -2,13 +2,20 @@ import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 
+interface BlogPreview {
+  slug: string;
+  title: string;
+  publishDate: string;
+  preview: string;
+}
+
 // Get all blogs
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const blogsDirectory = path.join(process.cwd(), "contents/blogs");
     const fileNames = fs.readdirSync(blogsDirectory);
 
-    const blogs = fileNames.map((fileName) => {
+    const blogs: BlogPreview[] = fileNames.map((fileName) => {
       // Remove the .md extension
       const slug = fileName.replace(/\.md$/, "");
 
@@ -54,7 +61,7 @@ export async function GET() {
     });
 
     return NextResponse.json({ blogs }, { status: 200 });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching blogs:", error);
     return NextResponse.json(
       { error: "Failed to fetch blog posts" },
