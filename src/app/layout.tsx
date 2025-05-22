@@ -1,25 +1,19 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-import { Inter, Outfit, Overpass } from "next/font/google";
+import { Manrope, Outfit } from "next/font/google";
 import "./globals.css";
 
 // Optimize font loading
-const overpass = Overpass({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-overpass",
+  variable: "--font-manrope",
 });
 
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-outfit",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -57,10 +51,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${overpass.variable} ${outfit.variable} ${inter.variable} scroll-smooth`}
+      className={`${manrope.variable} ${outfit.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${manrope.className} antialiased`}>{children}</body>
     </html>
   );
 }

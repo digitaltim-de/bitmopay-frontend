@@ -17,7 +17,7 @@ const HeadTitle = ({
 
     return (
         <div className={className}>
-            <Tag className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            <Tag className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white font-manrope sm:text-4xl">
                 {title}
             </Tag>
 

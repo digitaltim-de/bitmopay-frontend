@@ -21,6 +21,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        manrope: ["var(--font-manrope)"],
+        outfit: ["var(--font-outfit)"],
+      },
       colors: {
         gray: {
           DEFAULT: "#f9f8fd",
