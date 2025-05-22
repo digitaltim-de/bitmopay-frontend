@@ -140,6 +140,48 @@ export function HeaderSection() {
 
                             <NavItem href="#" label="Resources"/>
                             <NavItem href="#" label="Pricing"/>
+                            <NavItem href="#" label="Contact" hasDropdown>
+                                <nav className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl w-64 p-4 space-y-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                  <ul className="space-y-2">
+                                    <li>
+                                      <a href="https://discord.gg/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">Discord</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Join our community on Discord</p>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">Facebook</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Follow us on Facebook</p>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">Twitter</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Follow us on Twitter</p>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">LinkedIn</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Connect with us on LinkedIn</p>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">GitHub</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Check out our code on GitHub</p>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" className="block p-3 rounded-xl hover:bg-emerald-50 transition">
+                                        <div className="font-semibold text-gray-900">Email</div>
+                                        <p className="text-sm text-gray-600 hidden md:block">Contact us via email</p>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                            </NavItem>
                         </nav>
                     </div>
 
@@ -209,7 +251,7 @@ export function HeaderSection() {
                         <MobileNavItem href="#" label="Pricing"/>
                         <MobileNavItem href="#" label="Contact"/>
 
-                        <div className="pt-6 border-t border-emerald-800 dark:border-gray-700">
+                        <div className="pt-6 border-t border-emerald-800 dark:border-gray-700 space-y-4">
                             <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3">
                                 Register
                             </Button>
@@ -263,6 +305,62 @@ function NavItem({
 
 // Mobile Navigation Item Component
 function MobileNavItem({href, label}: { href: string; label: string }) {
+    // Special case for Contact to show social links
+    if (label === "Contact") {
+        return (
+            <div className="space-y-3">
+                <div className="text-white text-xl font-medium">Contact</div>
+                <div className="grid grid-cols-2 gap-3 pl-4 mt-2">
+                    <Link 
+                        href="https://discord.gg/bitmopay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Discord
+                    </Link>
+                    <Link 
+                        href="#" 
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Facebook
+                    </Link>
+                    <Link 
+                        href="#" 
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Twitter
+                    </Link>
+                    <Link 
+                        href="#" 
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        LinkedIn
+                    </Link>
+                    <Link 
+                        href="#" 
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        GitHub
+                    </Link>
+                    <Link 
+                        href="#" 
+                        className="text-white text-base hover:text-emerald-300 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Email
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    // Default case for other menu items
     return (
         <Link
             href={href}

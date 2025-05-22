@@ -12,6 +12,7 @@ import { HowCustomerPay } from "@/components/sections/how-customer-pay";
 import { StatsSection } from "@/components/sections/stats-section";
 import { StartAccepting } from "@/components/sections/start-accepting";
 import { HowIntegrate } from "@/components/sections/how-integrate";
+import { FaqSection } from "@/components/sections/faq-section";
 
 import { features, partners, stats, supportedCoins } from "@/lib/data";
 import { useEffect, useState } from "react";
@@ -28,6 +29,7 @@ export default function Home() {
       <HowCustomerPay />
       <SupportedCoinsSection />
       <FeaturesSection features={features} />
+      <FaqSection />
       <SandboxSection />
       <CtaSection />
       {/* Scroll to top button */}
