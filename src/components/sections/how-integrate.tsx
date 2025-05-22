@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useState} from "react";
-import {ArrowRight, ChevronLeft, ChevronRight, Code, Coins, ExternalLink, Wallet} from "lucide-react";
+import {ChevronLeft, ChevronRight, Code, Coins, Wallet} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {Section} from "../shared/section";
 import HeadTitle from "@/components/shared/head-title";
@@ -129,9 +129,9 @@ export function HowIntegrate() {
             </div>
 
             <div className="mt-12 text-center">
-                <Button>
-                    <span>Start Integration Now</span>
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"/>
+                <Button className="group">
+                    Start Integration Now
+                    <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1"/>
                 </Button>
             </div>
         </Section>
