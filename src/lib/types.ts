@@ -23,3 +23,10 @@ export interface Stat {
   value: string
   label: string
 }
+
+export interface Solution {
+  title: string
+  description: string
+  icon: string
+  link: string
+}

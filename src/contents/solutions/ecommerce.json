@@ -1,0 +1,125 @@
+{
+  "slug": "ecommerce",
+  "title": "Crypto Payments for Online Stores",
+  "subtitle": "Accept Bitcoin, Ethereum and stablecoins directly at your checkout - without chargebacks.",
+  "heroButtons": [
+    {
+      "text": "Get Started",
+      "link": "/signup",
+      "variant": "default"
+    },
+    {
+      "text": "API Documentation",
+      "link": "/docs/api",
+      "variant": "outline"
+    }
+  ],
+  "painPoints": {
+    "title": "Why traditional payments are problematic",
+    "description": "Traditional payment methods come with significant drawbacks that can impact your business's bottom line and operational efficiency.",
+    "comparison": [
+      {
+        "traditional": "Chargebacks2",
+        "bitmopay": "No Chargebacks"
+      },
+      {
+        "traditional": "3% Fees",
+        "bitmopay": "0.5% Fees"
+      },
+      {
+        "traditional": "3 Days Payout",
+        "bitmopay": "Direct to Wallet"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "title": "Customer selects 'Pay with Crypto'",
+      "description": "Your customer chooses the cryptocurrency payment option at checkout."
+    },
+    {
+      "title": "Bitmopay shows QR code or wallet address",
+      "description": "A secure payment interface displays the QR code or wallet address for the transaction."
+    },
+    {
+      "title": "Merchant receives payment + webhook",
+      "description": "You receive instant confirmation via webhook when the payment is complete."
+    }
+  ],
+  "targetGroups": [
+    {
+      "title": "Shopify / WooCommerce",
+      "description": "Seamlessly integrate with popular e-commerce platforms using our plugins.",
+      "icon": "ShoppingBag"
+    },
+    {
+      "title": "Digital Products & Courses",
+      "description": "Perfect for selling digital goods with instant delivery upon payment.",
+      "icon": "FileDigit"
+    },
+    {
+      "title": "Global Payments",
+      "description": "Accept payments from customers worldwide without currency conversion fees.",
+      "icon": "Globe"
+    },
+    {
+      "title": "Open Source / Headless",
+      "description": "Flexible integration options for custom and headless e-commerce solutions.",
+      "icon": "Code"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "No Chargeback Risk",
+      "description": "Cryptocurrency transactions are irreversible, eliminating chargeback fraud.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "Direct Wallet Payout",
+      "description": "Receive funds directly to your wallet without intermediaries.",
+      "icon": "Wallet"
+    },
+    {
+      "title": "REST API & Webhooks",
+      "description": "Powerful API and real-time webhooks for seamless integration.",
+      "icon": "Webhook"
+    },
+    {
+      "title": "Multi-Coin Support",
+      "description": "Accept BTC, ETH, USDT (ERC20/TRC20/BEP20) and more.",
+      "icon": "Coins"
+    },
+    {
+      "title": "Sandbox + Demo",
+      "description": "Test integration in a sandbox environment before going live.",
+      "icon": "TestTube"
+    }
+  ],
+  "codeExample": {
+    "language": "javascript",
+    "title": "Create a payment request",
+    "code": "// POST request to Bitmopay API\nconst response = await fetch('https://bitmopay.com/api/prepare', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer YOUR_API_KEY'\n  },\n  body: JSON.stringify({\n    customerId: 'customer_123',\n    amount: 99.99,\n    currency: 'USD',\n    redirectUrl: 'https://yourstore.com/thank-you'\n  })\n});\n\nconst data = await response.json();\n// Redirect customer to payment page\nwindow.location.href = data.redirectUrl;"
+  },
+  "testimonial": {
+    "quote": "Thanks to Bitmopay, we save €1,000 in fees monthly and avoid chargebacks completely.",
+    "author": "John Smith",
+    "company": "Example Shop",
+    "image": "/testimonials/john-smith.jpg"
+  },
+  "cta": {
+    "title": "Ready to accept crypto payments?",
+    "description": "Start integrating Bitmopay today and offer your customers a modern payment option.",
+    "buttons": [
+      {
+        "text": "Integrate Now",
+        "link": "/signup",
+        "variant": "default"
+      },
+      {
+        "text": "Contact Us",
+        "link": "/contact",
+        "variant": "outline"
+      }
+    ]
+  }
+}

@@ -101,28 +101,6 @@ export function HeaderSection() {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex ml-10 space-x-8">
-                            <NavItem href="/products" label="Products" hasDropdown isScrolled={isScrolled}>
-                                <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-                                    role="menu"
-                                    aria-orientation="vertical"
-                                    aria-labelledby="products-menu">
-                                    {[
-                                        {href: "/products/api", label: "API"},
-                                        {href: "/products/plugins", label: "Plugins"},
-                                        {href: "/products/payments", label: "Payments"}
-                                    ].map((item, index) => (
-                                        <Link
-                                            key={index}
-                                            href={item.href}
-                                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
-                                            role="menuitem"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </NavItem>
                             <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled}>
                                 <div
                                     className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
@@ -130,9 +108,13 @@ export function HeaderSection() {
                                     aria-orientation="vertical"
                                     aria-labelledby="solutions-menu">
                                     {[
-                                        {href: "/solutions/e-commerce", label: "E-Commerce"},
-                                        {href: "/solutions/business", label: "Business"},
-                                        {href: "/solutions/developers", label: "Developers"}
+                                        {href: "/solutions/ecommerce", label: "E-Commerce"},
+                                        {href: "/solutions/saas", label: "SaaS"},
+                                        {href: "/solutions/donations", label: "Donations"},
+                                        {href: "/solutions/membership", label: "Membership"},
+                                        {href: "/solutions/invoicing", label: "Invoicing"},
+                                        {href: "/solutions/digital-downloads", label: "Digital Downloads"},
+                                        {href: "/solutions/reseller", label: "Reseller"}
                                     ].map((item, index) => (
                                         <Link
                                             key={index}
@@ -146,6 +128,7 @@ export function HeaderSection() {
                                 </div>
                             </NavItem>
 
+                            <NavItem href="/become-partner" label="Become a Partner" isScrolled={isScrolled}/>
                             <NavItem href="/resources" label="Resources" isScrolled={isScrolled}/>
                             <NavItem href="/pricing" label="Pricing" isScrolled={isScrolled}/>
                             <NavItem href="/contact" label="Contact" hasDropdown isScrolled={isScrolled}>
@@ -258,6 +241,8 @@ export function HeaderSection() {
                     <nav className="flex flex-col space-y-6">
                         <MobileNavItem href="/products" label="Products"/>
                         <MobileNavItem href="/solutions" label="Solutions"/>
+                        <MobileNavItem href="/become-partner" label="Become a Partner"/>
+                        <MobileNavItem href="/about" label="About Us"/>
                         <MobileNavItem href="/resources" label="Resources"/>
                         <MobileNavItem href="/pricing" label="Pricing"/>
                         <MobileNavItem href="/contact" label="Contact"/>
