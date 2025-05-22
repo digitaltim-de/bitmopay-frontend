@@ -103,7 +103,7 @@ export function HeaderSection() {
                         <nav className="hidden md:flex ml-10 space-x-8">
                             <NavItem href="#" label="Products" hasDropdown>
                                 <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                                     {[
                                         {href: "#", label: "API"},
                                         {href: "#", label: "Plugins"},
@@ -121,7 +121,7 @@ export function HeaderSection() {
                             </NavItem>
                             <NavItem href="#" label="Solutions" hasDropdown>
                                 <div
-                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                                     {[
                                         {href: "#", label: "E-Commerce"},
                                         {href: "#", label: "Business"},

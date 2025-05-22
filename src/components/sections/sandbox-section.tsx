@@ -106,7 +106,7 @@ export function SandboxSection() {
                     transition={{duration: 0.5}}
                 >
                     <div className="mb-6 flex items-center gap-2">
-                        <div className="rounded-lg bg-emerald-50 p-2 dark:bg-emerald-900/20">
+                        <div className="rounded-xl bg-emerald-50 p-2 dark:bg-emerald-900/20">
                             <Terminal className="h-5 w-5 text-emerald-600 dark:text-emerald-400"/>
                         </div>
                         <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
@@ -164,7 +164,7 @@ export function SandboxSection() {
                         {Object.entries(CODE_SNIPPETS).map(([key, code]) => (
                             <TabsContent key={key} value={key}>
                 <pre
-                    className="overflow-x-auto whitespace-pre-wrap rounded-md border border-gray-700 bg-gray-800 p-4 text-xs">
+                    className="overflow-x-auto whitespace-pre-wrap rounded-xl border border-gray-700 bg-gray-800 p-4 text-xs">
                   <code>{code}</code>
                 </pre>
                             </TabsContent>

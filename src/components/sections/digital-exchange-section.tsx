@@ -154,7 +154,7 @@ export function DigitalExchangeSection() {
 
                         <div className="mt-8">
                             <Button className="group">
-                                Learn more about our features
+                                More Features
                                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"/>
                             </Button>
                         </div>

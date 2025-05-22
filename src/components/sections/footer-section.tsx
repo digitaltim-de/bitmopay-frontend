@@ -15,7 +15,7 @@ export function FooterSection() {
 
     return (
         <footer
-            className="relative bg-gradient-to-b from-gray-900 via-gray-900 to-emerald-950 text-gray-300 pt-20 pb-12 overflow-hidden">
+            className="relative bg-gray-950 text-gray-300 pt-20 pb-12 overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-900/20 rounded-full blur-3xl"></div>
@@ -31,7 +31,7 @@ export function FooterSection() {
                             className="flex items-center gap-2 font-bold text-xl text-white mb-4 group"
                         >
                             <div
-                                className="relative w-10 h-10 flex items-center justify-center bg-emerald-800/30 rounded-lg p-2 transition-transform duration-300 group-hover:scale-110">
+                                className="relative w-10 h-10 flex items-center justify-center bg-emerald-800/30 rounded-xl p-2 transition-transform duration-300 group-hover:scale-110">
                                 <svg
                                     className="w-6 h-6 text-emerald-400"
                                     viewBox="0 0 24 24"
@@ -181,7 +181,7 @@ function SocialLink({
     return (
         <Link
             href={href}
-            className="text-gray-400 hover:text-emerald-400 transition-colors duration-200 bg-gray-800/50 hover:bg-gray-800 p-2.5 rounded-lg"
+            className="text-gray-400 hover:text-emerald-400 transition-colors duration-200 bg-gray-800/50 hover:bg-gray-800 p-2.5 rounded-xl"
             aria-label={`Follow us on ${icon}`}
         >
             {icon === "facebook" && (

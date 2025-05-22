@@ -42,7 +42,7 @@ function Card({data, className, index}: CardProps) {
         <Link href={data.buttonHref || "#"}>
             <div
                 className={cn(
-                    `group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
+                    `group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white
           shadow-md transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800`,
                     `before:absolute before:inset-0 before:bg-gradient-to-r before:from-emerald-500/5
           before:to-emerald-500/10 before:opacity-0 before:transition-opacity before:duration-300
@@ -161,7 +161,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             className={cn(
-                `group relative h-full overflow-hidden rounded-2xl border border-gray-100 shadow-md transition-all
+                `group relative h-full overflow-hidden rounded-xl border border-gray-100 shadow-md transition-all
         duration-300 hover:shadow-xl dark:border-gray-700`,
                 className,
             )}
@@ -219,7 +219,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
             </motion.div>
 
             <div className="h-full">
-                <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-lg">
+                <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-xl">
                     <motion.div variants={imageVariants} className="h-full w-full">
                         <Image
                             src={imageSrc || "/placeholde"}
@@ -357,7 +357,7 @@ export function StartAccepting() {
                 {/* Enhanced CTA section */}
                 <div className="relative mt-20 text-center">
                     <div
-                        className="absolute inset-0 -z-10 -skew-y-1 transform rounded-3xl bg-gradient-to-r from-emerald-50
+                        className="absolute inset-0 -z-10 -skew-y-1 transform rounded-xl bg-gradient-to-r from-emerald-50
               via-emerald-100 to-emerald-50 dark:from-emerald-900/10 dark:via-emerald-900/20
               dark:to-emerald-900/10"
                     ></div>

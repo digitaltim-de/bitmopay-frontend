@@ -10,7 +10,7 @@ const ReadyToStart = () => {
                     Join thousands of businesses already using Bitmopay for their cryptocurrency payment needs
                 </p>
                 <button
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 inline-flex items-center">
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-6 rounded-xl transition-colors duration-300 inline-flex items-center">
                     Start accepting crypto payments
                     <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"

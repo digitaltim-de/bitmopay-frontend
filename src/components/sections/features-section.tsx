@@ -50,7 +50,7 @@ export function FeaturesSection({ features }: FeaturesSectionProps) {
                     <Card key={index} className="border-none shadow-sm">
                         <CardContent className="p-6">
                             <div
-                                className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                                className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
                                 {renderIcon(feature.icon)}
                             </div>
                             <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>

@@ -12,7 +12,7 @@ export function TrustedPartnersSection({ partners }: TrustedPartnersSectionProps
   const duplicatedPartners = [...partners, ...partners, ...partners];
 
   return (
-    <section className="relative overflow-hidden pt-20">
+    <section className="relative overflow-hidden pt-12">
       {/* Logo slider container with mask gradients */}
       <div className="container relative w-full">
         {/* Left gradient mask - matches the background gradient */}

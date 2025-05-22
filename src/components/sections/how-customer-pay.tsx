@@ -120,7 +120,7 @@ export function HowCustomerPay() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {/* Benefit 1 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-lg shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -133,7 +133,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 2 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-lg shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -147,7 +147,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 3 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-lg shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -161,7 +161,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 4 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-lg shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
