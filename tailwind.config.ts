@@ -27,7 +27,7 @@ const config = {
       },
       colors: {
         gray: {
-          DEFAULT: "#f9f8fd",
+          DEFAULT: "#f7f7f7",
           foreground: "hsl(var(--slate-foreground))",
           50:  "#f5f5f4",
           100: "#e7e5e4",

@@ -101,7 +101,7 @@ export function HeaderSection() {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex ml-10 space-x-8">
-                            <NavItem href="#" label="Products" hasDropdown>
+                            <NavItem href="#" label="Products" hasDropdown isScrolled={isScrolled}>
                                 <div
                                     className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                                     {[
@@ -119,7 +119,7 @@ export function HeaderSection() {
                                     ))}
                                 </div>
                             </NavItem>
-                            <NavItem href="#" label="Solutions" hasDropdown>
+                            <NavItem href="#" label="Solutions" hasDropdown isScrolled={isScrolled}>
                                 <div
                                     className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                                     {[
@@ -138,9 +138,9 @@ export function HeaderSection() {
                                 </div>
                             </NavItem>
 
-                            <NavItem href="#" label="Resources"/>
-                            <NavItem href="#" label="Pricing"/>
-                            <NavItem href="#" label="Contact" hasDropdown>
+                            <NavItem href="#" label="Resources" isScrolled={isScrolled}/>
+                            <NavItem href="#" label="Pricing" isScrolled={isScrolled}/>
+                            <NavItem href="#" label="Contact" hasDropdown isScrolled={isScrolled}>
                                 <nav className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl w-64 p-4 space-y-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                                   <ul className="space-y-2">
                                     <li>
@@ -269,17 +269,19 @@ function NavItem({
                      label,
                      hasDropdown = false,
                      children,
+                     isScrolled,
                  }: {
     href: string;
     label: string;
     hasDropdown?: boolean;
     children?: React.ReactNode;
+    isScrolled?: boolean;
 }) {
     return (
         <div className="relative group">
             <Link
                 href={href}
-                className="hover:bg-emerald-950 text-white font-semibold font-outfit py-2 px-4 rounded-xl hover:text-white dark:text-gray-300 dark:hover:text-white flex items-center group-hover:text-white dark:group-hover:text-white transition-colors"
+                className={`${isScrolled ? 'hover:bg-gray-100' : 'hover:bg-emerald-950'} ${isScrolled ? 'text-gray-950' : 'text-white'} font-semibold font-outfit py-2 px-4 rounded-xl ${isScrolled ? 'hover:text-gray-950' : 'hover:text-white'} dark:text-gray-300 dark:hover:text-white flex items-center ${isScrolled ? 'group-hover:text-gray-950' : 'group-hover:text-white'} dark:group-hover:text-white transition-colors`}
             >
                 {label}
                 {hasDropdown && (
