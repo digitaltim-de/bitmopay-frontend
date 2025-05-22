@@ -20,14 +20,48 @@ import {
     Smartphone,
     ShoppingCart,
     Instagram,
-    DiscIcon as Discord
+    DiscIcon as Discord,
+    ShoppingBag,
+    FileDigit,
+    Globe,
+    Code,
+    ShieldCheck,
+    Webhook,
+    Coins,
+    TestTube,
+    Plus,
+    Heart,
+    Users,
+    Download,
+    RefreshCw,
+    File
 } from "lucide-react";
+import { Solution } from "@/lib/types";
 
 export function HeaderSection() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const contactTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [solutions, setSolutions] = useState<Solution[]>([]);
+
+    // Fetch solutions data when component mounts
+    useEffect(() => {
+        async function fetchSolutions() {
+            try {
+                const response = await fetch('/api/solutions');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch solutions');
+                }
+                const data = await response.json();
+                setSolutions(data);
+            } catch (error) {
+                console.error('Error fetching solutions:', error);
+            }
+        }
+
+        fetchSolutions();
+    }, []);
 
     const socialFeatures = [
         {
@@ -119,9 +153,76 @@ export function HeaderSection() {
         },
     ];
 
+    // Helper function to get icon component based on icon name
+    const getIconComponent = (iconName: string) => {
+        const iconMap: Record<string, JSX.Element> = {
+            'ShoppingCart': <ShoppingCart className="h-6 w-6 text-blue-500" />,
+            'ShoppingBag': <ShoppingBag className="h-6 w-6 text-blue-500" />,
+            'FileDigit': <FileDigit className="h-6 w-6 text-green-500" />,
+            'Globe': <Globe className="h-6 w-6 text-purple-500" />,
+            'Code': <Code className="h-6 w-6 text-yellow-500" />,
+            'ShieldCheck': <ShieldCheck className="h-6 w-6 text-red-500" />,
+            'Wallet': <Wallet className="h-6 w-6 text-emerald-500" />,
+            'Webhook': <Webhook className="h-6 w-6 text-indigo-500" />,
+            'Coins': <Coins className="h-6 w-6 text-amber-500" />,
+            'TestTube': <TestTube className="h-6 w-6 text-pink-500" />,
+            'Plus': <Plus className="h-6 w-6 text-gray-500" />,
+            'Heart': <Heart className="h-6 w-6 text-red-500" />,
+            'Users': <Users className="h-6 w-6 text-blue-500" />,
+            'Download': <Download className="h-6 w-6 text-purple-500" />,
+            'RefreshCw': <RefreshCw className="h-6 w-6 text-green-500" />,
+            'File': <File className="h-6 w-6 text-gray-500" />,
+            'CreditCard': <CreditCard className="h-6 w-6 text-blue-500" />,
+            'Shield': <Shield className="h-6 w-6 text-green-500" />,
+            'FileText': <FileText className="h-6 w-6 text-yellow-500" />,
+            'Smartphone': <Smartphone className="h-6 w-6 text-purple-500" />
+        };
+
+        return iconMap[iconName] || <File className="h-6 w-6 text-gray-500" />;
+    };
+
+    // Helper function to get background color based on icon name
+    const getColorForIcon = (iconName: string) => {
+        const colorMap: Record<string, string> = {
+            'ShoppingCart': 'bg-blue-50',
+            'ShoppingBag': 'bg-blue-50',
+            'FileDigit': 'bg-green-50',
+            'Globe': 'bg-purple-50',
+            'Code': 'bg-yellow-50',
+            'ShieldCheck': 'bg-red-50',
+            'Wallet': 'bg-emerald-50',
+            'Webhook': 'bg-indigo-50',
+            'Coins': 'bg-amber-50',
+            'TestTube': 'bg-pink-50',
+            'Plus': 'bg-gray-50',
+            'Heart': 'bg-red-50',
+            'Users': 'bg-blue-50',
+            'Download': 'bg-purple-50',
+            'RefreshCw': 'bg-green-50',
+            'File': 'bg-gray-50',
+            'CreditCard': 'bg-blue-50',
+            'Shield': 'bg-green-50',
+            'FileText': 'bg-yellow-50',
+            'Smartphone': 'bg-purple-50'
+        };
+
+        return colorMap[iconName] || 'bg-gray-50';
+    };
+
     const getFeatures = (menuName: string) => {
         switch (menuName) {
             case "Solutions":
+                // If solutions data is available, use it
+                if (solutions.length > 0) {
+                    return solutions.map(solution => ({
+                        title: solution.title,
+                        description: solution.description,
+                        icon: getIconComponent(solution.icon),
+                        href: solution.link,
+                        color: getColorForIcon(solution.icon)
+                    }));
+                }
+                // Fallback to payment features if solutions data is not yet loaded
                 return paymentFeatures;
             case "Contact":
                 return socialFeatures;

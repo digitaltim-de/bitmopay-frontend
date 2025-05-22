@@ -1,0 +1,74 @@
+{
+  "slug": "subscriptions",
+  "title": "Subscriptions",
+  "description": "Learn how to create and manage recurring payments.",
+  "icon": "RefreshCw",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "content": "The Subscriptions API allows you to create recurring payment plans for your customers. With subscriptions, you can automatically charge your customers on a recurring basis without requiring them to manually make payments each time."
+    },
+    {
+      "id": "create-subscription",
+      "title": "Create a Subscription",
+      "content": "To create a subscription, send a POST request to the `/v1/subscriptions` endpoint with the subscription details:",
+      "codeBlocks": [
+        {
+          "title": "Create a Subscription",
+          "languages": {
+            "curl": "curl -X POST https://api.bitmopay.com/v1/subscriptions \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"customerId\": \"cus_123456789\",\n    \"planId\": \"plan_123456789\",\n    \"metadata\": {\n      \"userId\": \"user_123\"\n    }\n  }'",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst subscription = await bitmopay.subscriptions.create({\n  customerId: 'cus_123456789',\n  planId: 'plan_123456789',\n  metadata: {\n    userId: 'user_123'\n  }\n});\n\nconsole.log(subscription);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\nsubscription = bitmopay.subscriptions.create(\n  customer_id='cus_123456789',\n  plan_id='plan_123456789',\n  metadata={\n    'userId': 'user_123'\n  }\n)\n\nprint(subscription)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$subscription = $bitmopay->subscriptions->create([\n  'customerId' => 'cus_123456789',\n  'planId' => 'plan_123456789',\n  'metadata' => [\n    'userId' => 'user_123'\n  ]\n]);\n\nprint_r($subscription);"
+          }
+        }
+      ]
+    },
+    {
+      "id": "subscription-response",
+      "title": "Subscription Response",
+      "content": "The API will return a subscription object with details about the subscription:",
+      "codeBlocks": [
+        {
+          "title": "Subscription Response",
+          "languages": {
+            "json": "{\n  \"id\": \"sub_123456789\",\n  \"customerId\": \"cus_123456789\",\n  \"planId\": \"plan_123456789\",\n  \"status\": \"active\",\n  \"currentPeriodStart\": \"2023-01-01T00:00:00Z\",\n  \"currentPeriodEnd\": \"2023-02-01T00:00:00Z\",\n  \"cancelAtPeriodEnd\": false,\n  \"canceledAt\": null,\n  \"metadata\": {\n    \"userId\": \"user_123\"\n  },\n  \"createdAt\": \"2023-01-01T00:00:00Z\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "list-subscriptions",
+      "title": "List Subscriptions",
+      "content": "You can retrieve a list of all subscriptions by sending a GET request to the `/v1/subscriptions` endpoint:",
+      "codeBlocks": [
+        {
+          "title": "List Subscriptions",
+          "languages": {
+            "curl": "curl -X GET https://api.bitmopay.com/v1/subscriptions \\\n  -H \"Authorization: Bearer YOUR_API_KEY\"",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst subscriptions = await bitmopay.subscriptions.list();\n\nconsole.log(subscriptions);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\nsubscriptions = bitmopay.subscriptions.list()\n\nprint(subscriptions)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$subscriptions = $bitmopay->subscriptions->list();\n\nprint_r($subscriptions);"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel-subscription",
+      "title": "Cancel a Subscription",
+      "content": "To cancel a subscription, send a DELETE request to the `/v1/subscriptions/{subscription_id}` endpoint:",
+      "codeBlocks": [
+        {
+          "title": "Cancel a Subscription",
+          "languages": {
+            "curl": "curl -X DELETE https://api.bitmopay.com/v1/subscriptions/sub_123456789 \\\n  -H \"Authorization: Bearer YOUR_API_KEY\"",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst subscription = await bitmopay.subscriptions.cancel('sub_123456789');\n\nconsole.log(subscription);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\nsubscription = bitmopay.subscriptions.cancel('sub_123456789')\n\nprint(subscription)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$subscription = $bitmopay->subscriptions->cancel('sub_123456789');\n\nprint_r($subscription);"
+          }
+        }
+      ]
+    }
+  ]
+}

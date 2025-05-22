@@ -30,3 +30,27 @@ export interface Solution {
   icon: string
   link: string
 }
+
+export interface CodeBlock {
+  title: string
+  languages: Record<string, string>
+}
+
+export interface DocumentationSection {
+  id: string
+  title: string
+  content: string
+  codeBlocks?: CodeBlock[]
+  faqs?: Array<{
+    question: string
+    answer: string
+  }>
+}
+
+export interface Documentation {
+  slug: string
+  title: string
+  description: string
+  icon: string
+  sections: DocumentationSection[]
+}
