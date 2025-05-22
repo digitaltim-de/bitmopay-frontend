@@ -4,6 +4,7 @@ import {useState} from "react";
 import {ChevronLeft, ChevronRight, Code, Coins, ExternalLink, Wallet} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {Section} from "../shared/section";
+import HeadTitle from "@/components/shared/head-title";
 
 export default function InteractiveIntegrationGuide() {
     const [activeStep, setActiveStep] = useState(0);
@@ -13,11 +14,11 @@ export default function InteractiveIntegrationGuide() {
 
     return (
         <Section className="background-light-gray-2">
-            <div className="mb-16 text-center">
-                <h2 className="title">Start in 3 Steps</h2>
-                <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-                    Crypto integration in minutes. Fast, secure, developer-friendly.
-                </p>
+            <div className="text-center">
+                <HeadTitle title="Start in 3 Steps"
+                           subtitle="Crypto integration in minutes. Fast, secure, developer-friendly."
+                           htype="h2"
+                />
             </div>
 
             {/* Timeline Track */}
@@ -75,7 +76,7 @@ export default function InteractiveIntegrationGuide() {
                                 {steps[activeStep].icon}
                             </div>
 
-                            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-3xl" style={{ fontFamily: 'var(--font-outfit)' }}>
+                            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
                                 {steps[activeStep].title}
                             </h3>
                             <p className="mb-4 font-medium text-emerald-600 dark:text-emerald-400">

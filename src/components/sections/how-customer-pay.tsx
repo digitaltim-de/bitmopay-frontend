@@ -82,38 +82,36 @@ const BenefitItem = ({text}: { text: string }) => (
 
 export function HowCustomerPay() {
     return (
-        <Section className="bg-gray">
-            <div className="!mb-16 text-center">
-                <HeadTitle
-                    title="How customers pay with Bitmopay"
-                    subtitle=" Customers can pay with Bitcoin, Ethereum, USDT and 50+ other currencies. No account or KYC
-                    needed."
-                    htype="h2"/>
-            </div>
-
-            {/* Steps */}
-            <div className="relative mb-16">
-                <div className="absolute left-0 top-24 z-0 hidden h-1 w-full bg-emerald-100 lg:block"></div>
-                <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    {steps.map((step, index) => (
-                        <StepCard key={index} step={step}/>
-                    ))}
-                </div>
-            </div>
-
-            {/* Checkout UI + Benefits */}
-
-            {/* Content container */}
-            <div className="relative z-10 p-8 md:p-12">
-                {/* Header */}
-                <div className="text-center mb-12">
-
+        <>
+            <Section className="bg-gray">
+                <div className="text-center">
                     <HeadTitle
-                        title="Customer Benefits"
-                        subtitle=" Customers can pay with Bitcoin, Ethereum, USDT and 50+ other currencies. No account or KYC"
+                        title="How customers pay with Bitmopay"
+                        subtitle=" Customers can pay with Bitcoin, Ethereum, USDT and 50+ other currencies. No account or KYC
+                    needed."
                         htype="h2"/>
                 </div>
 
+                {/* Steps */}
+                <div className="relative">
+                    <div className="absolute left-0 top-24 z-0 hidden h-1 w-full bg-emerald-100 lg:block"></div>
+                    <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                        {steps.map((step, index) => (
+                            <StepCard key={index} step={step}/>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Checkout UI + Benefits */}
+            </Section>
+            <Section className="background-light-gray-2 ">
+            {/* Content container */}
+            <div className="relative ">
+                {/* Header */}
+                <HeadTitle
+                    title="Customer Benefits"
+                    subtitle=" Customers can pay with Bitcoin, Ethereum, USDT and 50+ other currencies. No account or KYC"
+                    htype="h2"/>
                 {/* Main content */}
                 <div className="flex flex-col md:flex-row">
                     {/* Benefits */}
@@ -212,6 +210,8 @@ export function HowCustomerPay() {
                     </div>
                 </div>
             </div>
-        </Section>
+            </Section>
+        </>
+
     );
 }

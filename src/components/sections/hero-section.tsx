@@ -43,7 +43,7 @@ export function HeroSection() {
               Trusted by 1,000+ businesses in 32 countries
             </div>
 
-            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight font-outfit sm:text-5xl md:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
               <span className="block">Start accepting</span>
               <span
                 className="bg-gradient-to-r from-white to-emerald-300 bg-clip-text text-transparent dark:from-gray-100

@@ -9,6 +9,8 @@ import Link from "next/link";
 import {motion} from "framer-motion";
 import {Section} from "../shared/section";
 import HeadTitle from "@/components/shared/head-title";
+import Badge from "@/components/shared/badge";
+
 
 // Enhanced type definitions
 interface CardProps {
@@ -91,7 +93,7 @@ function Card({data, className, index}: CardProps) {
                 </div>
 
                 <div className="relative z-10 flex flex-grow flex-col p-6 sm:p-8">
-                    <div className="mb-4">
+                    <div className="mb-2">
                         <h2
                             className="mb-2 text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-emerald-700
                 dark:text-white dark:group-hover:text-emerald-400 md:text-3xl"
@@ -99,14 +101,14 @@ function Card({data, className, index}: CardProps) {
                             {data.title}
                         </h2>
                         <div
-                            className="mb-4 h-1 w-16 origin-left scale-0 transform rounded-full bg-emerald-500 transition-transform
+                            className="h-1 w-16 origin-left scale-0 transform rounded-full bg-emerald-500 transition-transform
                 duration-300 ease-out group-hover:scale-100"
                         ></div>
                     </div>
 
                     <p className="mb-6 flex-grow text-gray-600 dark:text-gray-300">{data.description}</p>
 
-                    <div className="inline-flex items-center">
+                    <div className="inline-flex items-center font-semibold">
                         <span>{data.buttonText}</span>
                         <div className="ml-1.5 inline-block">
                             <ArrowRight className="h-4 w-4"/>
@@ -320,12 +322,9 @@ const StartAccepting: React.FC = () => {
 
             <div className="relative z-10">
                 <div className="mb-4 text-center">
-          <span
-              className="mb-4 inline-block rounded-full bg-emerald-100 px-4 py-1 text-sm font-medium text-emerald-700
-              dark:bg-emerald-900/30 dark:text-emerald-300"
-          >
-            Payment Solutions
-          </span>
+          <Badge>
+              Bitmopay features
+          </Badge>
         </div>
 
 
@@ -364,7 +363,7 @@ const StartAccepting: React.FC = () => {
                     ></div>
 
           <div className="px-6 py-12">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
+            <h3 className="mb-4 text-3xl font-semibold text-gray-900 dark:text-white md:text-2xl">
               Ready to supercharge your business with crypto?
             </h3>
 

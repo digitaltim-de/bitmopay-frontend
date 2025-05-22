@@ -108,22 +108,12 @@ export function DigitalExchangeSection() {
     return (
         <Section className="background-light-gray" ref={ref}>
             <div className="relative">
-                {/* Section header */}
-                <div className="mb-16 text-center">
-          <span
-              className="mb-4 inline-block rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700
-              dark:bg-emerald-950/40 dark:text-emerald-400"
-          >
-            Why Choose Bitmopay
-          </span>
-                    <HeadTitle
-                        title="The Future of Digital Exchange"
-                        subtitle="A crypto-first payment gateway designed for modern commerce. No banks. No legacy
+                <HeadTitle
+                    title="The Future of Digital Exchange"
+                    subtitle="A crypto-first payment gateway designed for modern commerce. No banks. No legacy
             systems."
                     htype="h2"
-                    />
-                </div>
-
+                />
                 {/* Main content */}
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Left side: Features */}
@@ -144,23 +134,23 @@ export function DigitalExchangeSection() {
                                                 className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600
                           transition-colors group-hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400
                           dark:group-hover:bg-emerald-900/50"
-                      >
-                        {feature.icon}
-                      </div>
-                    </div>
-                    <div>
-                      <h3
-                        className="mb-2 text-xl font-semibold text-gray-900 transition-colors group-hover:text-emerald-700
+                                            >
+                                                {feature.icon}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                className="mb-2 text-xl font-semibold text-gray-900 transition-colors group-hover:text-emerald-700
                           dark:text-white dark:group-hover:text-emerald-400"
-                      >
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                                            >
+                                                {feature.title}
+                                            </h3>
+                                            <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
 
                         <div className="mt-8">
                             <Button className="group">

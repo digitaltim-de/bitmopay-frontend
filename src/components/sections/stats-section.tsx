@@ -17,12 +17,11 @@ export function StatsSection() {
     );
 
     return (
-        <Section>
+        <Section className="bg-secondary">
             <div
-                className="space-y-8 rounded-2xl border bg-white px-6 py-12 text-gray-900 shadow-md dark:from-gray-800
-          dark:to-gray-900 dark:text-white md:space-y-10"
+                className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-emerald-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-emerald-800/50"
       >
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
+        <div className="mx-auto max-w-3xl space-y-4 text-center mb-12">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">Built for scalable crypto payments</h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
             Bitmopay helps developers and merchants accept and manage cryptocurrency payments with

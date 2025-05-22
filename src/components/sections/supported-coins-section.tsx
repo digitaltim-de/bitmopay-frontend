@@ -34,15 +34,13 @@ export function SupportedCoinsSection() {
     }, []);
 
     return (
-        <Section className="bg-gradient-to-b from-white to-blue-50">
-            <div className="mb-12 text-center">
-                <HeadTitle
-                    title="Supported Coins"
-                    htype="h2"
-                    subtitle=" Accept the most used cryptocurrencies with support for Bitcoin, Ethereum, Tron, BNB and
+        <Section className="bg-gray">
+            <HeadTitle
+                title="Supported Coins"
+                htype="h2"
+                subtitle=" Accept the most used cryptocurrencies with support for Bitcoin, Ethereum, Tron, BNB and
           stablecoins across major networks."
-                />
-            </div>
+            />
             <div
                 className="mb-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5"
                 ref={coinsGridRef}

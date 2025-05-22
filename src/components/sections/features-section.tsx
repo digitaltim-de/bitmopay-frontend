@@ -72,15 +72,12 @@ const renderIcon = (iconName: string) => {
 
 export function FeaturesSection() {
     return (
-        <Section className="bg-gray-50">
-            <div className="mb-12 text-center">
-
-                <HeadTitle
-                    title="What Bitmopay can do for you"
-                    htype="h2"
-                    subtitle="Explore powerful features designed for developers, merchants, and Web3 apps.
+        <Section className="bg-secondary">
+            <HeadTitle
+                title="What Bitmopay can do for you"
+                htype="h2"
+                subtitle="Explore powerful features designed for developers, merchants, and Web3 apps.
                     "/>
-            </div>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                 {features.map((feature, index) => (
                     <Card key={index} className="border-none shadow-sm">

@@ -96,7 +96,7 @@ export function SandboxSection() {
     };
 
     return (
-        <Section className="bg-gray">
+        <Section className="bg-white">
             <div className="grid items-start gap-12 md:grid-cols-2 lg:gap-16">
                 {/* Left column - Content */}
                 <motion.div

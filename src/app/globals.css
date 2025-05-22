@@ -56,6 +56,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit;
+  }
 }
 
 @layer utilities {
@@ -86,6 +89,6 @@
     @apply bg-gradient-to-b from-white to-gray;
   }
   .background-light-gray-2 {
-    @apply bg-gradient-to-b from-gray to-gray-100;
+    @apply bg-gradient-to-b from-gray to-secondary;
   }
 }
