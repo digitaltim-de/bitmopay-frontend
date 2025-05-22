@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -60,15 +60,17 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         emerald: {
-          100: "#b2f0dd", // Çok açık mint/yeşil
-          200: "#7ae3c1",
-          300: "#41d6a4",
-          400: "#24c293", // 500'e yaklaşan canlı ton
-          500: "#17a57a",
-          600: "#14856a", // Biraz daha koyu
-          700: "#11645a", // Orta koyuluk
-          800: "#0e444b", // Daha koyu ve griye dönük
-          900: "#19353c",
+          50:  "#ffffff",
+          100: "#f6fdd5",
+          200: "#edfcab",
+          300: "#e3fa80",
+          400: "#daf956",
+          500: "#d1f72c",  // leicht angepasste Basis
+          600: "#b6d72d",
+          700: "#9cb72e",
+          800: "#81962e",
+          900: "#67762f",
+          950: "#4c5630",
         },
         indigo: {
           50: "#eef2ff",
