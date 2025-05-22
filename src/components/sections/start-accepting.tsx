@@ -42,7 +42,7 @@ function Card({data, className, index}: CardProps) {
         <Link href={data.buttonHref || "#"}>
             <div
                 className={cn(
-                    `group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white
+                    `group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-50/80 bg-white
           shadow-md transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800`,
                     `before:absolute before:inset-0 before:bg-gradient-to-r before:from-emerald-500/5
           before:to-emerald-500/10 before:opacity-0 before:transition-opacity before:duration-300
@@ -161,8 +161,8 @@ const ImageCard: React.FC<ImageCardProps> = ({
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             className={cn(
-                `group relative h-full overflow-hidden rounded-xl border border-gray-100 shadow-md transition-all
-        duration-300 hover:shadow-xl dark:border-gray-700`,
+                `group relative h-full overflow-hidden rounded-xl shadow-sm transition-all
+        duration-300 hover:shadow-xl`,
                 className,
             )}
         >

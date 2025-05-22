@@ -19,7 +19,7 @@ export function StatsSection() {
     return (
         <Section className="bg-secondary">
             <div
-                className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-emerald-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-emerald-800/50"
+                className="group block rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md dark:bg-gray-800"
       >
         <div className="mx-auto max-w-3xl space-y-4 text-center mb-12">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">Built for scalable crypto payments</h2>

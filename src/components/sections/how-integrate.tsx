@@ -66,8 +66,8 @@ export function HowIntegrate() {
 
             {/* Content Display */}
             <div
-                className="relative min-h-[400px] overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg
-          dark:border-gray-700 dark:bg-gray-800"
+                className="relative min-h-[400px] overflow-hidden rounded-xl bg-white shadow-sm
+          dark:bg-gray-800"
             >
                 <div className="p-8 md:p-10">
                     <div className="flex flex-col gap-10 md:flex-row md:items-start">
@@ -99,7 +99,7 @@ export function HowIntegrate() {
 
                         {/* Right Content - Visualization */}
                         <div
-                            className="overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700
+                            className="overflow-hidden rounded-lg bg-gray-50 p-6 shadow-sm
                 dark:bg-gray-900 md:w-3/5"
                         >
                             {steps[activeStep].visual}
@@ -164,8 +164,8 @@ const CryptoVisual = () => (
         {["BTC", "ETH", "USDT", "SOL", "USDC", "BNB", "XRP", "ADA", "DOT"].map((coin, i) => (
             <div
                 key={i}
-                className="flex aspect-square items-center justify-center rounded-lg border border-gray-100 bg-white shadow-sm
-          dark:border-gray-700 dark:bg-gray-800"
+                className="flex aspect-square items-center justify-center rounded-lg bg-white shadow-sm
+          dark:bg-gray-800"
             >
                 <div
                     className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 font-bold text-gray-900
@@ -181,7 +181,7 @@ const CryptoVisual = () => (
 const WalletVisual = () => (
     <div className="flex h-full items-center justify-center">
         <div
-            className="w-full max-w-xs rounded-xl border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-700
+            className="w-full max-w-xs rounded-xl bg-white p-4 shadow-sm
         dark:bg-gray-800"
         >
             <div className="mb-4 flex items-center justify-between">

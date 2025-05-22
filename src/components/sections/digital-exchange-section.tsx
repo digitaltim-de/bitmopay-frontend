@@ -129,9 +129,9 @@ export function DigitalExchangeSection() {
                                     ctaText="Learn More About This Feature"
                                 >
                                     <div
-                                        className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all
-                    hover:border-emerald-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800
-                    dark:hover:border-emerald-800/50 cursor-pointer"
+                                        className="group block rounded-xl bg-white p-6 shadow-sm transition-all
+                    hover:shadow-md dark:bg-gray-800
+                    cursor-pointer"
                                     >
                                         <div className="flex items-start">
                                             <div className="mr-4 flex-shrink-0">
@@ -175,8 +175,8 @@ export function DigitalExchangeSection() {
                                 ctaText="Explore Dashboard Features"
                             >
                                 <div
-                                    className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-br from-white/80
-                  to-white/50 shadow-xl backdrop-blur-sm dark:border-gray-700 dark:from-gray-800/80
+                                    className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/80
+                  to-white/50 shadow-sm backdrop-blur-sm dark:from-gray-800/80
                   dark:to-gray-800/50 cursor-pointer"
                                 >
                                     <div className="relative aspect-[4/3] w-full">

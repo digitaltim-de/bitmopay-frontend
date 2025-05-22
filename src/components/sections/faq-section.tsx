@@ -55,7 +55,7 @@ export function FaqSection() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800"
+            className="rounded-xl bg-white shadow-sm dark:bg-gray-800"
           >
             <button
               onClick={() => toggleFaq(index)}
@@ -75,7 +75,7 @@ export function FaqSection() {
                 openIndex === index ? "max-h-96" : "max-h-0"
               }`}
             >
-              <div className="border-t border-gray-100 px-6 py-4 dark:border-gray-700">
+              <div className="px-6 py-4">
                 <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
               </div>
             </div>

@@ -41,8 +41,8 @@ const benefits = [
 // StepCard component
 const StepCard = ({step}: { step: (typeof steps)[0] }) => (
     <div
-        className="group relative rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300
-      hover:border-emerald-200 hover:shadow-md"
+        className="group relative rounded-xl bg-white p-6 shadow-sm transition-all duration-300
+      hover:shadow-md"
     >
         <div className="mb-6 flex items-center">
             <div className="relative">
