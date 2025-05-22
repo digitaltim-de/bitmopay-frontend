@@ -3,6 +3,7 @@
 import {Button} from "@/components/ui/button";
 import {useEffect, useState} from "react";
 import Link from "next/link";
+import {MessageCircle, ChevronDown} from "lucide-react";
 
 export function HeaderSection() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,7 +101,7 @@ export function HeaderSection() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex ml-10 space-x-8">
+                        <nav className="hidden md:flex ml-10 space-x-6">
                             <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled}>
                                 <div
                                     className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
@@ -129,58 +130,42 @@ export function HeaderSection() {
                             </NavItem>
 
                             <NavItem href="/become-partner" label="Become a Partner" isScrolled={isScrolled}/>
-                            <NavItem href="/resources" label="Resources" isScrolled={isScrolled}/>
-                            <NavItem href="/pricing" label="Pricing" isScrolled={isScrolled}/>
-                            <NavItem href="/contact" label="Contact" hasDropdown isScrolled={isScrolled}>
-                                <nav className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl w-64 p-4 space-y-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-                                     role="menu"
-                                     aria-orientation="vertical"
-                                     aria-labelledby="contact-menu">
-                                  <ul className="space-y-2">
-                                    <li>
-                                      <a href="https://discord.gg/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">Discord</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Join our community on Discord</p>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="https://facebook.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">Facebook</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Follow us on Facebook</p>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="https://twitter.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">Twitter</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Follow us on Twitter</p>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="https://linkedin.com/company/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">LinkedIn</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Connect with us on LinkedIn</p>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="https://github.com/bitmopay" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">GitHub</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Check out our code on GitHub</p>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="mailto:contact@bitmopay.com" className="block p-3 rounded-xl hover:bg-emerald-50 transition" role="menuitem">
-                                        <div className="font-semibold text-gray-900">Email</div>
-                                        <p className="text-sm text-gray-600 hidden md:block">Contact us via email</p>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </nav>
+                            <NavItem href="/about" label="About Us" isScrolled={isScrolled}/>
+
+                            <NavItem href="#" label="More" hasDropdown isScrolled={isScrolled}>
+                                <div
+                                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="more-menu">
+                                    {[
+                                        {href: "/resources", label: "Resources"},
+                                        {href: "/pricing", label: "Pricing"}
+                                    ].map((item, index) => (
+                                        <Link
+                                            key={index}
+                                            href={item.href}
+                                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400"
+                                            role="menuitem"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ))}
+                                </div>
                             </NavItem>
+
                         </nav>
                     </div>
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden md:flex items-center space-x-4">
+                        <Link
+                            href="/contact"
+                            className="flex items-center justify-center h-10 w-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white transition-colors"
+                            aria-label="Contact"
+                        >
+                            <MessageCircle className="h-5 w-5" />
+                        </Link>
                         <Button variant="light">
                             Login
                         </Button>
@@ -243,9 +228,25 @@ export function HeaderSection() {
                         <MobileNavItem href="/solutions" label="Solutions"/>
                         <MobileNavItem href="/become-partner" label="Become a Partner"/>
                         <MobileNavItem href="/about" label="About Us"/>
-                        <MobileNavItem href="/resources" label="Resources"/>
-                        <MobileNavItem href="/pricing" label="Pricing"/>
-                        <MobileNavItem href="/contact" label="Contact"/>
+                        <MobileNavItem href="#" label="More" isDropdown={true}>
+                            <div className="grid grid-cols-1 gap-3 pl-4 mt-2">
+                                <Link 
+                                    href="/resources"
+                                    className="text-white text-base hover:text-emerald-300 transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    Resources
+                                </Link>
+                                <Link 
+                                    href="/pricing"
+                                    className="text-white text-base hover:text-emerald-300 transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    Pricing
+                                </Link>
+                            </div>
+                        </MobileNavItem>
+                        <MobileNavItem href="/contact" label="Contact" icon={<MessageCircle className="mr-2 h-5 w-5" />}/>
 
                         <div className="pt-6 border-t border-emerald-800 dark:border-gray-700 space-y-4">
                             <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3">
@@ -268,7 +269,7 @@ function NavItem({
                      isScrolled,
                  }: {
     href: string;
-    label: string;
+    label?: string;
     hasDropdown?: boolean;
     children?: React.ReactNode;
     isScrolled?: boolean;
@@ -277,34 +278,40 @@ function NavItem({
         <div className="relative group">
             <Link
                 href={href}
-                className={`${isScrolled ? 'hover:bg-gray-100' : 'hover:bg-emerald-950'} ${isScrolled ? 'text-gray-950' : 'text-white'} font-semibold font-outfit py-2 px-4 rounded-xl ${isScrolled ? 'hover:text-gray-950' : 'hover:text-white'} dark:text-gray-300 dark:hover:text-white flex items-center ${isScrolled ? 'group-hover:text-gray-950' : 'group-hover:text-white'} dark:group-hover:text-white transition-colors`}
+                className={`${isScrolled ? 'hover:bg-gray-100' : 'hover:bg-emerald-950'} ${isScrolled ? 'text-gray-950' : 'text-white'} font-semibold font-outfit py-1 px-3 rounded-xl ${isScrolled ? 'hover:text-gray-950' : 'hover:text-white'} dark:text-gray-300 dark:hover:text-white flex items-center ${isScrolled ? 'group-hover:text-gray-950' : 'group-hover:text-white'} dark:group-hover:text-white transition-colors`}
             >
-                {label}
-                {hasDropdown && (
-                    <svg
-                        className="ml-1 h-4 w-4 transition-transform  group-hover:rotate-180"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"
-                        />
-                    </svg>
+                {label ? (
+                    <>
+                        {label}
+                        {hasDropdown && (
+                            <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+                        )}
+                    </>
+                ) : (
+                    children && React.Children.toArray(children)[0]
                 )}
             </Link>
-            {children}
+            {label && children}
         </div>
     );
 }
 
 // Mobile Navigation Item Component
-function MobileNavItem({href, label}: { href: string; label: string }) {
+function MobileNavItem({
+    href, 
+    label, 
+    icon, 
+    isDropdown = false, 
+    children
+}: { 
+    href: string; 
+    label: string; 
+    icon?: React.ReactNode;
+    isDropdown?: boolean;
+    children?: React.ReactNode;
+}) {
     // Special case for Contact to show social links
-    if (label === "Contact") {
+    if (label === "Contact" && !icon) {
         return (
             <div className="space-y-3">
                 <div className="text-white text-xl font-medium">Contact</div>
@@ -366,13 +373,28 @@ function MobileNavItem({href, label}: { href: string; label: string }) {
         );
     }
 
+    // Case for dropdown items
+    if (isDropdown) {
+        return (
+            <div className="space-y-3">
+                <div className="text-white text-xl font-medium flex items-center">
+                    {icon}
+                    {label}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                </div>
+                {children}
+            </div>
+        );
+    }
+
     // Default case for other menu items
     return (
         <Link
             href={href}
-            className="text-white text-xl font-medium hover:text-emerald-300 transition-colors "
+            className="text-white text-xl font-medium hover:text-emerald-300 transition-colors flex items-center"
             onClick={(e) => e.stopPropagation()}
         >
+            {icon}
             {label}
         </Link>
     );

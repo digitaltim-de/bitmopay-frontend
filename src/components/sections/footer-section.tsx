@@ -102,12 +102,22 @@ export function FooterSection() {
                     </div>
 
                     <div className="md:col-span-1">
+                        <h3 className="font-semibold text-white text-lg mb-4">About Us</h3>
+                        <ul className="space-y-3">
+                            <FooterLink href="/about" label="About Us"/>
+                            <FooterLink href="/pricing" label="Pricing"/>
+                            <FooterLink href="/docs" label="Documentation"/>
+                            <FooterLink href="/contact" label="Contact"/>
+                        </ul>
+                    </div>
+
+                    <div className="md:col-span-1">
                         <h3 className="font-semibold text-white text-lg mb-4">Resources</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="#" label="Documentation"/>
                             <FooterLink href="#" label="Developers"/>
                             <FooterLink href="#" label="Blog"/>
                             <FooterLink href="#" label="Support"/>
+                            <FooterLink href="#" label="FAQ"/>
                         </ul>
                     </div>
 
