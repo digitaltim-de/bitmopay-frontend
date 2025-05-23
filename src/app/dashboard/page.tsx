@@ -1,7 +1,7 @@
 "use client";
 
-import { LightDashboard } from "@/components/dashboard/light-dashboard";
+import { DashboardContent } from "@/components/dashboard/dashboard-content";
 
 export default function DashboardPage() {
-  return <LightDashboard />;
+  return <DashboardContent />;
 }

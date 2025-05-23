@@ -76,7 +76,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { format } from "date-fns"
 import { de } from "date-fns/locale"
 
-export function LightDashboard() {
+export function LightDashboard({ children }: { children?: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [showNotification, setShowNotification] = useState(true)
   const [activeTimeRange, setActiveTimeRange] = useState("30d")
@@ -577,8 +577,9 @@ export function LightDashboard() {
 
           {/* Dashboard content */}
           <main className="p-4 lg:p-6">
-            {/* Loading state */}
-            {isLoading ? (
+            {children ? (
+              children
+            ) : isLoading ? (
                 <div className="flex flex-col space-y-4">
                   <div className="h-8 w-64 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"></div>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
