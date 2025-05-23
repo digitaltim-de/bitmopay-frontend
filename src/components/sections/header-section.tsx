@@ -336,6 +336,7 @@ export function HeaderSection() {
                             <NavItem href="/solutions" label="Solutions" hasDropdown isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
                             <NavItem href="/pricing" label="Pricing" isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
                             <NavItem href="/become-partner" label="Become a Partner" isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
+                            <NavItem href="/documentation" label="Documentation" isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
                             <NavItem href="#" label="More" hasDropdown isScrolled={isScrolled} setActiveMenu={setActiveMenu} activeMenu={activeMenu} getFeatures={getFeatures} />
                         </nav>
                     </div>
@@ -369,7 +370,7 @@ export function HeaderSection() {
 
                             {activeMenu === "Contact" && (
                                 <div 
-                                    className="absolute right-0 z-10 mt-3 w-80 transform px-2 sm:px-0"
+                                    className="absolute right-0 z-10 mt-3 w-[680px] transform px-2 sm:px-0"
                                     onMouseEnter={() => {
                                         if (contactTimeoutRef.current) {
                                             clearTimeout(contactTimeoutRef.current);
@@ -388,7 +389,7 @@ export function HeaderSection() {
                                                 <h3 className="text-lg font-medium text-gray-900">Get in Touch</h3>
                                                 <p className="text-sm text-gray-500">We're here to help with any questions</p>
                                             </div>
-                                            <div className="grid gap-4">
+                                            <div className="grid grid-cols-2 gap-4">
                                                 {socialFeatures.map((feature) => (
                                                     <Link
                                                         key={feature.title}
@@ -411,7 +412,7 @@ export function HeaderSection() {
                                                 ))}
                                                 <Link
                                                     href="/contact"
-                                                    className="flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                                                    className="flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 col-span-2"
                                                 >
                                                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-emerald-50">
                                                         <Mail className="h-6 w-6 text-emerald-600" />
@@ -489,6 +490,7 @@ export function HeaderSection() {
                         <MobileNavItem href="/solutions" label="Solutions" getFeatures={getFeatures}/>
                         <MobileNavItem href="/pricing" label="Pricing" getFeatures={getFeatures}/>
                         <MobileNavItem href="/become-partner" label="Become a Partner" getFeatures={getFeatures}/>
+                        <MobileNavItem href="/documentation" label="Documentation" getFeatures={getFeatures}/>
                         <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>
                             <div className="grid grid-cols-1 gap-3 pl-4 mt-2">
                                 <Link 
@@ -505,7 +507,7 @@ export function HeaderSection() {
                                 >
                                     Documentation
                                 </Link>
-                                <Link 
+                                <Link
                                     href="/faq"
                                     className="text-white text-base hover:text-emerald-300 transition-colors"
                                     onClick={(e) => e.stopPropagation()}
@@ -678,7 +680,7 @@ function MobileNavItem({
                     {label}
                     <ChevronDown className="ml-1 h-4 w-4" />
                 </div>
-                <div className="grid grid-cols-1 gap-4 pl-4 mt-2">
+                <div className="grid grid-cols-2 gap-4 pl-4 mt-2">
                     {features.map((feature) => (
                         <Link 
                             key={feature.title}
