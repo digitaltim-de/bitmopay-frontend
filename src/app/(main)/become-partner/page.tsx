@@ -19,50 +19,175 @@ export default function PartnerPage() {
 
   return (
     <>
-      <BecomePartnerHeroSection />
-
-      {/* How It Works Section */}
-      <Section className="bg-white dark:bg-gray-900">
+      <BecomePartnerHeroSection /> {/* How It Works Section */}{" "}
+      <Section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
         <HeadTitle
           title="How It Works"
           subtitle="Join our partner program in three simple steps and start earning commissions"
           htype="h2"
         />
-        <div className="grid gap-8 md:grid-cols-3">
-          {[
-            {
-              step: 1,
-              title: "Register for Free",
-              description: "Sign up for our partner program with no costs or commitments.",
-            },
-            {
-              step: 2,
-              title: "Invite Merchants or Assign",
-              description: "Share your referral link or manually assign merchants to your account.",
-            },
-            {
-              step: 3,
-              title: "Receive Commission",
-              description:
-                "Earn 0.5% in the first year, then 0.15% thereafter, automatically paid in cryptocurrency.",
-            },
-          ].map((item, index) => (
-            <Card key={index} className="border-none shadow-sm">
-              <CardContent className="p-6">
-                <div
-                  className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-xl font-bold
-                    text-emerald-600"
-                >
-                  {item.step}
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                <p className="text-gray-500">{item.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+
+        <div className="mx-auto max-w-7xl">
+          {/* Simple horizontal step layout */}
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Step 1 */}
+            <div className="flex flex-col">
+              <Card className="flex h-full flex-col border-none shadow-md transition-all hover:shadow-lg dark:bg-gray-800">
+                <CardContent className="flex flex-1 flex-col p-0">
+                  <div className="border-b border-emerald-100 bg-emerald-50 p-4 dark:border-emerald-900 dark:bg-emerald-900/30">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
+                        <span className="font-bold">1</span>
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-emerald-600" />
+                    </div>
+                    <h3 className="text-xl font-bold">Register for Free</h3>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                      Sign up for our partner program with no costs or commitments. The process
+                      takes less than 2 minutes.
+                    </p>
+
+                    <ul className="mb-6 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>No credit card required</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>Instant dashboard access</span>
+                      </li>
+                    </ul>
+
+                    <div className="mt-auto">
+                      <Button
+                        variant="outline"
+                        className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-800
+                          dark:text-emerald-400 dark:hover:bg-emerald-900/30"
+                      >
+                        Create Account
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col">
+              <Card className="flex h-full flex-col border-none shadow-md transition-all hover:shadow-lg dark:bg-gray-800">
+                <CardContent className="flex flex-1 flex-col p-0">
+                  <div className="border-b border-emerald-100 bg-emerald-50 p-4 dark:border-emerald-900 dark:bg-emerald-900/30">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
+                        <span className="font-bold">2</span>
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-emerald-600" />
+                    </div>
+                    <h3 className="text-xl font-bold">Invite Merchants</h3>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                      Share your referral link or manually assign merchants to your account. Track
+                      everything from your dashboard.
+                    </p>
+
+                    <ul className="mb-6 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>Unique referral link</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>Manual merchant assignment</span>
+                      </li>
+                    </ul>
+
+                    <div className="mt-auto flex items-center justify-start space-x-2">
+                      <div
+                        className="inline-flex h-8 w-8 items-center justify-center rounded bg-emerald-100 text-emerald-600
+                          dark:bg-emerald-900 dark:text-emerald-300"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </div>
+                      <span className="text-sm text-gray-500">Share your link</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col">
+              <Card className="flex h-full flex-col border-none shadow-md transition-all hover:shadow-lg dark:bg-gray-800">
+                <CardContent className="flex flex-1 flex-col p-0">
+                  <div className="border-b border-emerald-100 bg-emerald-50 p-4 dark:border-emerald-900 dark:bg-emerald-900/30">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
+                        <span className="font-bold">3</span>
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-emerald-600" />
+                    </div>
+                    <h3 className="text-xl font-bold">Receive Commission</h3>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                      Earn 0.5% in the first year, then 0.15% thereafter, automatically paid in
+                      cryptocurrency.
+                    </p>
+
+                    <ul className="mb-6 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>Monthly automatic payouts</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                        <span>Lifetime commissions</span>
+                      </li>
+                    </ul>
+
+                    <div className="mt-auto flex items-center space-x-3">
+                      <Image
+                        src="/bitcoin-logo.png"
+                        width={24}
+                        height={24}
+                        alt="Bitcoin"
+                        className="h-6 w-6"
+                      />
+                      <Image
+                        src="/ethereum-logo.png"
+                        width={24}
+                        height={24}
+                        alt="Ethereum"
+                        className="h-6 w-6"
+                      />
+                      <Image
+                        src="/usdc-logo.png"
+                        width={24}
+                        height={24}
+                        alt="USDC"
+                        className="h-6 w-6"
+                      />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Action Button */}
+          <div className="mt-12 text-center">
+            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+              Start Earning Now <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </Section>
-
       {/* Calculation Example Section */}
       <Section className="bg-gray-50 dark:bg-gray-800">
         <HeadTitle
@@ -108,7 +233,6 @@ export default function PartnerPage() {
           </div>
         </div>
       </Section>
-
       {/* Feature Grid / Benefits Section */}
       <Section className="bg-white dark:bg-gray-900">
         <HeadTitle
@@ -156,7 +280,6 @@ export default function PartnerPage() {
           ))}
         </div>
       </Section>
-
       {/* Image Section */}
       <Section className="bg-gray-50 dark:bg-gray-800">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
@@ -189,7 +312,6 @@ export default function PartnerPage() {
           </div>
         </div>
       </Section>
-
       {/* FAQ Section */}
       <Section className="bg-white dark:bg-gray-900">
         <HeadTitle
@@ -244,7 +366,6 @@ export default function PartnerPage() {
           ))}
         </div>
       </Section>
-
       {/* Final CTA Section */}
       <section className="bg-gradient-to-b from-gray-50 to-white py-20 dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
@@ -270,7 +391,6 @@ export default function PartnerPage() {
           </div>
         </div>
       </section>
-
       <ScrollToTopButton />
     </>
   );

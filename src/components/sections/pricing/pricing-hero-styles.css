@@ -1,0 +1,24 @@
+/* Custom styles for pricing hero section */
+
+.gradient-text-shadow {
+  text-shadow:
+    0 2px 20px rgba(74, 222, 128, 0.2),
+    0 4px 40px rgba(74, 222, 128, 0.2);
+}
+
+/* Animation for the floating circles */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.animate-pulse {
+  animation: breathe 4s ease-in-out infinite;
+}

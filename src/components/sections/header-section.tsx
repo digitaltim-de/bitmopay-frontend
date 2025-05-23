@@ -382,7 +382,7 @@ export function HeaderSection() {
               </span>
             </Link>{" "}
             {/* Desktop Navigation */}
-            <nav className="ml-10 hidden space-x-6 md:flex">
+            <nav className="ml-10 hidden space-x-6 lg:flex">
               <NavItem
                 href="/solutions"
                 label="Solutions"
@@ -402,10 +402,9 @@ export function HeaderSection() {
                 getFeatures={getFeatures}
               />
             </nav>
-          </div>
-
+          </div>{" "}
           {/* Desktop CTA Buttons */}
-          <div className="hidden items-center space-x-4 md:flex">
+          <div className="hidden items-center space-x-4 lg:flex">
             {/* Contact Icon with Dropdown */}
             <div
               className="group relative"
@@ -497,10 +496,9 @@ export function HeaderSection() {
             </div>{" "}
             <Button variant="light">Login</Button>
             <Button className="text-gray-950">Register</Button>
-          </div>
-
+          </div>{" "}
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden" data-menu-container>
+          <div className="flex items-center lg:hidden" data-menu-container>
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -537,7 +535,7 @@ export function HeaderSection() {
       </div>{" "}
       {/* Mobile Menu */}{" "}
       <div
-        className={`mobile-menu-container fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden
+        className={`mobile-menu-container fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden
           ${isMenuOpen ? "visible opacity-100" : "pointer-events-none invisible opacity-0"}`}
         style={{ top: "64px" }}
         onClick={(e) => e.stopPropagation()}
