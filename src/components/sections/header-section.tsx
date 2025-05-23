@@ -212,6 +212,43 @@ export function HeaderSection() {
 
     return colorMap[iconName] || "bg-gray-50";
   };
+  const moreFeatures = [
+    {
+      title: "Pricing",
+      description: "Explore our pricing plans and packages",
+      icon: <CreditCard className="h-6 w-6 text-blue-500" />,
+      href: "/pricing",
+      color: "bg-blue-50",
+    },
+    {
+      title: "Become a Partner",
+      description: "Join our partner program and grow together",
+      icon: <Users className="h-6 w-6 text-emerald-500" />,
+      href: "/become-partner",
+      color: "bg-emerald-50",
+    },
+    {
+      title: "Documentation",
+      description: "Access technical guides and API documentation",
+      icon: <BookOpen className="h-6 w-6 text-purple-500" />,
+      href: "/documentation",
+      color: "bg-purple-50",
+    },
+    {
+      title: "Resources",
+      description: "Find helpful resources and materials",
+      icon: <FileText className="h-6 w-6 text-yellow-500" />,
+      href: "/resources",
+      color: "bg-yellow-50",
+    },
+    {
+      title: "FAQ",
+      description: "Get answers to frequently asked questions",
+      icon: <HelpCircle className="h-6 w-6 text-pink-500" />,
+      href: "/faq",
+      color: "bg-pink-50",
+    },
+  ];
 
   const getFeatures = (menuName: string) => {
     switch (menuName) {
@@ -228,6 +265,8 @@ export function HeaderSection() {
         }
         // Fallback to payment features if solutions data is not yet loaded
         return paymentFeatures;
+      case "More":
+        return moreFeatures;
       case "Contact":
         return socialFeatures;
       default:
@@ -341,38 +380,13 @@ export function HeaderSection() {
                 Bitmopay
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-emerald-400 transition-all group-hover:w-full"></span>
               </span>
-            </Link>
-
+            </Link>{" "}
             {/* Desktop Navigation */}
             <nav className="ml-10 hidden space-x-6 md:flex">
               <NavItem
                 href="/solutions"
                 label="Solutions"
                 hasDropdown
-                isScrolled={isScrolled}
-                setActiveMenu={setActiveMenu}
-                activeMenu={activeMenu}
-                getFeatures={getFeatures}
-              />
-              <NavItem
-                href="/pricing"
-                label="Pricing"
-                isScrolled={isScrolled}
-                setActiveMenu={setActiveMenu}
-                activeMenu={activeMenu}
-                getFeatures={getFeatures}
-              />
-              <NavItem
-                href="/become-partner"
-                label="Become a Partner"
-                isScrolled={isScrolled}
-                setActiveMenu={setActiveMenu}
-                activeMenu={activeMenu}
-                getFeatures={getFeatures}
-              />
-              <NavItem
-                href="/documentation"
-                label="Documentation"
                 isScrolled={isScrolled}
                 setActiveMenu={setActiveMenu}
                 activeMenu={activeMenu}
@@ -480,10 +494,9 @@ export function HeaderSection() {
                   </div>
                 </div>
               )}
-            </div>
-
+            </div>{" "}
             <Button variant="light">Login</Button>
-            <Button>Register</Button>
+            <Button className="text-gray-950">Register</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -534,18 +547,30 @@ export function HeaderSection() {
             shadow-xl transition-all dark:bg-gray-800"
           onClick={(e) => e.stopPropagation()}
         >
+          {" "}
           <nav className="flex flex-col space-y-5">
             <MobileNavItem href="/solutions" label="Solutions" getFeatures={getFeatures} />
-            <MobileNavItem href="/pricing" label="Pricing" getFeatures={getFeatures} />
-            <MobileNavItem
-              href="/become-partner"
-              label="Become a Partner"
-              getFeatures={getFeatures}
-            />
-            <MobileNavItem href="/documentation" label="Documentation" getFeatures={getFeatures} />
             <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>
               {" "}
               <div className="mt-2 grid grid-cols-1 gap-3">
+                <Link
+                  href="/pricing"
+                  className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
+                    dark:text-gray-200 dark:hover:bg-gray-700"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <CreditCard className="mr-2 h-4 w-4 text-emerald-500" />
+                  Pricing
+                </Link>
+                <Link
+                  href="/become-partner"
+                  className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
+                    dark:text-gray-200 dark:hover:bg-gray-700"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Users className="mr-2 h-4 w-4 text-emerald-500" />
+                  Become a Partner
+                </Link>
                 <Link
                   href="/resources"
                   className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
@@ -588,9 +613,9 @@ export function HeaderSection() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   Login
-                </Button>
+                </Button>{" "}
                 <Button
-                  className="flex-1 bg-emerald-500 py-3 text-white hover:bg-emerald-600 dark:bg-emerald-600
+                  className="flex-1 bg-emerald-500 py-3 text-gray-950 hover:bg-emerald-600 dark:bg-emerald-600
                     dark:hover:bg-emerald-700"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -763,7 +788,9 @@ function NavItem({
                         Take the first step towards hassle-free transactions today.
                       </p>
                     </div>
-                    <Button className="bg-blue-500 hover:bg-blue-600">Get free access</Button>
+                    <Button className="bg-blue-500 text-gray-950 hover:bg-blue-600">
+                      Get free access
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -793,17 +820,24 @@ function MobileNavItem({
 }) {
   const handleBlockClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-  }; // Special case for dropdown items with features
+  };
+
+  // Special case for dropdown items with features
   if (label === "Solutions" || label === "Contact") {
     const features = getFeatures ? getFeatures(label) : [];
     return (
       <div className="space-y-3 rounded-lg" onClick={handleBlockClick}>
-        <div className="flex items-center text-lg font-medium text-gray-800 dark:text-white">
-          {icon}
-          {label}
-          <ChevronDown className="ml-1 h-4 w-4 text-emerald-500" />
-        </div>
-        <div className="mt-3 grid grid-cols-1 gap-4 overflow-x-hidden pl-4 sm:grid-cols-2">
+        <div className="flex items-center justify-center">
+          <div className="flex w-full items-center">
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>{" "}
+            <div className="mx-3 flex items-center text-lg font-medium text-gray-800 dark:text-white">
+              {icon}
+              {label}
+            </div>
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+          </div>
+        </div>{" "}
+        <div className="mt-3 grid grid-cols-1 gap-4 overflow-x-hidden sm:grid-cols-2">
           {features.map((feature) => (
             <Link
               key={feature.title}
@@ -838,8 +872,9 @@ function MobileNavItem({
             Ready to get started?
           </div>
           <div className="mt-2 flex justify-center">
+            {" "}
             <Button
-              className="w-full bg-emerald-500 px-3 py-2 text-sm text-white hover:bg-emerald-600 dark:bg-emerald-600
+              className="w-full bg-emerald-500 px-3 py-2 text-sm text-gray-950 hover:bg-emerald-600 dark:bg-emerald-600
                 dark:hover:bg-emerald-700"
             >
               Get free access
@@ -849,32 +884,39 @@ function MobileNavItem({
       </div>
     );
   }
+
   // Case for dropdown items
   if (isDropdown) {
     return (
       <div className="space-y-3 overflow-x-hidden" onClick={handleBlockClick}>
-        <div className="flex items-center text-lg font-medium text-gray-800 dark:text-white">
-          {icon}
-          <span className="truncate">{label}</span>
-          <ChevronDown className="ml-1 h-4 w-4 flex-shrink-0 text-emerald-500" />
-        </div>
-        <div className="overflow-x-hidden pl-4" onClick={handleBlockClick}>
+        <div className="flex items-center justify-center">
+          <div className="flex w-full items-center">
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>{" "}
+            <div className="mx-3 flex items-center text-lg font-medium text-gray-800 dark:text-white">
+              {icon}
+              <span className="truncate">{label}</span>
+            </div>
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+          </div>
+        </div>{" "}
+        <div className="overflow-x-hidden" onClick={handleBlockClick}>
           {children}
         </div>
       </div>
     );
   }
-
   // Default case for other menu items
   return (
-    <Link
-      href={href}
-      className="flex items-center rounded-md p-2 text-lg font-medium text-gray-800 transition-colors
-        hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {icon && <span className="mr-3 text-emerald-500">{icon}</span>}
-      {label}
-    </Link>
+    <div className="py-1">
+      <Link
+        href={href}
+        className="flex w-full items-center justify-center rounded-md p-2 text-lg font-medium text-gray-800
+          transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {icon && <span className="mr-2 text-emerald-500">{icon}</span>}
+        {label}
+      </Link>
+    </div>
   );
 }
