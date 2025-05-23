@@ -84,7 +84,7 @@ const BenefitItem = ({text}: { text: string }) => (
 export function HowCustomerPay() {
     return (
         <>
-            <Section className="bg-gray">
+            <Section className="background-light-gray">
                 <div className="text-center">
                     <HeadTitle
                         title="How customers pay with Bitmopay"
@@ -120,7 +120,7 @@ export function HowCustomerPay() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {/* Benefit 1 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform will-change-transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -133,7 +133,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 2 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform will-change-transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -147,7 +147,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 3 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform will-change-transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -161,7 +161,7 @@ export function HowCustomerPay() {
 
                             {/* Benefit 4 */}
                             <div
-                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform transition-transform hover:-translate-y-1">
+                                className="bg-gradient-to-br from-white to-emerald-50 p-5 rounded-xl shadow-sm transform will-change-transform transition-transform hover:-translate-y-1">
                                 <div className="flex items-center mb-3">
                                     <div
                                         className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
@@ -184,7 +184,7 @@ export function HowCustomerPay() {
                     <div className="md:w-1/2 mt-10 md:mt-0">
                         <div className="relative">
                             <div
-                                className="absolute inset-0 bg-gradient-to-r from-emerald-200 to-emerald-100 transform rotate-3 rounded-xl"></div>
+                                className="absolute inset-0 bg-gradient-to-r from-emerald-200 to-emerald-100 transform will-change-transform rotate-3 rounded-xl"></div>
                             <div className="relative transform hover:-rotate-1 transition-transform duration-300">
                                 <Image
                                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ebGhzhSOOSqryoTv6OvfmLwrfqBVDl.png"
