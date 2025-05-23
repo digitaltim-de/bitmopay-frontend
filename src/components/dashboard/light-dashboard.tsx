@@ -47,6 +47,9 @@ import {
   Calendar,
   Plus,
 } from "lucide-react"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { sidebarLinks } from "@/config/sidebar-links"
 import { Button } from "@/components/ui/button"
 import {
   AreaChart,
@@ -331,109 +334,43 @@ export function LightDashboard() {
               />
             </div>
 
-            <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Main
-            </div>
-            <nav className="mb-6">
-              <ul className="space-y-1">
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30 px-4 py-2.5 text-emerald-700 dark:text-emerald-300 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-emerald-200/60 dark:bg-emerald-800/60 p-1.5 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800 transition-colors duration-200">
-                      <Home className="h-4 w-4" />
-                    </div>
-                    <span>Dashboard</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <CreditCard className="h-4 w-4" />
-                    </div>
-                    <span>Payments</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <Repeat className="h-4 w-4" />
-                    </div>
-                    <span>Subscriptions</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <Users className="h-4 w-4" />
-                    </div>
-                    <span>Customers</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <BarChart className="h-4 w-4" />
-                    </div>
-                    <span>Analytics</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            {sidebarLinks.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  {section.title}
+                </div>
+                <nav className={sectionIndex === 0 ? "mb-6" : ""}>
+                  <ul className="space-y-1">
+                    {section.links.map((link, linkIndex) => {
+                      const pathname = usePathname();
+                      const isActive = pathname === link.href || (link.href !== "/dashboard" && pathname?.startsWith(link.href));
 
-            <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Resources
-            </div>
-            <nav>
-              <ul className="space-y-1">
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <FileText className="h-4 w-4" />
-                    </div>
-                    <span>Documentation</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <Settings className="h-4 w-4" />
-                    </div>
-                    <span>Settings</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                      href="#"
-                      className="flex items-center rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-all duration-200 group"
-                  >
-                    <div className="mr-3 rounded-md bg-gray-100 dark:bg-gray-700 p-1.5 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors duration-200">
-                      <HelpCircle className="h-4 w-4" />
-                    </div>
-                    <span>Help & Support</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+                      return (
+                        <li key={linkIndex}>
+                          <Link
+                            href={link.href}
+                            className={`flex items-center rounded-lg ${
+                              isActive
+                                ? "bg-gradient-to-r from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30 text-emerald-700 dark:text-emerald-300"
+                                : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                            } px-4 py-2.5 font-medium transition-all duration-200 group`}
+                          >
+                            <div className={`mr-3 rounded-md ${
+                              isActive
+                                ? "bg-emerald-200/60 dark:bg-emerald-800/60 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800"
+                                : "bg-gray-100 dark:bg-gray-700 group-hover:bg-gray-200 dark:group-hover:bg-gray-600"
+                            } p-1.5 transition-colors duration-200`}>
+                              {link.icon && <link.icon className="h-4 w-4" />}
+                            </div>
+                            <span>{link.title}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              </div>
+            ))}
 
             {/* Pro upgrade card */}
             <div className="mt-8 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 p-4 text-white shadow-lg">
