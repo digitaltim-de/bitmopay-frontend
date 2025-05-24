@@ -22,9 +22,9 @@ interface SubscriptionGrowthChartProps {
 
 export function SubscriptionGrowthChart({ data }: SubscriptionGrowthChartProps) {
   return (
-    <Card className="col-span-1">
+    <Card className="border-0 shadow-md">
       <CardHeader>
-        <CardTitle>Subscription Growth</CardTitle>
+        <CardTitle className="text-lg font-semibold">Subscription Growth</CardTitle>
         <CardDescription>Total subscribers over the selected period</CardDescription>
       </CardHeader>
       <CardContent>
@@ -56,9 +56,11 @@ export function SubscriptionGrowthChart({ data }: SubscriptionGrowthChartProps) 
                 type="monotone"
                 dataKey="total"
                 stroke="#3b82f6"
+                strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorTotal)"
                 name="Total Subscribers"
+                animationDuration={1500}
               />
             </AreaChart>
           </ResponsiveContainer>

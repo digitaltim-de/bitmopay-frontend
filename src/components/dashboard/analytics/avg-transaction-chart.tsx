@@ -21,9 +21,9 @@ interface AvgTransactionChartProps {
 
 export function AvgTransactionChart({ data }: AvgTransactionChartProps) {
   return (
-    <Card className="col-span-1">
+    <Card className="border-0 shadow-md">
       <CardHeader>
-        <CardTitle>Average Transaction Value</CardTitle>
+        <CardTitle className="text-lg font-semibold">Average Transaction Value</CardTitle>
         <CardDescription>Average value per transaction over time</CardDescription>
       </CardHeader>
       <CardContent>
@@ -46,7 +46,13 @@ export function AvgTransactionChart({ data }: AvgTransactionChartProps) {
               />
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
               <RechartsTooltip content={<CustomTooltip />} />
-              <Bar dataKey="value" fill="#6366f1" radius={[4, 4, 0, 0]} name="Avg Value" />
+              <Bar
+                dataKey="value"
+                fill="#6366f1"
+                radius={[4, 4, 0, 0]}
+                name="Avg Value"
+                animationDuration={1500}
+              />
             </RechartsBarChart>
           </ResponsiveContainer>
         </div>

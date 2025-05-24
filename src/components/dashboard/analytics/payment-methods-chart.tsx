@@ -20,9 +20,9 @@ interface PaymentMethodsChartProps {
 
 export function PaymentMethodsChart({ data, colors }: PaymentMethodsChartProps) {
   return (
-    <Card className="col-span-1">
+    <Card className="border-0 shadow-md">
       <CardHeader>
-        <CardTitle>Payment Methods</CardTitle>
+        <CardTitle className="text-lg font-semibold">Payment Methods</CardTitle>
         <CardDescription>Distribution of payment methods used</CardDescription>
       </CardHeader>
       <CardContent>
@@ -34,16 +34,22 @@ export function PaymentMethodsChart({ data, colors }: PaymentMethodsChartProps) 
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                outerRadius={80}
+                outerRadius={85}
                 fill="#8884d8"
                 dataKey="value"
                 label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                animationDuration={1500}
               >
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                 ))}
               </Pie>
-              <Legend />
+              <Legend
+                verticalAlign="bottom"
+                iconType="circle"
+                layout="horizontal"
+                wrapperStyle={{ paddingTop: "15px" }}
+              />
               <RechartsTooltip />
             </PieChart>
           </ResponsiveContainer>

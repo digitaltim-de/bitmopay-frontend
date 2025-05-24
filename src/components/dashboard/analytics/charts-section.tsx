@@ -34,7 +34,7 @@ export function ChartsSection({
   colors,
 }: ChartsSectionProps) {
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <PaymentsChart data={paymentsByDayData} />
       <SubscriptionGrowthChart data={subscriptionGrowthData} />
       <AvgTransactionChart data={avgTransactionValueData} />

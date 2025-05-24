@@ -26,16 +26,16 @@ export function AnalyticsHeader({
   handleExportData,
 }: AnalyticsHeaderProps) {
   return (
-    <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics</h1>
-        <p className="text-gray-500 dark:text-gray-400">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
+        <p className="mt-1 text-gray-500 dark:text-gray-400">
           Insights and trends to help you understand your business performance
         </p>
       </div>
-      <div className="mt-4 flex flex-col gap-3 sm:flex-row md:mt-0">
+      <div className="flex flex-wrap items-center gap-3">
         <Select value={timeRange} onValueChange={setTimeRange}>
-          <SelectTrigger className="w-[120px]">
+          <SelectTrigger className="h-9 w-[130px] bg-white">
             <SelectValue placeholder="Time Range" />
           </SelectTrigger>
           <SelectContent>
@@ -48,7 +48,7 @@ export function AnalyticsHeader({
         </Select>
 
         <Select value={selectedCoin} onValueChange={setSelectedCoin}>
-          <SelectTrigger className="w-[120px]">
+          <SelectTrigger className="h-9 w-[130px] bg-white">
             <SelectValue placeholder="Coin" />
           </SelectTrigger>
           <SelectContent>
@@ -59,7 +59,12 @@ export function AnalyticsHeader({
           </SelectContent>
         </Select>
 
-        <Button onClick={handleExportData} variant="outline" className="flex items-center">
+        <Button
+          onClick={handleExportData}
+          variant="outline"
+          size="sm"
+          className="flex h-9 items-center bg-white"
+        >
           <Download className="mr-2 h-4 w-4" />
           Export Data
         </Button>

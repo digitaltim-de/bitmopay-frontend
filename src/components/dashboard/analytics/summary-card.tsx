@@ -23,7 +23,7 @@ export function SummaryCard({
   const textColorClass = isPositive ? "text-emerald-600" : "text-red-600";
 
   return (
-    <Card>
+    <Card className="border-0 shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="text-sm font-medium text-gray-500">{title}</CardTitle>
       </CardHeader>
@@ -32,7 +32,7 @@ export function SummaryCard({
           <div>
             <div className="text-2xl font-bold">{value}</div>
             {changePercentage !== undefined ? (
-              <div className={`flex items-center text-xs ${textColorClass}`}>
+              <div className={`mt-1 flex items-center text-xs ${textColorClass}`}>
                 {isPositive ? (
                   <ArrowUpRight className="mr-1 h-3 w-3" />
                 ) : (
@@ -41,11 +41,12 @@ export function SummaryCard({
                 {Math.abs(changePercentage)}% from previous period
               </div>
             ) : subtitle ? (
-              <div className="text-xs text-gray-500">{subtitle}</div>
+              <div className="mt-1 text-xs text-gray-500">{subtitle}</div>
             ) : null}
           </div>
           <div
-            className={`rounded-full p-2 ${changePercentage !== undefined ? bgColorClass : "bg-blue-100 text-blue-600"}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full ${
+              changePercentage !== undefined ? bgColorClass : "bg-blue-100 text-blue-600" }`}
           >
             <Icon className="h-5 w-5" />
           </div>

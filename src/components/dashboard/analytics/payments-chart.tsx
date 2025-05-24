@@ -21,9 +21,9 @@ interface PaymentsChartProps {
 
 export function PaymentsChart({ data }: PaymentsChartProps) {
   return (
-    <Card className="col-span-1">
+    <Card className="border-0 shadow-md">
       <CardHeader>
-        <CardTitle>Payments by Day</CardTitle>
+        <CardTitle className="text-lg font-semibold">Payments by Day</CardTitle>
         <CardDescription>Daily payment volume over the selected period</CardDescription>
       </CardHeader>
       <CardContent>
@@ -56,9 +56,11 @@ export function PaymentsChart({ data }: PaymentsChartProps) {
                 type="monotone"
                 dataKey="amount"
                 stroke="#10b981"
+                strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorAmount)"
                 name="Amount"
+                animationDuration={1500}
               />
             </AreaChart>
           </ResponsiveContainer>

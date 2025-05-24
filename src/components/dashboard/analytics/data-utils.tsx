@@ -55,6 +55,17 @@ export const generateAvgTransactionValue = (days: number) => {
   return data;
 };
 
+// Mock data for payment methods
+export const paymentMethodsData = [
+  { name: "Lightning", value: 45 },
+  { name: "On-chain", value: 30 },
+  { name: "Exchange", value: 15 },
+  { name: "Other", value: 10 },
+];
+
+// Colors for pie chart
+export const COLORS = ["#10b981", "#3b82f6", "#f59e0b", "#6366f1"];
+
 // Get number of days based on selected time range
 export const getDaysFromTimeRange = (timeRange: string) => {
   switch (timeRange) {
