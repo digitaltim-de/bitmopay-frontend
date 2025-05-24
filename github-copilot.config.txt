@@ -1,4 +1,0 @@
-su projede her zaman typescript kullan
-ui kutuphanesi olarak shadcn kullan
-className'ler icin cn kullan
-her zaman package json tara ve olan kutupaneleri kullan
