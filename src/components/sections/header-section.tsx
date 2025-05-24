@@ -214,6 +214,27 @@ export function HeaderSection() {
   };
   const moreFeatures = [
     {
+      title: "Crypto Checkout",
+      description: "Accept crypto instantly with no chargebacks",
+      icon: <CreditCard className="h-6 w-6 text-emerald-500" />,
+      href: "/solutions/checkout",
+      color: "bg-emerald-50",
+    },
+    {
+      title: "Crypto Subscriptions",
+      description: "Recurring crypto payments for SaaS & platforms",
+      icon: <RefreshCw className="h-6 w-6 text-blue-500" />,
+      href: "/solutions/subscriptions",
+      color: "bg-blue-50",
+    },
+    {
+      title: "Buyer Protection",
+      description: "Optional escrow for trust & transparency",
+      icon: <ShieldCheck className="h-6 w-6 text-amber-500" />,
+      href: "/solutions/buyer-protection",
+      color: "bg-amber-50",
+    },
+    {
       title: "Pricing",
       description: "Explore our pricing plans and packages",
       icon: <CreditCard className="h-6 w-6 text-blue-500" />,

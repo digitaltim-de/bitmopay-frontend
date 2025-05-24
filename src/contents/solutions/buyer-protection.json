@@ -1,0 +1,119 @@
+{
+  "slug": "buyer-protection",
+  "title": "Optional Buyer Protection for Trust & Transparency",
+  "subtitle": "Funds are held for 7 days and marked as secured at checkout – increasing buyer trust.",
+  "heroButtons": [
+    {
+      "text": "Enable Escrow Mode",
+      "link": "/signup",
+      "variant": "default"
+    },
+    {
+      "text": "Learn More",
+      "link": "/documentation/buyer-protection",
+      "variant": "outline"
+    }
+  ],
+  "painPoints": {
+    "title": "The trust barrier in crypto transactions",
+    "description": "Crypto payments are final, which can create hesitation for buyers when dealing with new merchants or high-value items.",
+    "comparison": [
+      {
+        "traditional": "Buyer Hesitation",
+        "bitmopay": "Transparent Protection"
+      },
+      {
+        "traditional": "Limited Recourse",
+        "bitmopay": "7-Day Escrow Period"
+      },
+      {
+        "traditional": "Complex Dispute Process",
+        "bitmopay": "Clear Timeline & Rules"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "title": "Customer pays with protection",
+      "description": "Buyer makes payment through checkout with escrow protection enabled."
+    },
+    {
+      "title": "Funds held in smart escrow wallet",
+      "description": "Payment is held securely for 7 days in a transparent escrow wallet."
+    },
+    {
+      "title": "Merchant sees 'Frozen' status",
+      "description": "Merchant dashboard shows payment as secured but not yet released."
+    },
+    {
+      "title": "Automatic release after 7 days",
+      "description": "Funds are automatically released to merchant after the protection period."
+    }
+  ],
+  "targetGroups": [
+    {
+      "title": "Marketplaces",
+      "description": "Perfect for platforms connecting buyers and sellers for peer-to-peer transactions.",
+      "icon": "ShoppingBag"
+    },
+    {
+      "title": "High-Value Digital Goods",
+      "description": "Ideal for expensive digital assets where buyer confidence is crucial.",
+      "icon": "FileDigit"
+    },
+    {
+      "title": "First-Time Sellers",
+      "description": "Helps new merchants build trust with customers who may be hesitant.",
+      "icon": "Users"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "Higher Conversion",
+      "description": "Increase checkout conversion rates by addressing buyer concerns about irreversibility.",
+      "icon": "RefreshCw"
+    },
+    {
+      "title": "More Trust for First-Time Buyers",
+      "description": "Build confidence with new customers who haven't purchased from you before.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "No Extra Fee for Merchants",
+      "description": "Buyer protection is included at no additional cost to your standard fee.",
+      "icon": "Wallet"
+    },
+    {
+      "title": "Transparent Process",
+      "description": "Clear timeline and rules give buyers and sellers confidence in the transaction.",
+      "icon": "FileText"
+    }
+  ],
+  "codeExample": {
+    "language": "javascript",
+    "title": "Enable Buyer Protection",
+    "code": "// Create checkout with buyer protection via Bitmopay API\nconst response = await fetch('https://api.bitmopay.com/v1/checkout', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'X-API-Key': 'YOUR_API_KEY'\n  },\n  body: JSON.stringify({\n    amount: 499.99,\n    currency: 'USD',\n    paymentMethods: ['BTC', 'ETH', 'USDC'],\n    buyerProtection: true,  // Enable 7-day escrow\n    escrowDays: 7,         // Optional: customize escrow period\n    redirectUrl: 'https://your-store.com/thank-you',\n    webhookUrl: 'https://your-store.com/api/webhook'\n  })\n});\n\nconst data = await response.json();\n// Redirect customer to protected payment page\nwindow.location.href = data.checkoutUrl;"
+  },
+  "testimonial": {
+    "quote": "Adding Buyer Protection increased our conversion rate by 35% for high-value digital assets and significantly reduced customer hesitation.",
+    "author": "Elena Rodriguez",
+    "company": "Digital Art Exchange",
+    "image": "/testimonials/elena-rodriguez.jpg"
+  },
+  "cta": {
+    "title": "Ready to build trust with your customers?",
+    "description": "Enable Buyer Protection today and provide your customers with the confidence they need to complete their purchase.",
+    "buttons": [
+      {
+        "text": "Enable Escrow Mode",
+        "link": "/signup",
+        "variant": "default"
+      },
+      {
+        "text": "Talk to Sales",
+        "link": "/contact",
+        "variant": "outline"
+      }
+    ]
+  }
+}

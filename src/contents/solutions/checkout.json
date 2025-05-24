@@ -1,0 +1,119 @@
+{
+  "slug": "checkout",
+  "title": "Accept Crypto Instantly with Bitmopay Checkout",
+  "subtitle": "Secure, 100% crypto-first payment flow with no chargebacks or intermediaries.",
+  "heroButtons": [
+    {
+      "text": "Start Integration",
+      "link": "/signup",
+      "variant": "default"
+    },
+    {
+      "text": "API Documentation",
+      "link": "/documentation",
+      "variant": "outline"
+    }
+  ],
+  "painPoints": {
+    "title": "Why traditional checkout solutions fall short",
+    "description": "Traditional payment gateways introduce unnecessary complexity and fees that impact your bottom line.",
+    "comparison": [
+      {
+        "traditional": "Chargeback Risk",
+        "bitmopay": "No Chargebacks"
+      },
+      {
+        "traditional": "Intermediary Approval",
+        "bitmopay": "Direct Settlement"
+      },
+      {
+        "traditional": "3-5 Day Settlement",
+        "bitmopay": "Instant Wallet Receipt"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "title": "Create payment link",
+      "description": "Generate a payment link via our API or dashboard in seconds."
+    },
+    {
+      "title": "User pays with crypto wallet",
+      "description": "Customers pay using their preferred wallet like MetaMask or Phantom."
+    },
+    {
+      "title": "Payment arrives in your wallet",
+      "description": "Funds arrive directly in your self-hosted or Bitmopay-generated wallet."
+    },
+    {
+      "title": "Receive status confirmation",
+      "description": "Get instant success/pending status via dashboard and webhook."
+    }
+  ],
+  "targetGroups": [
+    {
+      "title": "E-Commerce Platforms",
+      "description": "Integrate crypto payments into your existing online store with our plugins.",
+      "icon": "ShoppingBag"
+    },
+    {
+      "title": "Digital Goods",
+      "description": "Perfect for selling digital products with instant delivery upon payment.",
+      "icon": "FileDigit"
+    },
+    {
+      "title": "Freelance Payments",
+      "description": "Accept global payments for your services without currency conversion fees.",
+      "icon": "Users"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "No Chargebacks",
+      "description": "Cryptocurrency transactions are irreversible, eliminating chargeback fraud.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "Fast Settlement",
+      "description": "Receive funds directly to your wallet without delays or holds.",
+      "icon": "Wallet"
+    },
+    {
+      "title": "Fiat-Free Operation",
+      "description": "Operate entirely in cryptocurrency without mandatory conversion to fiat.",
+      "icon": "Coins"
+    },
+    {
+      "title": "Self-Hosted Wallet Support",
+      "description": "Use your own wallet addresses for complete control over your funds.",
+      "icon": "Shield"
+    }
+  ],
+  "codeExample": {
+    "language": "javascript",
+    "title": "Create a Checkout Payment",
+    "code": "// Create payment via Bitmopay API\nconst response = await fetch('https://api.bitmopay.com/v1/checkout', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'X-API-Key': 'YOUR_API_KEY'\n  },\n  body: JSON.stringify({\n    amount: 99.99,\n    currency: 'USD',\n    paymentMethods: ['BTC', 'ETH', 'USDC'],\n    redirectUrl: 'https://your-store.com/thank-you',\n    webhookUrl: 'https://your-store.com/api/webhook'\n  })\n});\n\nconst data = await response.json();\n// Redirect customer to payment page\nwindow.location.href = data.checkoutUrl;"
+  },
+  "testimonial": {
+    "quote": "Bitmopay Checkout eliminated chargebacks completely and increased our international sales by 22%.",
+    "author": "Marcus Chen",
+    "company": "Digital Artworks",
+    "image": "/testimonials/marcus-chen.jpg"
+  },
+  "cta": {
+    "title": "Ready to accept crypto payments?",
+    "description": "Start integrating Bitmopay Checkout today and offer your customers a modern payment option.",
+    "buttons": [
+      {
+        "text": "Start Integration",
+        "link": "/signup",
+        "variant": "default"
+      },
+      {
+        "text": "Contact Sales",
+        "link": "/contact",
+        "variant": "outline"
+      }
+    ]
+  }
+}

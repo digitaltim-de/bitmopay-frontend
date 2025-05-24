@@ -1,0 +1,119 @@
+{
+  "slug": "subscriptions",
+  "title": "Recurring Crypto Payments for SaaS & Platforms",
+  "subtitle": "Charge your users weekly, monthly or yearly in crypto — fully automated.",
+  "heroButtons": [
+    {
+      "text": "Create Subscription Plan",
+      "link": "/signup",
+      "variant": "default"
+    },
+    {
+      "text": "View Documentation",
+      "link": "/documentation",
+      "variant": "outline"
+    }
+  ],
+  "painPoints": {
+    "title": "The challenges of recurring crypto payments",
+    "description": "Traditional subscription systems require customer accounts and credit cards, creating friction and limiting your global reach.",
+    "comparison": [
+      {
+        "traditional": "Customer Account Required",
+        "bitmopay": "No Account Needed"
+      },
+      {
+        "traditional": "Limited Payment Options",
+        "bitmopay": "Multiple Chains & Tokens"
+      },
+      {
+        "traditional": "Complex Integration",
+        "bitmopay": "Simple Webhook Setup"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "title": "Define subscription plan",
+      "description": "Specify your plan's interval (weekly, monthly, yearly) and amount."
+    },
+    {
+      "title": "Generate persistent payment URL",
+      "description": "Bitmopay creates a dedicated payment page for your subscription."
+    },
+    {
+      "title": "Customer pays & you receive notification",
+      "description": "When payment is received, our webhook notifies your system instantly."
+    },
+    {
+      "title": "Automatic reminders before expiry",
+      "description": "Customers receive payment reminders 7, 3, and 1 day before subscription expiry."
+    }
+  ],
+  "targetGroups": [
+    {
+      "title": "SaaS Tools",
+      "description": "Ideal for software-as-a-service platforms looking to offer crypto payment options.",
+      "icon": "Code"
+    },
+    {
+      "title": "Paid APIs",
+      "description": "Perfect for developers offering paid API access with recurring billing.",
+      "icon": "Webhook"
+    },
+    {
+      "title": "Membership Communities",
+      "description": "Great for online communities charging recurring membership fees.",
+      "icon": "Users"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "No Account Required",
+      "description": "Customers can subscribe without creating accounts - just their crypto wallet.",
+      "icon": "Wallet"
+    },
+    {
+      "title": "Multi-Chain Support",
+      "description": "Accept payments across multiple blockchains and stablecoins.",
+      "icon": "Coins"
+    },
+    {
+      "title": "Easy Webhook Integration",
+      "description": "Simple webhook setup keeps your subscription system in sync.",
+      "icon": "Webhook"
+    },
+    {
+      "title": "Automated Reminders",
+      "description": "We handle subscription renewal notifications for your customers.",
+      "icon": "MessageCircle"
+    }
+  ],
+  "codeExample": {
+    "language": "javascript",
+    "title": "Create a Subscription Plan",
+    "code": "// Create subscription plan via Bitmopay API\nconst response = await fetch('https://api.bitmopay.com/v1/subscriptions', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'X-API-Key': 'YOUR_API_KEY'\n  },\n  body: JSON.stringify({\n    name: 'Premium Plan',\n    amount: 49.99,\n    currency: 'USD',\n    interval: 'monthly',\n    description: 'Access to all premium features',\n    webhookUrl: 'https://your-saas.com/api/subscription-webhook'\n  })\n});\n\nconst data = await response.json();\n// Share subscription link with customer\nconsole.log(`Subscription URL: ${data.subscriptionUrl}`);"
+  },
+  "testimonial": {
+    "quote": "Implementing Bitmopay Subscriptions increased our retention by 18% and opened up entirely new markets for us.",
+    "author": "Sarah Johnson",
+    "company": "DevTools Pro",
+    "image": "/testimonials/sarah-johnson.jpg"
+  },
+  "cta": {
+    "title": "Ready to offer crypto subscriptions?",
+    "description": "Start creating subscription plans today and simplify recurring payments for your business.",
+    "buttons": [
+      {
+        "text": "Create Subscription Plan",
+        "link": "/signup",
+        "variant": "default"
+      },
+      {
+        "text": "Schedule Demo",
+        "link": "/contact",
+        "variant": "outline"
+      }
+    ]
+  }
+}
