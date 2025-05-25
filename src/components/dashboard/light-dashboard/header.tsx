@@ -95,17 +95,16 @@ function NotificationBell() {
     );
     setUnreadCount((prev) => Math.max(prev - 1, 0));
   };
-
   const getIconForType = (type: Notification["type"]) => {
     switch (type) {
       case "success":
-        return <Check className="h-5 w-5 text-green-500" />;
+        return <Check className="h-5 w-5 text-green-600 dark:text-green-400" />;
       case "warning":
-        return <AlertCircle className="h-5 w-5 text-amber-500" />;
+        return <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />;
       case "error":
-        return <X className="h-5 w-5 text-red-500" />;
+        return <X className="h-5 w-5 text-red-600 dark:text-red-400" />;
       default:
-        return <Info className="h-5 w-5 text-blue-500" />;
+        return <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />;
     }
   };
 
@@ -156,8 +155,18 @@ function NotificationBell() {
                   dark:hover:bg-gray-800 ${notification.read ? "opacity-70" : "bg-gray-50 dark:bg-gray-800/50"}`}
                 onClick={() => markAsRead(notification.id)}
               >
-                <div className="flex">
-                  <div className="mr-3 mt-0.5 rounded-full bg-gray-100 p-1.5 dark:bg-gray-700">
+                <div className="flex items-start">
+                  <div
+                    className={`mr-3 flex items-start rounded-full p-1.5 ${
+                      notification.type === "success"
+                        ? "bg-green-100 dark:bg-green-900/30"
+                        : notification.type === "info"
+                          ? "bg-blue-100 dark:bg-blue-900/30"
+                          : notification.type === "warning"
+                            ? "bg-amber-100 dark:bg-amber-900/30"
+                            : "bg-red-100 dark:bg-red-900/30"
+                      }`}
+                  >
                     {getIconForType(notification.type)}
                   </div>
                   <div className="flex-1">
@@ -221,7 +230,6 @@ export function DashboardHeader({
         >
           <Search className="h-5 w-5" />
         </button>
-
         {/* Dark mode toggle */}
         <TooltipProvider>
           <Tooltip>
@@ -279,27 +287,55 @@ export function DashboardHeader({
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
         {/* Notification bell with popover */}
-        <NotificationBell />
-
-        {/* Help button */}
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                className="hidden rounded-full p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100
-                  dark:text-gray-300 dark:hover:bg-gray-700 md:flex"
+        <NotificationBell /> {/* Help button with popover */}{" "}
+        <Popover>
+          <PopoverTrigger asChild>
+            <button
+              className="hidden rounded-full p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100
+                dark:text-gray-300 dark:hover:bg-gray-700 md:flex"
+            >
+              <HelpCircle className="h-5 w-5" />
+            </button>
+          </PopoverTrigger>
+          <PopoverContent className="w-80 p-0" align="end">
+            <div className="border-b border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-between p-4">
+                <h3 className="font-medium">Help & Support</h3>
+              </div>
+            </div>{" "}
+            <div className="max-h-80 overflow-y-auto">
+              <a
+                href="#"
+                className="block border-b border-gray-100 p-4 text-gray-900 transition-colors hover:bg-gray-50
+                  dark:border-gray-700 dark:text-white dark:hover:bg-gray-800"
               >
-                <HelpCircle className="h-5 w-5" />
+                Documentation
+              </a>
+              <a
+                href="#"
+                className="block border-b border-gray-100 p-4 text-gray-900 transition-colors hover:bg-gray-50
+                  dark:border-gray-700 dark:text-white dark:hover:bg-gray-800"
+              >
+                Contact Support
+              </a>
+              <a
+                href="#"
+                className="block p-4 text-gray-900 transition-colors hover:bg-gray-50 dark:text-white dark:hover:bg-gray-800"
+              >
+                FAQs
+              </a>
+            </div>
+            <div className="border-t border-gray-200 p-2 dark:border-gray-700">
+              <button
+                className="w-full rounded-md p-2 text-center text-sm font-medium text-gray-700 transition-colors
+                  hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              >
+                Visit help center
               </button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Help & Support</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-
+            </div>
+          </PopoverContent>
+        </Popover>
         {/* User dropdown */}
         <div className="group relative">
           <div
