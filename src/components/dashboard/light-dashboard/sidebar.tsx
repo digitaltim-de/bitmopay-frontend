@@ -1,11 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Wallet, X, Search, Sparkles } from "lucide-react";
+import { Wallet, X, Search, Sparkles, User, Settings, Key, LogOut } from "lucide-react";
 import { SidebarSection } from "@/config/sidebar-links";
+import { UpgradeProDialog } from "./upgrade-pro-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface SidebarProps {
   sidebarLinks: SidebarSection[];
@@ -15,6 +24,7 @@ interface SidebarProps {
 
 export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarProps) {
   const pathname = usePathname();
+  const [isUpgradeDialogOpen, setIsUpgradeDialogOpen] = useState(false);
 
   return (
     <>
@@ -50,26 +60,80 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
         </div>
 
         <div className="p-6">
+          {" "}
           {/* User profile section */}
-          <div className="mb-6 flex items-center">
-            <div className="relative mr-3">
-              <Avatar className="h-10 w-10 border-2 border-white dark:border-gray-800">
-                <AvatarImage src="/abstract-profile-avatar.png" alt="JD" />
-                <AvatarFallback className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white">
-                  JD
-                </AvatarFallback>
-              </Avatar>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
               <div
-                className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500
-                  dark:border-gray-800"
-              ></div>
-            </div>
-            <div>
-              <div className="font-medium text-gray-900 dark:text-white">John Doe</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400">Premium Account</div>
-            </div>
-          </div>
-
+                className="mb-6 flex w-full cursor-pointer items-center justify-between rounded-lg p-2 transition-colors
+                  hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <div className="relative mr-3">
+                  <Avatar className="h-10 w-10 border-2 border-white dark:border-gray-800">
+                    <AvatarImage src="/abstract-profile-avatar.png" alt="JD" />
+                    <AvatarFallback className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white">
+                      JD
+                    </AvatarFallback>
+                  </Avatar>
+                  <div
+                    className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500
+                      dark:border-gray-800"
+                  ></div>
+                </div>{" "}
+                <div className="flex-grow">
+                  <div className="font-medium text-gray-900 dark:text-white">John Doe</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Premium Account</div>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-1 text-gray-400"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/dashboard/settings/profile"
+                  className="flex cursor-pointer items-center"
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/settings" className="flex cursor-pointer items-center">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/dashboard/settings/api-keys"
+                  className="flex cursor-pointer items-center"
+                >
+                  <Key className="mr-2 h-4 w-4" />
+                  <span>API Keys</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/auth/logout" className="flex cursor-pointer items-center text-red-500">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           {/* Search bar */}
           <div className="relative mb-6">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -83,7 +147,6 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
                 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             />
           </div>
-
           {sidebarLinks.map((section, sectionIndex) => (
             <div key={sectionIndex}>
               <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -125,7 +188,6 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
               </nav>
             </div>
           ))}
-
           {/* Pro upgrade card */}
           <div className="mt-8 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 p-4 text-white shadow-lg">
             <div className="mb-2 flex items-center">
@@ -134,16 +196,20 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
             </div>
             <p className="mb-3 text-xs text-emerald-100">
               Get advanced features, lower fees, and priority support.
-            </p>
+            </p>{" "}
             <button
               className="w-full rounded-lg bg-white py-1.5 text-sm font-medium text-emerald-700 transition-colors
                 duration-200 hover:bg-emerald-50"
+              onClick={() => setIsUpgradeDialogOpen(true)}
             >
               Upgrade Now
             </button>
           </div>
         </div>
       </aside>
+
+      {/* Upgrade Pro Dialog */}
+      <UpgradeProDialog isOpen={isUpgradeDialogOpen} onOpenChange={setIsUpgradeDialogOpen} />
     </>
   );
 }
