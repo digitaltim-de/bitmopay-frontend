@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -69,43 +70,42 @@ export function HeaderSection() {
   const socialFeatures = [
     {
       title: "Twitter",
-      description: "Folgen Sie uns für die neuesten Updates und Ankündigungen.",
+      description: "Latest updates and announcements",
       icon: <Twitter className="h-6 w-6 text-blue-500" />,
       href: "https://twitter.com/bitmopay",
       color: "bg-blue-50",
     },
     {
       title: "Facebook",
-      description: "Verbinden Sie sich mit unserer Community und teilen Sie Ihre Erfahrungen.",
+      description: "Connect with our community",
       icon: <Facebook className="h-6 w-6 text-blue-600" />,
       href: "https://facebook.com/bitmopay",
       color: "bg-blue-50",
     },
     {
       title: "Discord",
-      description: "Treten Sie unserem Discord-Server bei für direkten Support und Diskussionen.",
+      description: "Join for direct support",
       icon: <Discord className="h-6 w-6 text-indigo-500" />,
       href: "https://discord.gg/bitmopay",
       color: "bg-indigo-50",
     },
     {
       title: "Instagram",
-      description: "Sehen Sie unsere visuellen Updates und Geschichten.",
+      description: "Visual updates and stories",
       icon: <Instagram className="h-6 w-6 text-pink-500" />,
       href: "https://instagram.com/bitmopay",
       color: "bg-pink-50",
     },
     {
       title: "LinkedIn",
-      description:
-        "Vernetzen Sie sich beruflich und bleiben Sie über Karrieremöglichkeiten informiert.",
+      description: "Professional networking",
       icon: <Linkedin className="h-6 w-6 text-blue-700" />,
       href: "https://linkedin.com/company/bitmopay",
       color: "bg-blue-50",
     },
     {
       title: "GitHub",
-      description: "Entdecken Sie unsere Open-Source-Projekte und tragen Sie bei.",
+      description: "Open-source projects",
       icon: <Github className="h-6 w-6 text-gray-800" />,
       href: "https://github.com/bitmopay",
       color: "bg-gray-50",
@@ -115,51 +115,50 @@ export function HeaderSection() {
   const paymentFeatures = [
     {
       title: "Payment",
-      description: "Securely manage your payments with our convenient options.",
+      description: "Secure payment options",
       icon: <CreditCard className="h-6 w-6 text-blue-500" />,
       href: "#payment",
       color: "bg-blue-50",
     },
     {
       title: "Security",
-      description: "Protect your transactions with our advanced security features.",
+      description: "Advanced security features",
       icon: <Shield className="h-6 w-6 text-green-500" />,
       href: "#security",
       color: "bg-green-50",
     },
     {
       title: "Wallet",
-      description: "Effortlessly store and access your funds anytime, anywhere.",
+      description: "Access funds anywhere",
       icon: <Wallet className="h-6 w-6 text-red-500" />,
       href: "#wallet",
       color: "bg-red-50",
     },
     {
       title: "Invoice",
-      description: "Simplify your billing process with our user-friendly invoicing tools.",
+      description: "User-friendly invoicing",
       icon: <FileText className="h-6 w-6 text-yellow-500" />,
       href: "#invoice",
       color: "bg-yellow-50",
     },
     {
       title: "Contactless",
-      description: "Experience fast and easy payments with contactless technology.",
+      description: "Fast contactless payments",
       icon: <Smartphone className="h-6 w-6 text-purple-500" />,
       href: "#contactless",
       color: "bg-purple-50",
     },
     {
       title: "Checkout",
-      description: "Streamline your purchase process with our seamless checkout.",
+      description: "Seamless checkout process",
       icon: <ShoppingCart className="h-6 w-6 text-pink-500" />,
       href: "#checkout",
       color: "bg-pink-50",
     },
   ];
-
   // Helper function to get icon component based on icon name
   const getIconComponent = (iconName: string) => {
-    const iconMap: Record<string, JSX.Element> = {
+    const iconMap: Record<string, React.ReactNode> = {
       ShoppingCart: <ShoppingCart className="h-6 w-6 text-blue-500" />,
       ShoppingBag: <ShoppingBag className="h-6 w-6 text-blue-500" />,
       FileDigit: <FileDigit className="h-6 w-6 text-green-500" />,
@@ -215,42 +214,42 @@ export function HeaderSection() {
   const moreFeatures = [
     {
       title: "Crypto Checkout",
-      description: "Accept crypto instantly with no chargebacks",
+      description: "Accept crypto instantly",
       icon: <CreditCard className="h-6 w-6 text-emerald-500" />,
       href: "/solutions/checkout",
       color: "bg-emerald-50",
     },
     {
       title: "Crypto Subscriptions",
-      description: "Recurring crypto payments for SaaS & platforms",
+      description: "Recurring crypto payments",
       icon: <RefreshCw className="h-6 w-6 text-blue-500" />,
       href: "/solutions/subscriptions",
       color: "bg-blue-50",
     },
     {
       title: "Buyer Protection",
-      description: "Optional escrow for trust & transparency",
+      description: "Escrow for transparency",
       icon: <ShieldCheck className="h-6 w-6 text-amber-500" />,
       href: "/solutions/buyer-protection",
       color: "bg-amber-50",
     },
     {
       title: "Become a Partner",
-      description: "Join our partner program and grow together",
+      description: "Join our partner program",
       icon: <Users className="h-6 w-6 text-emerald-500" />,
       href: "/become-partner",
       color: "bg-emerald-50",
     },
     {
       title: "Resources",
-      description: "Find helpful resources and materials",
+      description: "Helpful materials",
       icon: <FileText className="h-6 w-6 text-yellow-500" />,
       href: "/resources",
       color: "bg-yellow-50",
     },
     {
       title: "FAQ",
-      description: "Get answers to frequently asked questions",
+      description: "Frequently asked questions",
       icon: <HelpCircle className="h-6 w-6 text-pink-500" />,
       href: "/faq",
       color: "bg-pink-50",
@@ -451,11 +450,10 @@ export function HeaderSection() {
                 aria-label="Contact"
               >
                 <MessageCircle className="h-5 w-5" />
-              </button>
-
+              </button>{" "}
               {activeMenu === "Contact" && (
                 <div
-                  className="absolute right-0 z-10 mt-3 w-[680px] transform px-2 sm:px-0"
+                  className="absolute right-0 z-10 mt-2 w-[500px] transform px-1 sm:px-0"
                   onMouseEnter={() => {
                     if (contactTimeoutRef.current) {
                       clearTimeout(contactTimeoutRef.current);
@@ -468,47 +466,46 @@ export function HeaderSection() {
                     }, 500);
                   }}
                 >
-                  <div className="overflow-hidden rounded-lg shadow-xl ring-1 ring-black ring-opacity-5">
-                    <div className="relative bg-white p-6">
-                      <div className="mb-4">
-                        <h3 className="text-lg font-medium text-gray-900">Get in Touch</h3>
-                        <p className="text-sm text-gray-500">
-                          We're here to help with any questions
-                        </p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
+                  {" "}
+                  <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-md">
+                    <div className="relative border-b border-gray-100 px-4 py-3">
+                      <h3 className="text-sm font-bold text-gray-800">Get in Touch</h3>
+                      <p className="text-xs text-gray-500">We're here to help with any questions</p>
+                    </div>
+                    <div className="p-3">
+                      <div className="grid grid-cols-2 gap-3">
                         {socialFeatures.map((feature) => (
                           <Link
                             key={feature.title}
                             href={feature.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                            className="flex items-center px-3 py-2 transition-all hover:bg-gray-50"
                           >
-                            <div
-                              className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md ${feature.color}`}
-                            >
+                            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center text-blue-500">
                               {feature.icon}
                             </div>
-                            <div className="ml-4">
-                              <p className="flex items-center text-sm font-medium text-gray-900">
+                            <div className="ml-3 flex-1">
+                              <p className="flex items-center text-sm font-bold text-gray-700">
                                 {feature.title}
                                 <ExternalLink className="ml-1 h-3 w-3 text-gray-400" />
                               </p>
-                              <p className="mt-1 text-xs text-gray-500">{feature.description}</p>
+                              <p className="text-xs text-gray-500">{feature.description}</p>
                             </div>
                           </Link>
                         ))}
+                      </div>{" "}
+                      <div className="mt-2 border-t border-gray-100 pt-3">
                         <Link
                           href="/contact"
-                          className="col-span-2 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                          className="flex items-center rounded-md px-3 py-2 transition-all hover:bg-gray-50"
                         >
-                          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-emerald-50">
-                            <Mail className="h-6 w-6 text-emerald-600" />
+                          <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center text-emerald-500">
+                            <Mail className="h-6 w-6" />
                           </div>
-                          <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-900">Contact Form</p>
-                            <p className="mt-1 text-xs text-gray-500">Send us a message directly</p>
+                          <div className="ml-3">
+                            <p className="text-sm font-bold text-gray-800">Contact Form</p>
+                            <p className="text-xs text-gray-500">Send us a message directly</p>
                           </div>
                         </Link>
                       </div>
@@ -767,15 +764,25 @@ function NavItem({
           </>
         ) : (
           children && React.Children.toArray(children)[0]
-        )}
-      </Link>
+        )}{" "}
+      </Link>{" "}
       {hasDropdown && activeMenu === label && (
         <div
-          className="absolute z-10 mt-3 w-screen max-w-4xl px-2 sm:px-0"
-          style={{
-            left: dropdownPosition.left,
-            transform: dropdownPosition.transform,
-          }}
+          className={`absolute z-10 mt-2 px-1 sm:px-0 ${
+          label === "Contact"
+              ? "right-0 w-[500px]"
+              : label === "More"
+                ? "right-0 w-[180px]"
+                : "w-screen max-w-[380px]"
+          }`}
+          style={
+            label !== "Contact" && label !== "More"
+              ? {
+                  left: dropdownPosition.left,
+                  transform: dropdownPosition.transform,
+                }
+              : undefined
+          }
           onMouseEnter={() => {
             if (timeoutRef.current) {
               clearTimeout(timeoutRef.current);
@@ -784,42 +791,113 @@ function NavItem({
           }}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-            <div className="relative grid grid-cols-3 gap-6 bg-white p-6 sm:gap-8 sm:p-8">
-              {getFeatures(label || "").map((feature) => (
-                <Link
-                  key={feature.title}
-                  href={feature.href}
-                  className={`-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50
-                  ${feature.color}`}
-                >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md sm:h-12 sm:w-12">
-                    {feature.icon}
+          <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-md">
+            {label === "Contact" ? (
+              <>
+                <div className="relative border-b border-gray-100 px-4 py-3">
+                  <h3 className="text-sm font-bold text-gray-800">Get in Touch</h3>
+                  <p className="text-xs text-gray-500">We're here to help with any questions</p>
+                </div>
+                <div className="p-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    {getFeatures &&
+                      getFeatures(label).map((feature) => (
+                        <Link
+                          key={feature.title}
+                          href={feature.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center rounded-md px-3 py-2 transition-all hover:bg-gray-50"
+                        >
+                          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center">
+                            {feature.icon}
+                          </div>
+                          <div className="ml-3 flex-1">
+                            <p className="flex items-center text-sm font-bold text-gray-800">
+                              {feature.title}
+                              <ExternalLink className="ml-1 h-3 w-3 text-gray-400" />
+                            </p>
+                            <p className="text-xs text-gray-500">{feature.description}</p>
+                          </div>
+                        </Link>
+                      ))}
                   </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900">{feature.title}</p>
-                    <p className="mt-1 text-xs text-gray-500">{feature.description}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="bg-gray-50 p-5 sm:p-8">
-              <div className="flow-root">
-                <div className="-m-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">Ready to get started?</p>
-                      <p className="text-sm text-gray-500">
-                        Take the first step towards hassle-free transactions today.
-                      </p>
-                    </div>
-                    <Button className="bg-blue-500 text-gray-950 hover:bg-blue-600">
-                      Get free access
-                    </Button>
+                  <div className="mt-1 border-t border-gray-100 pt-2">
+                    <Link
+                      href="/contact"
+                      className="flex items-center rounded-md px-3 py-2 transition-all hover:bg-gray-50"
+                    >
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center text-emerald-500">
+                        <Mail className="h-6 w-6" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-bold text-gray-800">Contact Form</p>
+                        <p className="text-xs text-gray-500">Send us a message directly</p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
-              </div>
-            </div>
+              </>
+            ) : (
+              <>
+                {" "}
+                <div className="relative py-2">
+                  {getFeatures &&
+                    getFeatures(label || "").map((feature) => (
+                      <Link
+                        key={feature.title}
+                        href={feature.href}
+                        className={`flex items-center rounded-md transition-all hover:bg-gray-50
+                          ${label === "More" ? "mx-1 px-2 py-2" : "mx-2 px-4 py-3"}`}
+                      >
+                        <div
+                          className={`flex flex-shrink-0 items-center justify-center
+                            ${label === "More" ? "h-5 w-5 text-inherit" : "h-8 w-8"}`}
+                        >
+                          {feature.icon}
+                        </div>
+                        <div className={`ml-3 flex-1 ${label === "More" ? "min-w-0" : ""}`}>
+                          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold text-gray-800">
+                            {feature.title}
+                          </p>
+                          <p
+                            className={`text-gray-500 ${label === "More" ? "text-[10px]" : "text-xs"} overflow-hidden text-ellipsis
+                              whitespace-nowrap`}
+                          >
+                            {feature.description}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                </div>{" "}
+                {label === "More" && (
+                  <div className="border-t border-gray-100 bg-gray-50 px-2 py-1.5">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-xs font-bold text-gray-800">Ready to get started?</p>
+                      <Button
+                        size="sm"
+                        className="w-full bg-[#E3FE53] py-0.5 text-xs text-gray-900 hover:bg-[#d5ef4a]"
+                      >
+                        Get free access
+                      </Button>
+                    </div>
+                  </div>
+                )}
+                {label !== "More" && (
+                  <div className="border-t border-gray-100 bg-gray-50 p-3">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-bold text-gray-800">Ready to get started?</p>
+                      <Button
+                        size="sm"
+                        className="bg-emerald-500 px-3 text-xs text-white hover:bg-emerald-600"
+                      >
+                        Get free access
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       )}
@@ -862,24 +940,24 @@ function MobileNavItem({
             <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
           </div>
         </div>{" "}
-        <div className="mt-3 grid grid-cols-1 gap-4 overflow-x-hidden sm:grid-cols-2">
+        <div className="mt-3 grid grid-cols-1 gap-3 overflow-x-hidden sm:grid-cols-2">
           {features.map((feature) => (
             <Link
               key={feature.title}
               href={feature.href}
               target={feature.href.startsWith("http") ? "_blank" : undefined}
               rel={feature.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="flex items-center rounded-md p-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center rounded-md p-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
               <span
-                className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-emerald-100
-                  text-emerald-600 dark:bg-gray-700 dark:text-emerald-400"
+                className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-emerald-600
+                  dark:text-emerald-400"
               >
                 {feature.icon}
-              </span>
+              </span>{" "}
               <div className="min-w-0 flex-1">
-                <div className="overflow-hidden text-ellipsis whitespace-nowrap font-medium text-gray-800 dark:text-white">
+                <div className="overflow-hidden text-ellipsis whitespace-nowrap font-bold text-gray-800 dark:text-white">
                   {feature.title}
                 </div>
                 <div className="overflow-hidden text-ellipsis text-xs text-gray-500 dark:text-gray-300">
