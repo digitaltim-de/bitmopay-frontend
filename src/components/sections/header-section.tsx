@@ -235,25 +235,11 @@ export function HeaderSection() {
       color: "bg-amber-50",
     },
     {
-      title: "Pricing",
-      description: "Explore our pricing plans and packages",
-      icon: <CreditCard className="h-6 w-6 text-blue-500" />,
-      href: "/pricing",
-      color: "bg-blue-50",
-    },
-    {
       title: "Become a Partner",
       description: "Join our partner program and grow together",
       icon: <Users className="h-6 w-6 text-emerald-500" />,
       href: "/become-partner",
       color: "bg-emerald-50",
-    },
-    {
-      title: "Documentation",
-      description: "Access technical guides and API documentation",
-      icon: <BookOpen className="h-6 w-6 text-purple-500" />,
-      href: "/documentation",
-      color: "bg-purple-50",
     },
     {
       title: "Resources",
@@ -408,6 +394,22 @@ export function HeaderSection() {
                 href="/solutions"
                 label="Solutions"
                 hasDropdown
+                isScrolled={isScrolled}
+                setActiveMenu={setActiveMenu}
+                activeMenu={activeMenu}
+                getFeatures={getFeatures}
+              />
+              <NavItem
+                href="/pricing"
+                label="Pricing"
+                isScrolled={isScrolled}
+                setActiveMenu={setActiveMenu}
+                activeMenu={activeMenu}
+                getFeatures={getFeatures}
+              />
+              <NavItem
+                href="/documentation"
+                label="Documentation"
                 isScrolled={isScrolled}
                 setActiveMenu={setActiveMenu}
                 activeMenu={activeMenu}
@@ -569,18 +571,31 @@ export function HeaderSection() {
           {" "}
           <nav className="flex flex-col space-y-5">
             <MobileNavItem href="/solutions" label="Solutions" getFeatures={getFeatures} />
+            <div className="py-1">
+              <Link
+                href="/pricing"
+                className="flex w-full items-center justify-center rounded-md p-2 text-lg font-medium text-gray-800
+                  transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <CreditCard className="mr-2 h-5 w-5 text-emerald-500" />
+                Pricing
+              </Link>
+            </div>
+            <div className="py-1">
+              <Link
+                href="/documentation"
+                className="flex w-full items-center justify-center rounded-md p-2 text-lg font-medium text-gray-800
+                  transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <BookOpen className="mr-2 h-5 w-5 text-emerald-500" />
+                Documentation
+              </Link>
+            </div>
             <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>
               {" "}
               <div className="mt-2 grid grid-cols-1 gap-3">
-                <Link
-                  href="/pricing"
-                  className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
-                    dark:text-gray-200 dark:hover:bg-gray-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <CreditCard className="mr-2 h-4 w-4 text-emerald-500" />
-                  Pricing
-                </Link>
                 <Link
                   href="/become-partner"
                   className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
@@ -598,15 +613,6 @@ export function HeaderSection() {
                 >
                   <FileText className="mr-2 h-4 w-4 text-emerald-500" />
                   Resources
-                </Link>
-                <Link
-                  href="/docs"
-                  className="flex items-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100
-                    dark:text-gray-200 dark:hover:bg-gray-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <BookOpen className="mr-2 h-4 w-4 text-emerald-500" />
-                  Documentation
                 </Link>
                 <Link
                   href="/faq"
