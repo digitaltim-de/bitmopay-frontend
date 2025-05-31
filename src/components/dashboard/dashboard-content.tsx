@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import {
   BarChart,
   Bell,
@@ -46,8 +46,8 @@ import {
   Info,
   Calendar,
   Plus,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   AreaChart,
   Area,
@@ -63,43 +63,49 @@ import {
   Cell,
   LineChart as RechartsLineChart,
   Line,
-} from "recharts"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Calendar as CalendarComponent } from "@/components/ui/calendar"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { format } from "date-fns"
-import { de } from "date-fns/locale"
+} from "recharts";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
 
 export function DashboardContent() {
-  const [showNotification, setShowNotification] = useState(true)
-  const [activeTimeRange, setActiveTimeRange] = useState("30d")
-  const [isLoading, setIsLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState("overview")
-  const [date, setDate] = useState<Date | undefined>(new Date())
-  const [chartView, setChartView] = useState<"area" | "bar" | "line">("area")
-  const [selectedCoin, setSelectedCoin] = useState<string>("all")
+  const [showNotification, setShowNotification] = useState(true);
+  const [activeTimeRange, setActiveTimeRange] = useState("30d");
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [chartView, setChartView] = useState<"area" | "bar" | "line">("area");
+  const [selectedCoin, setSelectedCoin] = useState<string>("all");
 
   // Simulate loading state
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Funktion zum Filtern der Daten basierend auf dem ausgewählten Coin
   const getFilteredData = (data: any[], coin: string) => {
-    if (coin === "all") return data
-    return data.filter((item) => item.coin === coin)
-  }
+    if (coin === "all") return data;
+    return data.filter((item) => item.coin === coin);
+  };
 
   // Funktion zum Filtern der Chart-Daten (simuliert)
   const getFilteredChartData = (data: any[], coin: string) => {
-    if (coin === "all") return data
+    if (coin === "all") return data;
 
     // In einer echten Anwendung würden hier die tatsächlichen Daten gefiltert
     // Hier simulieren wir gefilterte Daten für verschiedene Coins
@@ -109,32 +115,32 @@ export function DashboardContent() {
         volume: Math.round(item.volume * 0.6),
         transactions: Math.round(item.transactions * 0.5),
         customers: Math.round(item.customers * 0.4),
-      }))
+      }));
     } else if (coin === "ETH") {
       return data.map((item) => ({
         ...item,
         volume: Math.round(item.volume * 0.3),
         transactions: Math.round(item.transactions * 0.4),
         customers: Math.round(item.customers * 0.5),
-      }))
+      }));
     } else if (coin === "USDC") {
       return data.map((item) => ({
         ...item,
         volume: Math.round(item.volume * 0.1),
         transactions: Math.round(item.transactions * 0.2),
         customers: Math.round(item.customers * 0.3),
-      }))
+      }));
     } else if (coin === "SOL") {
       return data.map((item) => ({
         ...item,
         volume: Math.round(item.volume * 0.2),
         transactions: Math.round(item.transactions * 0.1),
         customers: Math.round(item.customers * 0.2),
-      }))
+      }));
     }
 
-    return data
-  }
+    return data;
+  };
 
   // Sample data for the area chart
   const areaChartData = [
@@ -150,7 +156,7 @@ export function DashboardContent() {
     { date: "Feb 15", volume: 4100, transactions: 26, customers: 18 },
     { date: "Feb 20", volume: 4500, transactions: 28, customers: 20 },
     { date: "Feb 25", volume: 5200, transactions: 34, customers: 24 },
-  ]
+  ];
 
   // Sample data for the bar chart
   const barChartData = [
@@ -159,16 +165,16 @@ export function DashboardContent() {
     { name: "USDT", value: 2500, change: -2.1 },
     { name: "SOL", value: 1800, change: 15.7 },
     { name: "USDC", value: 1200, change: 1.2 },
-  ]
+  ];
 
   // Sample data for the pie chart
   const pieChartData = [
     { name: "Success", value: 85 },
     { name: "Pending", value: 10 },
     { name: "Failed", value: 5 },
-  ]
+  ];
 
-  const COLORS = ["#10b981", "#f59e0b", "#ef4444"]
+  const COLORS = ["#10b981", "#f59e0b", "#ef4444"];
 
   // Sample data for recent payments
   const recentPayments = [
@@ -222,7 +228,7 @@ export function DashboardContent() {
       email: "david@example.com",
       method: "On-chain",
     },
-  ]
+  ];
 
   // Sample data for growth metrics
   const growthMetrics = [
@@ -230,7 +236,7 @@ export function DashboardContent() {
     { label: "New Customers", value: "+8.3%", trend: "up", previousValue: "+5.7%" },
     { label: "Avg. Transaction", value: "$245", trend: "up", previousValue: "$210" },
     { label: "Conversion Rate", value: "3.2%", trend: "down", previousValue: "3.8%" },
-  ]
+  ];
 
   // Sample data for upcoming payments
   const upcomingPayments = [
@@ -258,26 +264,32 @@ export function DashboardContent() {
       customer: "Michael Davis",
       type: "Monthly Subscription",
     },
-  ]
+  ];
 
   return isLoading ? (
     <div className="flex flex-col space-y-4">
-      <div className="h-8 w-64 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"></div>
+      <div className="h-8 w-64 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"></div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-24 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+          <div key={i} className="h-24 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
         ))}
       </div>
-      <div className="h-80 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse mt-2"></div>
+      <div className="mt-2 h-80 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
     </div>
   ) : (
     <>
       {/* Notification Banner */}
       {showNotification && (
-        <div className="mb-6 overflow-hidden rounded-lg border border-emerald-200 dark:border-emerald-800 bg-gradient-to-r from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30 shadow-sm">
+        <div
+          className="mb-6 overflow-hidden rounded-lg border border-emerald-200 bg-gradient-to-r from-emerald-50
+            to-emerald-100 shadow-sm dark:border-emerald-800 dark:from-emerald-900/30 dark:to-emerald-800/30"
+        >
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-800 shadow-inner">
+              <div
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 shadow-inner
+                  dark:bg-emerald-800"
+              >
                 <Zap className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />
               </div>
               <div>
@@ -292,13 +304,15 @@ export function DashboardContent() {
             <div className="flex items-center space-x-3">
               <a
                 href="#"
-                className="hidden text-sm font-medium text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 transition-colors duration-200 sm:inline-block"
+                className="hidden text-sm font-medium text-emerald-700 transition-colors duration-200 hover:text-emerald-800
+                  dark:text-emerald-400 dark:hover:text-emerald-300 sm:inline-block"
               >
                 Learn more
               </a>
               <button
                 onClick={() => setShowNotification(false)}
-                className="rounded-full p-1.5 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-800 hover:text-emerald-800 dark:hover:text-emerald-300 transition-colors duration-200"
+                className="rounded-full p-1.5 text-emerald-600 transition-colors duration-200 hover:bg-emerald-200
+                  hover:text-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-800 dark:hover:text-emerald-300"
                 aria-label="Dismiss"
               >
                 <X className="h-4 w-4" />
@@ -310,8 +324,12 @@ export function DashboardContent() {
       )}
 
       {/* Dashboard Tabs */}
-      <Tabs defaultValue="overview" className="mb-6" onValueChange={(value) => setActiveTab(value as string)}>
-        <TabsList className="grid w-full grid-cols-3 md:w-auto md:inline-flex">
+      <Tabs
+        defaultValue="overview"
+        className="mb-6"
+        onValueChange={(value) => setActiveTab(value as string)}
+      >
+        <TabsList className="grid w-full grid-cols-3 md:inline-flex md:w-auto">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="transactions">Transactions</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -319,50 +337,59 @@ export function DashboardContent() {
 
         <TabsContent value="overview" className="mt-4">
           {/* Filter und Suchbereich */}
-          <div className="mb-6 flex flex-wrap items-center justify-between bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-            <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-0">
+          <div
+            className="mb-6 flex flex-wrap items-center justify-between rounded-xl border border-gray-100 bg-white p-4
+              shadow-sm dark:border-gray-700 dark:bg-gray-800"
+          >
+            <div className="mb-2 flex flex-wrap items-center gap-2 sm:mb-0">
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    className="h-9 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center"
+                    className="flex h-9 items-center border-gray-200 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-600
+                      dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                   >
                     <Calendar className="mr-2 h-4 w-4" />
                     {date ? format(date, "PPP", { locale: de }) : "Datum wählen"}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 dark:bg-gray-800 dark:border-gray-700">
-                  <CalendarComponent mode="single" selected={date} onSelect={setDate} initialFocus />
+                <PopoverContent className="w-auto p-0 dark:border-gray-700 dark:bg-gray-800">
+                  <CalendarComponent
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    initialFocus
+                  />
                 </PopoverContent>
               </Popover>
 
-              <div className="flex rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div className="flex overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
                 <button
-                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 ${
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                     activeTimeRange === "7d"
-                      ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                  }`}
+                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"
+                      : "text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                    }`}
                   onClick={() => setActiveTimeRange("7d")}
                 >
                   7D
                 </button>
                 <button
-                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 ${
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                     activeTimeRange === "30d"
-                      ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                  }`}
+                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"
+                      : "text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                    }`}
                   onClick={() => setActiveTimeRange("30d")}
                 >
                   30D
                 </button>
                 <button
-                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 ${
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                     activeTimeRange === "90d"
-                      ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                  }`}
+                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"
+                      : "text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
+                    }`}
                   onClick={() => setActiveTimeRange("90d")}
                 >
                   90D
@@ -372,18 +399,23 @@ export function DashboardContent() {
 
             <div className="flex items-center gap-2">
               <div className="relative hidden md:block">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <Search className="h-4 w-4 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   placeholder="Search transactions..."
-                  className="w-full py-2 pl-10 pr-4 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 dark:text-white dark:placeholder-gray-400"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-10 pr-4 text-sm transition-all
+                    duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-emerald-500
+                    dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                 />
               </div>
 
               <Select value={selectedCoin} onValueChange={setSelectedCoin}>
-                <SelectTrigger className="w-[130px] border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <SelectTrigger
+                  className="w-[130px] border-gray-200 bg-white text-gray-700 dark:border-gray-600 dark:bg-gray-800
+                    dark:text-gray-300"
+                >
                   <SelectValue placeholder="All Coins" />
                 </SelectTrigger>
                 <SelectContent>
@@ -394,80 +426,29 @@ export function DashboardContent() {
                   <SelectItem value="SOL">Solana</SelectItem>
                 </SelectContent>
               </Select>
-
-              <div className="flex items-center">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="h-9 w-9 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                        onClick={() => setChartView("area")}
-                      >
-                        <BarChart className={`h-4 w-4 ${chartView === "area" ? "text-emerald-600 dark:text-emerald-400" : ""}`} />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Area Chart</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="h-9 w-9 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                        onClick={() => setChartView("bar")}
-                      >
-                        <BarChart3 className={`h-4 w-4 ${chartView === "bar" ? "text-emerald-600 dark:text-emerald-400" : ""}`} />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Bar Chart</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="h-9 w-9 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                        onClick={() => setChartView("line")}
-                      >
-                        <LineChart className={`h-4 w-4 ${chartView === "line" ? "text-emerald-600 dark:text-emerald-400" : ""}`} />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Line Chart</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
             </div>
           </div>
 
           {/* KPI Karten */}
-          <div className="grid gap-6 mb-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {/* Karte 1: Zahlungsvolumen */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
-                    <div className="mr-3 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 p-2">
+                    <div className="mr-3 rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/50">
                       <CreditCard className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                     </div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Payment Volume</h3>
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      Payment Volume
+                    </h3>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center">
-                      <ArrowUp className="h-3 w-3 mr-1" />
+                    <span className="flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                      <ArrowUp className="mr-1 h-3 w-3" />
                       12.5%
                     </span>
                   </div>
@@ -503,18 +484,23 @@ export function DashboardContent() {
             </div>
 
             {/* Karte 2: Abonnements */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
-                    <div className="mr-3 rounded-lg bg-blue-100 dark:bg-blue-900/50 p-2">
+                    <div className="mr-3 rounded-lg bg-blue-100 p-2 dark:bg-blue-900/50">
                       <Repeat className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Subscriptions</h3>
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      Subscriptions
+                    </h3>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-xs font-medium text-blue-600 dark:text-blue-400 flex items-center">
-                      <ArrowUp className="h-3 w-3 mr-1" />
+                    <span className="flex items-center text-xs font-medium text-blue-600 dark:text-blue-400">
+                      <ArrowUp className="mr-1 h-3 w-3" />
                       8.3%
                     </span>
                   </div>
@@ -550,18 +536,23 @@ export function DashboardContent() {
             </div>
 
             {/* Karte 3: Kunden */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
-                    <div className="mr-3 rounded-lg bg-purple-100 dark:bg-purple-900/50 p-2">
+                    <div className="mr-3 rounded-lg bg-purple-100 p-2 dark:bg-purple-900/50">
                       <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Customers</h3>
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      Customers
+                    </h3>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-xs font-medium text-purple-600 dark:text-purple-400 flex items-center">
-                      <ArrowUp className="h-3 w-3 mr-1" />
+                    <span className="flex items-center text-xs font-medium text-purple-600 dark:text-purple-400">
+                      <ArrowUp className="mr-1 h-3 w-3" />
                       5.2%
                     </span>
                   </div>
@@ -597,57 +588,59 @@ export function DashboardContent() {
             </div>
 
             {/* Karte 4: API-Gesundheit */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
-              <div className="flex items-center justify-between mb-4">
+            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+              <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="mr-3 rounded-lg bg-green-100 dark:bg-green-900/50 p-2">
+                  <div className="mr-3 rounded-lg bg-green-100 p-2 dark:bg-green-900/50">
                     <Activity className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">API Health</h3>
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    API Health
+                  </h3>
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center justify-between mb-2">
+                <div className="mb-2 flex items-center justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Uptime</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">99.98%</span>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-4">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: "99.98%" }}></div>
+                <div className="mb-4 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                  <div className="h-2 rounded-full bg-green-500" style={{ width: "99.98%" }}></div>
                 </div>
-                <div className="flex items-center justify-between mb-2">
+                <div className="mb-2 flex items-center justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Response Time</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">124ms</span>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-4">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: "85%" }}></div>
+                <div className="mb-4 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                  <div className="h-2 rounded-full bg-green-500" style={{ width: "85%" }}></div>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Error Rate</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">0.02%</span>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: "0.5%" }}></div>
+                <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                  <div className="h-2 rounded-full bg-green-500" style={{ width: "0.5%" }}></div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Hauptdiagramm */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6 mb-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <div className="mb-6 rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
               <div>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">Payment Volume</h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Overview of your payment volume over time
                 </p>
               </div>
-              <div className="mt-4 md:mt-0 flex items-center space-x-2">
+              <div className="mt-4 flex items-center space-x-2 md:mt-0">
                 <Badge variant="outline" className="text-xs font-normal">
-                  <ArrowUp className="h-3 w-3 mr-1 text-emerald-500" />
+                  <ArrowUp className="mr-1 h-3 w-3 text-emerald-500" />
                   12.5% from last period
                 </Badge>
                 <Button variant="outline" size="sm" className="h-8 px-2 text-xs">
-                  <Download className="h-3 w-3 mr-1" />
+                  <Download className="mr-1 h-3 w-3" />
                   Export
                 </Button>
               </div>
@@ -763,13 +756,22 @@ export function DashboardContent() {
           </div>
 
           {/* Unterer Bereich: Letzte Zahlungen und Wachstumsmetriken */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Letzte Zahlungen */}
-            <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-              <div className="p-6 border-b border-gray-100 dark:border-gray-700">
+            <div
+              className="rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800
+                lg:col-span-2"
+            >
+              <div className="border-b border-gray-100 p-6 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-white">Recent Payments</h2>
-                  <Button variant="ghost" size="sm" className="text-xs h-8 px-2 text-gray-600 dark:text-gray-400">
+                  <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+                    Recent Payments
+                  </h2>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 px-2 text-xs text-gray-600 dark:text-gray-400"
+                  >
                     View All
                     <ArrowRight className="ml-1 h-3 w-3" />
                   </Button>
@@ -779,69 +781,92 @@ export function DashboardContent() {
                 <table className="w-full">
                   <thead>
                     <tr className="bg-gray-50 dark:bg-gray-700/50">
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Transaction
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Customer
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Amount
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Method
                       </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                     {recentPayments.map((payment) => (
-                      <tr key={payment.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                      <tr
+                        key={payment.id}
+                        className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                      >
+                        <td className="whitespace-nowrap px-6 py-4">
                           <div className="flex items-center">
-                            <div className="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-3">
-                              {payment.coin === "BTC" && <div className="text-amber-500 text-xs font-bold">₿</div>}
-                              {payment.coin === "ETH" && <div className="text-blue-500 text-xs font-bold">Ξ</div>}
-                              {payment.coin === "USDC" && <div className="text-blue-500 text-xs font-bold">$</div>}
-                              {payment.coin === "SOL" && <div className="text-purple-500 text-xs font-bold">◎</div>}
+                            <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
+                              {payment.coin === "BTC" && (
+                                <div className="text-xs font-bold text-amber-500">₿</div>
+                              )}
+                              {payment.coin === "ETH" && (
+                                <div className="text-xs font-bold text-blue-500">Ξ</div>
+                              )}
+                              {payment.coin === "USDC" && (
+                                <div className="text-xs font-bold text-blue-500">$</div>
+                              )}
+                              {payment.coin === "SOL" && (
+                                <div className="text-xs font-bold text-purple-500">◎</div>
+                              )}
                             </div>
                             <div>
-                              <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.id}</div>
-                              <div className="text-xs text-gray-500 dark:text-gray-400">{payment.date}</div>
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
+                                {payment.id}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                {payment.date}
+                              </div>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900 dark:text-white">{payment.customer}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{payment.email}</div>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm text-gray-900 dark:text-white">
+                            {payment.customer}
+                          </div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {payment.email}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.amount}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{payment.coin}</div>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">
+                            {payment.amount}
+                          </div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {payment.coin}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="whitespace-nowrap px-6 py-4">
                           {payment.status === "success" && (
                             <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                              <CheckCircle2 className="h-3 w-3 mr-1" />
+                              <CheckCircle2 className="mr-1 h-3 w-3" />
                               Success
                             </Badge>
                           )}
                           {payment.status === "pending" && (
                             <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
-                              <Clock className="h-3 w-3 mr-1" />
+                              <Clock className="mr-1 h-3 w-3" />
                               Pending
                             </Badge>
                           )}
                           {payment.status === "failed" && (
                             <Badge className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
-                              <XCircle className="h-3 w-3 mr-1" />
+                              <XCircle className="mr-1 h-3 w-3" />
                               Failed
                             </Badge>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
                           {payment.method}
                         </td>
                       </tr>
@@ -854,18 +879,20 @@ export function DashboardContent() {
             {/* Rechte Spalte: Wachstumsmetriken und Schnellaktionen */}
             <div className="space-y-6">
               {/* Wachstumsmetriken */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Growth Metrics</h2>
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+                  Growth Metrics
+                </h2>
                 <div className="space-y-4">
                   {growthMetrics.map((metric) => (
                     <div key={metric.label} className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div
-                          className={`h-8 w-8 rounded-full flex items-center justify-center mr-3 ${
+                          className={`mr-3 flex h-8 w-8 items-center justify-center rounded-full ${
                             metric.trend === "up"
-                              ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400"
-                              : "bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400"
-                          }`}
+                              ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400"
+                              : "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400"
+                            }`}
                         >
                           {metric.trend === "up" ? (
                             <ArrowUp className="h-4 w-4" />
@@ -874,79 +901,111 @@ export function DashboardContent() {
                           )}
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-white">{metric.label}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">vs. {metric.previousValue} last period</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">
+                            {metric.label}
+                          </div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            vs. {metric.previousValue} last period
+                          </div>
                         </div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 dark:text-white">{metric.value}</div>
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">
+                        {metric.value}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Schnellaktionen */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+                  Quick Actions
+                </h2>
                 <div className="grid grid-cols-2 gap-3">
-                  <Button variant="outline" className="h-auto py-3 px-4 justify-start text-left">
+                  <Button variant="outline" className="h-auto justify-start px-4 py-3 text-left">
                     <div className="flex flex-col items-start">
-                      <div className="flex items-center mb-1">
-                        <Plus className="h-4 w-4 mr-2 text-emerald-600 dark:text-emerald-400" />
+                      <div className="mb-1 flex items-center">
+                        <Plus className="mr-2 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                         <span className="font-medium">New Invoice</span>
                       </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Create a new invoice</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        Create a new invoice
+                      </span>
                     </div>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 px-4 justify-start text-left">
+                  <Button variant="outline" className="h-auto justify-start px-4 py-3 text-left">
                     <div className="flex flex-col items-start">
-                      <div className="flex items-center mb-1">
-                        <Wallet className="h-4 w-4 mr-2 text-emerald-600 dark:text-emerald-400" />
+                      <div className="mb-1 flex items-center">
+                        <Wallet className="mr-2 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                         <span className="font-medium">Add Wallet</span>
                       </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Connect a new wallet</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        Connect a new wallet
+                      </span>
                     </div>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 px-4 justify-start text-left">
+                  <Button variant="outline" className="h-auto justify-start px-4 py-3 text-left">
                     <div className="flex flex-col items-start">
-                      <div className="flex items-center mb-1">
-                        <Users className="h-4 w-4 mr-2 text-emerald-600 dark:text-emerald-400" />
+                      <div className="mb-1 flex items-center">
+                        <Users className="mr-2 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                         <span className="font-medium">Customers</span>
                       </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">View all customers</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        View all customers
+                      </span>
                     </div>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 px-4 justify-start text-left">
+                  <Button variant="outline" className="h-auto justify-start px-4 py-3 text-left">
                     <div className="flex flex-col items-start">
-                      <div className="flex items-center mb-1">
-                        <BarChart className="h-4 w-4 mr-2 text-emerald-600 dark:text-emerald-400" />
+                      <div className="mb-1 flex items-center">
+                        <BarChart className="mr-2 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                         <span className="font-medium">Analytics</span>
                       </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">View detailed reports</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        View detailed reports
+                      </span>
                     </div>
                   </Button>
                 </div>
               </div>
 
               {/* Bevorstehende Zahlungen */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Upcoming Payments</h2>
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+                  Upcoming Payments
+                </h2>
                 <div className="space-y-4">
                   {upcomingPayments.map((payment) => (
                     <div key={payment.id} className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-3">
-                          {payment.coin === "BTC" && <div className="text-amber-500 text-xs font-bold">₿</div>}
-                          {payment.coin === "ETH" && <div className="text-blue-500 text-xs font-bold">Ξ</div>}
-                          {payment.coin === "USDC" && <div className="text-blue-500 text-xs font-bold">$</div>}
+                        <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
+                          {payment.coin === "BTC" && (
+                            <div className="text-xs font-bold text-amber-500">₿</div>
+                          )}
+                          {payment.coin === "ETH" && (
+                            <div className="text-xs font-bold text-blue-500">Ξ</div>
+                          )}
+                          {payment.coin === "USDC" && (
+                            <div className="text-xs font-bold text-blue-500">$</div>
+                          )}
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.customer}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{payment.type}</div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">
+                            {payment.customer}
+                          </div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {payment.type}
+                          </div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.amount}</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">{payment.date}</div>
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">
+                          {payment.amount}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          {payment.date}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -957,10 +1016,12 @@ export function DashboardContent() {
         </TabsContent>
 
         <TabsContent value="transactions" className="mt-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Transaction History</h2>
-              <Button variant="outline" size="sm" className="text-xs h-8 px-2">
+          <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                Transaction History
+              </h2>
+              <Button variant="outline" size="sm" className="h-8 px-2 text-xs">
                 <Filter className="mr-1 h-3 w-3" />
                 Filter
               </Button>
@@ -969,64 +1030,79 @@ export function DashboardContent() {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-50 dark:bg-gray-700/50">
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Transaction ID
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Date
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Customer
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Amount
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                       Method
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                   {recentPayments.map((payment) => (
-                    <tr key={payment.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.id}</div>
+                    <tr
+                      key={payment.id}
+                      className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                    >
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">
+                          {payment.id}
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500 dark:text-gray-400">{payment.date}</div>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          {payment.date}
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900 dark:text-white">{payment.customer}</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">{payment.email}</div>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm text-gray-900 dark:text-white">
+                          {payment.customer}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          {payment.email}
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900 dark:text-white">{payment.amount}</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">{payment.coin}</div>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">
+                          {payment.amount}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          {payment.coin}
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="whitespace-nowrap px-6 py-4">
                         {payment.status === "success" && (
                           <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                            <CheckCircle2 className="h-3 w-3 mr-1" />
+                            <CheckCircle2 className="mr-1 h-3 w-3" />
                             Success
                           </Badge>
                         )}
                         {payment.status === "pending" && (
                           <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
-                            <Clock className="h-3 w-3 mr-1" />
+                            <Clock className="mr-1 h-3 w-3" />
                             Pending
                           </Badge>
                         )}
                         {payment.status === "failed" && (
                           <Badge className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
-                            <XCircle className="h-3 w-3 mr-1" />
+                            <XCircle className="mr-1 h-3 w-3" />
                             Failed
                           </Badge>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
                         {payment.method}
                       </td>
                     </tr>
@@ -1034,10 +1110,11 @@ export function DashboardContent() {
                 </tbody>
               </table>
             </div>
-            <div className="flex items-center justify-between mt-6">
+            <div className="mt-6 flex items-center justify-between">
               <div className="text-sm text-gray-500 dark:text-gray-400">
-                Showing <span className="font-medium">1</span> to <span className="font-medium">5</span> of{" "}
-                <span className="font-medium">42</span> results
+                Showing <span className="font-medium">1</span> to{" "}
+                <span className="font-medium">5</span> of <span className="font-medium">42</span>{" "}
+                results
               </div>
               <div className="flex items-center space-x-2">
                 <Button variant="outline" size="sm" className="h-8 w-8 p-0">
@@ -1052,17 +1129,18 @@ export function DashboardContent() {
         </TabsContent>
 
         <TabsContent value="analytics" className="mt-4">
-          <div className="text-center p-12 text-gray-500 dark:text-gray-400">
-            <BarChart3 className="h-12 w-12 mx-auto mb-4 text-gray-400 dark:text-gray-500" />
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+          <div className="p-12 text-center text-gray-500 dark:text-gray-400">
+            <BarChart3 className="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-500" />
+            <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-white">
               Analytics Dashboard Coming Soon
             </h3>
             <p>
-              We're working on a comprehensive analytics dashboard to help you track your payment performance.
+              We're working on a comprehensive analytics dashboard to help you track your payment
+              performance.
             </p>
           </div>
         </TabsContent>
       </Tabs>
     </>
-  )
+  );
 }
