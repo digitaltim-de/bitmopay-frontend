@@ -772,8 +772,8 @@ function NavItem({
           label === "Contact"
               ? "right-0 w-[500px]"
               : label === "More"
-                ? "right-0 w-[180px]"
-                : "w-screen max-w-[380px]"
+                ? "right-0 w-[300px]"
+                : "w-screen max-w-[400px]"
           }`}
           style={
             label !== "Contact" && label !== "More"
@@ -840,29 +840,25 @@ function NavItem({
               </>
             ) : (
               <>
-                {" "}
                 <div className="relative py-2">
                   {getFeatures &&
                     getFeatures(label || "").map((feature) => (
                       <Link
                         key={feature.title}
                         href={feature.href}
-                        className={`flex items-center rounded-md transition-all hover:bg-gray-50
+                        className={`flex items-start rounded-md transition-all hover:bg-gray-50
                           ${label === "More" ? "mx-1 px-2 py-2" : "mx-2 px-4 py-3"}`}
                       >
                         <div
-                          className={`flex flex-shrink-0 items-center justify-center
+                          className={`flex flex-shrink-0 items-center justify-center pt-0.5
                             ${label === "More" ? "h-5 w-5 text-inherit" : "h-8 w-8"}`}
                         >
                           {feature.icon}
                         </div>
                         <div className={`ml-3 flex-1 ${label === "More" ? "min-w-0" : ""}`}>
-                          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold text-gray-800">
-                            {feature.title}
-                          </p>
+                          <p className="text-sm font-bold text-gray-800">{feature.title}</p>
                           <p
-                            className={`text-gray-500 ${label === "More" ? "text-[10px]" : "text-xs"} overflow-hidden text-ellipsis
-                              whitespace-nowrap`}
+                            className={`text-gray-500 ${label === "More" ? "text-[10px]" : "text-xs"}`}
                           >
                             {feature.description}
                           </p>
