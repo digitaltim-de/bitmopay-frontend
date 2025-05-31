@@ -58,14 +58,15 @@ export default function AnalyticsPage() {
           paymentVolumeChange={paymentVolumeChange}
           subscribersChange={subscribersChange}
           avgTransactionChange={avgTransactionChange}
-        />
-
-        <ChartsSection
+        />        <ChartsSection
           paymentsByDayData={paymentsByDayData}
           subscriptionGrowthData={subscriptionGrowthData}
           avgTransactionValueData={avgTransactionValueData}
           paymentMethodsData={paymentMethodsData}
           colors={COLORS}
+          paymentVolumeChange={paymentVolumeChange}
+          subscribersChange={subscribersChange}
+          avgTransactionChange={avgTransactionChange}
         />
       </section>
     </div>

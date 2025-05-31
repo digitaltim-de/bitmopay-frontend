@@ -11,15 +11,19 @@ import {
 } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CustomTooltip } from "./custom-tooltip";
+import { getTrendColors, TrendDirection } from "./chart-utils.tsx";
 
 interface AvgTransactionChartProps {
   data: Array<{
     date: string;
     value: number;
   }>;
+  trend?: TrendDirection;
 }
 
-export function AvgTransactionChart({ data }: AvgTransactionChartProps) {
+export function AvgTransactionChart({ data, trend = "down" }: AvgTransactionChartProps) {
+  const colors = getTrendColors(trend);
+  
   return (
     <Card className="border-0 shadow-md">
       <CardHeader>
@@ -48,7 +52,7 @@ export function AvgTransactionChart({ data }: AvgTransactionChartProps) {
               <RechartsTooltip content={<CustomTooltip />} />
               <Bar
                 dataKey="value"
-                fill="#6366f1"
+                fill={colors.stroke}
                 radius={[4, 4, 0, 0]}
                 name="Avg Value"
                 animationDuration={1500}

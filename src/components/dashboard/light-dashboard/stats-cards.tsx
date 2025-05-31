@@ -20,10 +20,11 @@ export function StatCard({ title, value, change, icon }: StatCardProps) {
         duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
     >
       <div className="p-6">
-        <div className="flex items-center justify-between">
-          <div
-            className="mr-4 rounded-xl bg-gradient-to-br from-emerald-50 to-emerald-100 p-3 transition-all duration-300
-              group-hover:scale-110 group-hover:shadow-md dark:from-emerald-900/30 dark:to-emerald-800/30"
+        <div className="flex items-center justify-between">          <div
+            className={`mr-4 rounded-xl p-3 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md
+              ${change?.trend === "down" 
+                ? "bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/30 dark:to-red-800/30" 
+                : "bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30"}`}
           >
             {icon}
           </div>
@@ -81,8 +82,7 @@ interface DashboardStatsProps {
   }[];
 }
 
-export function DashboardStats({ metrics }: DashboardStatsProps) {
-  const defaultMetrics = [
+export function DashboardStats({ metrics }: DashboardStatsProps) {  const defaultMetrics = [
     {
       title: "Total Volume",
       value: "$428,560",
@@ -105,7 +105,7 @@ export function DashboardStats({ metrics }: DashboardStatsProps) {
       title: "Avg. Transaction",
       value: "$112.43",
       change: { value: "-2.3%", trend: "down" as const },
-      icon: <TrendingUp className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
+      icon: <TrendingUp className="h-6 w-6 text-red-600 dark:text-red-400" />,
     },
   ];
 

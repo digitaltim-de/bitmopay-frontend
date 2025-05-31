@@ -188,28 +188,8 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
               </nav>
             </div>
           ))}
-          {/* Pro upgrade card */}
-          <div className="mt-8 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 p-4 text-white shadow-lg">
-            <div className="mb-2 flex items-center">
-              <Sparkles className="mr-2 h-5 w-5 text-emerald-300" />
-              <h3 className="font-semibold">Upgrade to Pro</h3>
-            </div>
-            <p className="mb-3 text-xs text-emerald-100">
-              Get advanced features, lower fees, and priority support.
-            </p>{" "}
-            <button
-              className="w-full rounded-lg bg-white py-1.5 text-sm font-medium text-emerald-700 transition-colors
-                duration-200 hover:bg-emerald-50"
-              onClick={() => setIsUpgradeDialogOpen(true)}
-            >
-              Upgrade Now
-            </button>
-          </div>
         </div>
       </aside>
-
-      {/* Upgrade Pro Dialog */}
-      <UpgradeProDialog isOpen={isUpgradeDialogOpen} onOpenChange={setIsUpgradeDialogOpen} />
     </>
   );
 }
