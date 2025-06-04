@@ -152,9 +152,9 @@ export function FAQSection() {
   ];
 
   return (
-    <div className="faq-section bg-white dark:bg-gray-900 py-16 sm:py-24">
+    <div className="faq-section bg-white py-16 dark:bg-gray-900 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="faq-container max-w-4xl mx-auto">
+        <div className="faq-container mx-auto max-w-4xl">
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="mb-8 flex flex-wrap justify-center gap-2">
               {faqCategories.map((category) => (
@@ -177,7 +177,10 @@ export function FAQSection() {
                       value={faq.id}
                       className="rounded-lg border border-gray-200 dark:border-gray-700"
                     >
-                      <AccordionTrigger className="px-6 py-4 text-left text-lg font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-500">
+                      <AccordionTrigger
+                        className="px-6 py-4 text-left text-lg font-medium text-gray-900 hover:text-emerald-600 dark:text-white
+                          dark:hover:text-emerald-500"
+                      >
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-300">

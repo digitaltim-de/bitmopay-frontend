@@ -864,7 +864,8 @@ function NavItem({
                           </p>
                         </div>
                       </Link>
-                    ))}                </div>
+                    ))}{" "}
+                </div>
               </>
             )}
           </div>

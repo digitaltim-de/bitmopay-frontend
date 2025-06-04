@@ -25,16 +25,16 @@ export function HeroSection() {
             <span className="block text-emerald-600 dark:text-emerald-500">Questions</span>
           </h1>
           <p className="hero-text mx-auto mt-5 max-w-xl text-xl text-gray-500 dark:text-gray-300">
-            Find answers to common questions about Bitmopay&apos;s crypto payment solutions
-            and integration process.
+            Find answers to common questions about Bitmopay&apos;s crypto payment solutions and
+            integration process.
           </p>
-          
+
           <div className="hero-search mx-auto mt-10 max-w-md">
             <div className="relative">
-              <Input 
-                type="text" 
-                placeholder="Search for answers..." 
-                className="rounded-lg pl-10 pr-4 py-2 w-full" 
+              <Input
+                type="text"
+                placeholder="Search for answers..."
+                className="w-full rounded-lg py-2 pl-10 pr-4"
               />
               <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
             </div>
