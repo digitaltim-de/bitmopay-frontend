@@ -12,7 +12,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import { useAuth } from "@/components/auth-provider";
 
@@ -29,6 +28,7 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -50,6 +50,7 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
         setEmail("");
         setPassword("");
         setRememberMe(false);
+        onClose();
       }, 1500);
     } catch (error) {
       console.error("Login failed:", error);
@@ -64,95 +65,99 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">Login</DialogTitle>
-          <DialogDescription>
-            Access your Bitmopay account to manage your crypto payments
-          </DialogDescription>
-        </DialogHeader>
-
-        <form onSubmit={handleLogin} className="space-y-4 py-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+      <DialogContent className="max-h-[90vh] overflow-hidden overflow-y-auto rounded-2xl border-0 p-0 shadow-lg sm:max-w-[460px]">
+        <div className="relative p-8">
+          <div className="mb-8 text-left">
+            <h2 className="text-2xl font-bold tracking-tight">Login</h2>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
+              Access your Bitmopay account to manage your crypto payments
+            </p>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
-              <a
-                href="#"
-                className="text-xs text-emerald-600 hover:text-emerald-700 dark:text-emerald-500 dark:hover:text-emerald-400"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Handle forgot password
-                }}
-              >
-                Forgot password?
-              </a>
-            </div>
-
-            <div className="relative">
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-sm font-medium">
+                Email
+              </Label>
               <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
+                className="h-12 rounded-lg border-0 bg-blue-50 px-4 dark:bg-gray-800"
               />
-              <button
-                type="button"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400
-                  dark:hover:text-gray-300"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
             </div>
-          </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="remember"
-              checked={rememberMe}
-              onCheckedChange={(checked) => setRememberMe(checked === true)}
-            />
-            <label
-              htmlFor="remember"
-              className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed
-                peer-disabled:opacity-70 dark:text-gray-300"
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-sm font-medium">
+                  Password
+                </Label>
+                <a
+                  href="#"
+                  className="text-sm font-medium text-green-500 hover:text-green-600"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Handle forgot password
+                  }}
+                >
+                  Forgot password?
+                </a>
+              </div>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="h-12 rounded-lg border-0 bg-blue-50 px-4 pr-10 dark:bg-gray-800"
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-2 flex items-center space-x-2">
+              <Checkbox
+                id="remember"
+                checked={rememberMe}
+                onCheckedChange={(checked) => setRememberMe(checked === true)}
+                className="border-gray-300 data-[state=checked]:border-green-500 data-[state=checked]:bg-green-500"
+              />
+              <label htmlFor="remember" className="text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
+
+            <Button
+              type="submit"
+              className="mt-6 h-12 w-full rounded-lg bg-[#d0fa4c] text-base font-medium text-black hover:bg-[#c8f033]"
+              disabled={isLoading}
             >
-              Remember me
-            </label>
-          </div>
+              {isLoading ? "Signing in..." : "Sign in"}
+            </Button>
+          </form>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in"}
-          </Button>
-        </form>
-
-        <DialogFooter className="flex-col gap-2 sm:flex-col">
-          <div className="text-center text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             Don&apos;t have an account?{" "}
             <button
               onClick={switchToRegister}
-              className="font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-500
-                dark:hover:text-emerald-400"
+              className="font-medium text-green-500 hover:text-green-600"
             >
               Register
             </button>
           </div>
 
-          <div className="relative my-2">
+          <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
             </div>
@@ -164,13 +169,12 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" type="button" className="bg-white">
-              <svg
-                className="mr-2 h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <Button
+              variant="outline"
+              type="button"
+              className="h-11 rounded-lg border-gray-200 bg-white"
+            >
+              <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                   fill="#4285F4"
@@ -190,30 +194,21 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
               </svg>
               Google
             </Button>
-            <Button variant="outline" type="button" className="bg-white">
-              <svg
-                className="mr-2 h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <Button
+              variant="outline"
+              type="button"
+              className="h-11 rounded-lg border-gray-200 bg-white"
+            >
+              <svg className="mr-2 h-5 w-5" viewBox="0 0 384 512">
                 <path
-                  d="M20.9992 12C20.9992 8.13375 18.5149 4.87425 15.0267 3.6C16.1448 4.94625 16.8787 6.6675 16.8787 8.5455C16.8787 10.4227 16.1448 12.1447 15.0267 13.491C18.5149 12.2167 20.9992 8.8725 20.9992 5.00625V5"
-                  stroke="black"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M15.0267 3.6C13.9086 2.25375 12.0404 1.5 10.0002 1.5C4.75567 1.5 0.5 5.75575 0.5 11C0.5 16.2442 4.75567 20.5 10.0002 20.5C12.0404 20.5 13.9086 19.7463 15.0267 18.4"
-                  stroke="black"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                  fill="#000"
                 />
               </svg>
               Apple
             </Button>
           </div>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );
