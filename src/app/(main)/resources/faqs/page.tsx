@@ -1,0 +1,148 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger 
+} from "@/components/ui/accordion";
+import { useSubtleAnimation } from "@/hooks/use-subtle-animation";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+  category: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: "What cryptocurrencies does Bitmopay support?",
+    answer: "Bitmopay currently supports Bitcoin (BTC), Ethereum (ETH), USDT, USDC, BNB, and Solana (SOL). We're constantly expanding the list of supported cryptocurrencies based on market demand and security considerations.",
+    category: "General",
+  },
+  {
+    question: "How quickly are payments processed?",
+    answer: "Confirmation times depend on the cryptocurrency network. Bitcoin transactions typically require 1-3 confirmations (10-30 minutes), Ethereum transactions need about 12 confirmations (3-5 minutes), and stablecoins like USDT or USDC may take 1-5 minutes depending on the blockchain they use.",
+    category: "Payments",
+  },
+  {
+    question: "What fees does Bitmopay charge?",
+    answer: "Bitmopay charges a 1% processing fee per transaction. There are no setup fees, monthly fees, or hidden charges. Network transaction fees (gas fees) are separate and determined by the respective blockchain networks.",
+    category: "Pricing",
+  },
+  {
+    question: "Is there a minimum payment amount?",
+    answer: "Yes, to ensure efficient processing considering blockchain transaction fees, the minimum payment amount is $5 USD equivalent in cryptocurrency.",
+    category: "Payments",
+  },
+  {
+    question: "How does automatic currency conversion work?",
+    answer: "You can set up automatic conversion rules in your dashboard to convert cryptocurrency payments to your preferred fiat currency (USD, EUR, etc.) as soon as they're received, helping protect against market volatility.",
+    category: "Features",
+  },
+  {
+    question: "Is KYC/AML verification required?",
+    answer: "Basic accounts require minimal verification. For higher transaction limits and certain features like fiat withdrawals, standard KYC/AML verification is required in compliance with regulations.",
+    category: "Compliance",
+  },
+  {
+    question: "How secure is Bitmopay?",
+    answer: "Bitmopay employs industry-leading security measures including cold storage for funds, multi-signature wallets, 2FA authentication, encrypted communications, and regular security audits to ensure the highest level of protection for your funds and data.",
+    category: "Security",
+  },
+  {
+    question: "How do I handle refunds?",
+    answer: "Refunds can be processed through your Bitmopay dashboard. You can choose to refund in the original cryptocurrency or an equivalent fiat value. Each refund incurs a small network transaction fee.",
+    category: "Payments",
+  },
+  {
+    question: "Does Bitmopay offer customer support?",
+    answer: "Yes, we offer 24/7 customer support via live chat and email. Business accounts also receive dedicated account managers and phone support during business hours.",
+    category: "Support",
+  },
+  {
+    question: "Can I integrate Bitmopay with my existing e-commerce platform?",
+    answer: "Yes, Bitmopay offers plugins and integrations for major e-commerce platforms including Shopify, WooCommerce, Magento, and PrestaShop. We also provide a comprehensive API for custom integrations.",
+    category: "Integration",
+  },
+];
+
+// Group FAQs by category
+const groupedFaqs = faqs.reduce((acc, faq) => {
+  acc[faq.category] = acc[faq.category] || [];
+  acc[faq.category].push(faq);
+  return acc;
+}, {} as Record<string, FAQItem[]>);
+
+export default function FAQsPage() {
+  // Animate FAQ categories
+  useSubtleAnimation({
+    fadeInElements: ".faq-category",
+    fadeInTrigger: ".faq-grid",
+    fadeInStagger: 0.08
+  });
+  
+  // Animate CTA section separately with even more subtle animation
+  useSubtleAnimation({
+    fadeInElements: ".faq-cta",
+    fadeInTrigger: ".faq-cta",
+    fadeInDistance: 5,
+    fadeInStart: "top bottom-=30px"
+  });
+
+  return (
+    <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-8">
+        <Button asChild variant="ghost" className="mb-4">
+          <Link href="/resources" className="flex items-center text-gray-500 hover:text-gray-700">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Resources
+          </Link>
+        </Button>
+        
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Frequently Asked Questions
+        </h1>
+        <p className="mt-4 text-xl text-gray-500 dark:text-gray-400">
+          Find answers to common questions about Bitmopay services and features
+        </p>
+      </div>      <div className="faq-grid grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">
+        {Object.entries(groupedFaqs).map(([category, categoryFaqs]) => (
+          <div key={category} className="faq-category bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{category}</h2>
+            <Accordion type="single" collapsible className="w-full">
+              {categoryFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`faq-${category}-${index}`}>
+                  <AccordionTrigger className="text-left font-medium">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 dark:text-gray-300">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        ))}
+      </div>      <div className="faq-cta mt-12 text-center bg-emerald-50 dark:bg-emerald-900/30 p-8 rounded-lg">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Still have questions?
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          Our team is ready to assist you with any questions you might have.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button asChild size="lg">
+            <Link href="/contact">Contact Support</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/documentation">Read Documentation</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}

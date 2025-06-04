@@ -239,8 +239,7 @@ export function HeaderSection() {
       icon: <Users className="h-6 w-6 text-emerald-500" />,
       href: "/become-partner",
       color: "bg-emerald-50",
-    },
-    {
+    },    {
       title: "Resources",
       description: "Helpful materials",
       icon: <FileText className="h-6 w-6 text-yellow-500" />,

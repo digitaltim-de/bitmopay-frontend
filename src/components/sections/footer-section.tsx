@@ -109,15 +109,13 @@ export function FooterSection() {
                             <FooterLink href="/docs" label="Documentation"/>
                             <FooterLink href="/contact" label="Contact"/>
                         </ul>
-                    </div>
-
-                    <div className="md:col-span-1">
+                    </div>                    <div className="md:col-span-1">
                         <h3 className="font-semibold text-white text-lg mb-4">Resources</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="#" label="Developers"/>
-                            <FooterLink href="#" label="Blog"/>
-                            <FooterLink href="#" label="Support"/>
-                            <FooterLink href="#" label="FAQ"/>
+                            <FooterLink href="/resources" label="Resources"/>
+                            <FooterLink href="/resources/guides" label="Guides"/>
+                            <FooterLink href="/blogs" label="Blog"/>
+                            <FooterLink href="/resources/faqs" label="FAQ"/>
                         </ul>
                     </div>
 

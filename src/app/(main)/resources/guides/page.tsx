@@ -1,0 +1,106 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft, FileText, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import ResourceTemplate from "@/components/shared/resource-template";
+import { AnimatedSection, AnimatedItem } from "@/components/shared/animated-section";
+
+const guides = [
+  {
+    title: "Getting Started with Bitmopay",
+    description: "Learn how to create an account and set up your first cryptocurrency payment gateway with Bitmopay.",
+    category: "Beginner",
+    readTime: "5 min",
+    link: "/resources/guides/getting-started",
+  },
+  {
+    title: "API Integration Guide",
+    description: "Step-by-step instructions for integrating our API into your website or application.",
+    category: "Developer",
+    readTime: "10 min",
+    link: "/resources/guides/api-integration",
+  },
+  {
+    title: "Shopify Integration",
+    description: "How to add Bitmopay as a payment option to your Shopify store in minutes.",
+    category: "E-commerce",
+    readTime: "8 min",
+    link: "/resources/guides/shopify-integration",
+  },
+  {
+    title: "WooCommerce Plugin Guide",
+    description: "Complete setup instructions for our WordPress/WooCommerce plugin.",
+    category: "E-commerce",
+    readTime: "7 min",
+    link: "/resources/guides/woocommerce-plugin",
+  },
+  {
+    title: "Managing Cryptocurrency Volatility",
+    description: "Best practices for handling cryptocurrency price fluctuations when accepting payments.",
+    category: "Business",
+    readTime: "6 min",
+    link: "/resources/guides/managing-volatility",
+  },
+  {
+    title: "Setting Up Automatic Conversions",
+    description: "Configure automatic conversion of cryptocurrency payments to fiat currencies.",
+    category: "Account Management",
+    readTime: "5 min",
+    link: "/resources/guides/automatic-conversions",
+  },
+  {
+    title: "Security Best Practices",
+    description: "Learn how to enhance security when accepting cryptocurrency payments.",
+    category: "Security",
+    readTime: "9 min",
+    link: "/resources/guides/security-best-practices",
+  },
+  {
+    title: "Handling Customer Refunds",
+    description: "Step-by-step guide to processing refunds for cryptocurrency payments.",
+    category: "Support",
+    readTime: "4 min",
+    link: "/resources/guides/refund-process",
+  },
+];
+
+export default function GuidesPage() {
+  return (
+    <ResourceTemplate
+      title="Guides & Tutorials"
+      description="Step-by-step instructions to help you get the most out of Bitmopay"
+    >
+        <div className="guides-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {guides.map((guide, index) => (
+          <Card key={index} className="guide-card overflow-hidden hover:shadow-md transition-all">
+            <CardHeader className="pb-3">
+              <div className="flex justify-between items-start mb-2">
+                <Badge variant="outline" className="rounded-md">
+                  {guide.category}
+                </Badge>
+                <Badge variant="secondary" className="rounded-md text-xs">
+                  {guide.readTime} read
+                </Badge>
+              </div>
+              <CardTitle className="text-lg">{guide.title}</CardTitle>
+              <CardDescription>{guide.description}</CardDescription>
+            </CardHeader>
+            <CardFooter className="pt-2 pb-4">
+              <Link 
+                href={guide.link}
+                className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium flex items-center"
+              >
+                Read guide
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
