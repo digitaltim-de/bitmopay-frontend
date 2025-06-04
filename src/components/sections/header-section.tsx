@@ -239,7 +239,8 @@ export function HeaderSection() {
       icon: <Users className="h-6 w-6 text-emerald-500" />,
       href: "/become-partner",
       color: "bg-emerald-50",
-    },    {
+    },
+    {
       title: "Resources",
       description: "Helpful materials",
       icon: <FileText className="h-6 w-6 text-yellow-500" />,
@@ -863,34 +864,7 @@ function NavItem({
                           </p>
                         </div>
                       </Link>
-                    ))}
-                </div>{" "}
-                {label === "More" && (
-                  <div className="border-t border-gray-100 bg-gray-50 px-2 py-1.5">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-xs font-bold text-gray-800">Ready to get started?</p>
-                      <Button
-                        size="sm"
-                        className="w-full bg-[#E3FE53] py-0.5 text-xs text-gray-900 hover:bg-[#d5ef4a]"
-                      >
-                        Get free access
-                      </Button>
-                    </div>
-                  </div>
-                )}
-                {label !== "More" && (
-                  <div className="border-t border-gray-100 bg-gray-50 p-3">
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs font-bold text-gray-800">Ready to get started?</p>
-                      <Button
-                        size="sm"
-                        className="bg-emerald-500 px-3 text-xs text-white hover:bg-emerald-600"
-                      >
-                        Get free access
-                      </Button>
-                    </div>
-                  </div>
-                )}
+                    ))}                </div>
               </>
             )}
           </div>
@@ -961,23 +935,6 @@ function MobileNavItem({
               </div>
             </Link>
           ))}
-        </div>
-        <div
-          className="mt-4 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-4 dark:border-gray-700
-            dark:bg-gray-700/50"
-        >
-          <div className="text-sm font-medium text-gray-800 dark:text-white">
-            Ready to get started?
-          </div>
-          <div className="mt-2 flex justify-center">
-            {" "}
-            <Button
-              className="w-full bg-emerald-500 px-3 py-2 text-sm text-gray-950 hover:bg-emerald-600 dark:bg-emerald-600
-                dark:hover:bg-emerald-700"
-            >
-              Get free access
-            </Button>
-          </div>
         </div>
       </div>
     );

@@ -22,7 +22,7 @@ export function AnimatedSection({
   duration = 0.4,
   stagger = 0.05,
   containerClass = "animation-container",
-  itemClass = "animate-fade-in"
+  itemClass = "animate-fade-in",
 }: AnimatedSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +33,7 @@ export function AnimatedSection({
     fadeInDuration: duration,
     fadeInStagger: stagger,
     fadeInTrigger: `.${containerClass}`,
-    fadeInDelay: delay
+    fadeInDelay: delay,
   });
 
   return (
@@ -45,7 +45,7 @@ export function AnimatedSection({
 
 export function AnimatedItem({
   children,
-  className = ""
+  className = "",
 }: {
   children: ReactNode;
   className?: string;

@@ -28,30 +28,38 @@ export function useSubtleAnimation({
 }: SubtleAnimationOptions = {}) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Simple fade-in animation with reduced values for subtle effect
     gsap.fromTo(
       fadeInElements,
-      { 
-        opacity: 0, 
-        y: fadeInDistance 
+      {
+        opacity: 0,
+        y: fadeInDistance,
       },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: fadeInDuration, 
+      {
+        opacity: 1,
+        y: 0,
+        duration: fadeInDuration,
         stagger: fadeInStagger,
         delay: fadeInDelay,
         scrollTrigger: {
           trigger: fadeInTrigger,
           start: fadeInStart,
-        }
-      }
+        },
+      },
     );
 
     return () => {
       // Cleanup scroll triggers when component unmounts
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [fadeInElements, fadeInDistance, fadeInDuration, fadeInStagger, fadeInTrigger, fadeInStart, fadeInDelay]);
+  }, [
+    fadeInElements,
+    fadeInDistance,
+    fadeInDuration,
+    fadeInStagger,
+    fadeInTrigger,
+    fadeInStart,
+    fadeInDelay,
+  ]);
 }

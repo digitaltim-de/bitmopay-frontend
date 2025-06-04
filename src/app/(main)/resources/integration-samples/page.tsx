@@ -12,7 +12,8 @@ const integrationSamples = [
     title: "Node.js SDK Integration",
     language: "JavaScript",
     level: "Intermediate",
-    description: "Complete sample showing how to integrate the Bitmopay Node.js SDK into your application.",
+    description:
+      "Complete sample showing how to integrate the Bitmopay Node.js SDK into your application.",
     repo: "https://github.com/bitmopay/nodejs-sample",
     demo: "https://nodejs-demo.bitmopay.com",
   },
@@ -27,7 +28,8 @@ const integrationSamples = [
     title: "React Payment Component",
     language: "React",
     level: "Intermediate",
-    description: "Ready-to-use React component for adding crypto payments to your React applications.",
+    description:
+      "Ready-to-use React component for adding crypto payments to your React applications.",
     repo: "https://github.com/bitmopay/react-payment",
     demo: "https://react-demo.bitmopay.com",
   },
@@ -64,9 +66,12 @@ export default function IntegrationSamplesPage() {
       <AnimatedSection containerClass="samples-grid" itemClass="sample-card">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {integrationSamples.map((sample, index) => (
-            <Card key={index} className="sample-card overflow-hidden hover:shadow-md transition-all h-full">
+            <Card
+              key={index}
+              className="sample-card h-full overflow-hidden transition-all hover:shadow-md"
+            >
               <CardHeader className="pb-3">
-                <div className="flex justify-between items-start mb-2">
+                <div className="mb-2 flex items-start justify-between">
                   <Badge variant="outline" className="rounded-md">
                     {sample.language}
                   </Badge>
@@ -79,19 +84,21 @@ export default function IntegrationSamplesPage() {
               <CardContent>
                 <p className="text-gray-500 dark:text-gray-400">{sample.description}</p>
               </CardContent>
-              <CardFooter className="pt-2 pb-4 flex justify-between">
-                <Link 
+              <CardFooter className="flex justify-between pb-4 pt-2">
+                <Link
                   href={sample.repo}
-                  className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium flex items-center"
+                  className="flex items-center font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400
+                    dark:hover:text-emerald-300"
                 >
                   <Code className="mr-2 h-4 w-4" />
                   View Code
                 </Link>
-                
+
                 {sample.demo && (
-                  <Link 
+                  <Link
                     href={sample.demo}
-                    className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center"
+                    className="flex items-center font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400
+                      dark:hover:text-blue-300"
                   >
                     Live Demo
                     <ExternalLink className="ml-2 h-4 w-4" />
