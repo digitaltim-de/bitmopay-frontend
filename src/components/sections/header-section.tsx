@@ -38,9 +38,12 @@ import {
   Download,
   RefreshCw,
   File,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 import { Solution } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/components/auth-provider";
 
 export function HeaderSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,6 +51,7 @@ export function HeaderSection() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const contactTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [solutions, setSolutions] = useState<Solution[]>([]);
+  const { openLoginModal, openRegisterModal, isAuthenticated, logout, user } = useAuth();
 
   // Fetch solutions data when component mounts
   useEffect(() => {
@@ -514,8 +518,42 @@ export function HeaderSection() {
                 </div>
               )}
             </div>{" "}
-            <Button variant="light">Login</Button>
-            <Button className="text-gray-950">Register</Button>
+            {isAuthenticated ? (
+              <div className="flex items-center gap-3">
+                <Button variant="light" asChild>
+                  <Link href="/dashboard" className="flex items-center gap-1.5">
+                    <Wallet size={16} />
+                    Dashboard
+                  </Link>
+                </Button>
+                <Button
+                  onClick={logout}
+                  variant="outline"
+                  className="border-red-500 text-red-500 hover:bg-red-50 dark:border-red-400 dark:text-red-400
+                    dark:hover:bg-gray-700"
+                >
+                  Sign out
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Button
+                  variant="light"
+                  onClick={openLoginModal}
+                  className="flex items-center gap-1.5"
+                >
+                  <LogIn size={16} />
+                  Login
+                </Button>
+                <Button
+                  className="flex items-center gap-1.5 text-gray-950"
+                  onClick={openRegisterModal}
+                >
+                  <UserPlus size={16} />
+                  Register
+                </Button>
+              </>
+            )}
           </div>{" "}
           {/* Mobile Menu Button */}
           <div className="flex items-center lg:hidden" data-menu-container>
@@ -627,23 +665,73 @@ export function HeaderSection() {
               className="space-y-4 border-t border-gray-100 pt-6 dark:border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  className="flex-1 border-emerald-500 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400
-                    dark:text-emerald-400 dark:hover:bg-gray-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Login
-                </Button>{" "}
-                <Button
-                  className="flex-1 bg-emerald-500 py-3 text-gray-950 hover:bg-emerald-600 dark:bg-emerald-600
-                    dark:hover:bg-emerald-700"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Register
-                </Button>
-              </div>
+              {" "}
+              {isAuthenticated ? (
+                <div className="flex flex-col gap-3">
+                  <div className="rounded-lg border border-gray-200 p-2 text-center dark:border-gray-700">
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Signed in as</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">
+                      {user?.email}
+                    </p>
+                  </div>
+                  <div className="flex gap-3">
+                    <Button
+                      variant="outline"
+                      className="flex flex-1 items-center justify-center gap-1.5 border-emerald-500 text-emerald-600
+                        hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-gray-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsMenuOpen(false);
+                      }}
+                      asChild
+                    >
+                      <Link href="/dashboard">
+                        <Wallet size={16} />
+                        Dashboard
+                      </Link>
+                    </Button>
+                    <Button
+                      className="flex flex-1 items-center justify-center gap-1.5 bg-red-500 py-3 text-white hover:bg-red-600
+                        dark:bg-red-600 dark:hover:bg-red-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        logout();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      Sign out
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    className="flex flex-1 items-center justify-center gap-1.5 border-emerald-500 text-emerald-600
+                      hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-gray-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openLoginModal();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <LogIn size={16} />
+                    Login
+                  </Button>{" "}
+                  <Button
+                    className="flex flex-1 items-center justify-center gap-1.5 bg-emerald-500 py-3 text-gray-950
+                      hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openRegisterModal();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <UserPlus size={16} />
+                    Register
+                  </Button>
+                </div>
+              )}
             </div>
           </nav>
         </div>
