@@ -50,7 +50,7 @@ export function PaymentFilter({
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <Input
           placeholder="Search by email or transaction ID"
-          className="pl-10"
+          className="pl-10 h-full"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -89,7 +89,7 @@ export function PaymentFilter({
         </Popover>
 
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full sm:w-[150px]">
+          <SelectTrigger className="w-full sm:w-[150px] h-full">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -101,7 +101,7 @@ export function PaymentFilter({
         </Select>
 
         <Select value={coinFilter} onValueChange={setCoinFilter}>
-          <SelectTrigger className="w-full sm:w-[150px]">
+          <SelectTrigger className="w-full sm:w-[150px] h-full">
             <SelectValue placeholder="Coin" />
           </SelectTrigger>
           <SelectContent>

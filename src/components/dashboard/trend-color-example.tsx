@@ -7,10 +7,10 @@ import {
   AreaChart,
   Area,
   ResponsiveContainer,
-  XAxis, 
+  XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip as RechartsTooltip
+  Tooltip as RechartsTooltip,
 } from "recharts";
 
 // Sample data for demonstration
@@ -25,30 +25,35 @@ const demoData = [
 export function TrendColorExample() {
   const [selectedCoin] = useState("all");
   const averageTransactionTrend = -2.3; // Negative trend to show red styling
-  
+
   // Pre-calculate trend values using useMemo for performance optimization
-  const transactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorTransactions"), []);
-    
-  const customerTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorCustomers"), []);
-    
-  const avgTransactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"), 
-    [averageTransactionTrend]);
+  const transactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(true, "colorTransactions"),
+    [],
+  );
+
+  const customerTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorCustomers"), []);
+
+  const avgTransactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"),
+    [averageTransactionTrend],
+  );
 
   // Helper function to filter chart data (simplified for the example)
   const getFilteredChartData = (data) => {
-    return selectedCoin === "all" ? data : data.filter(item => item.coin === selectedCoin);
+    return selectedCoin === "all" ? data : data.filter((item) => item.coin === selectedCoin);
   };
 
   return (
-    <div className="p-6 bg-white dark:bg-gray-800 space-y-6">
-      <h2 className="text-xl font-bold mb-4">Dashboard Cards with Trend-Based Colors</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="space-y-6 bg-white p-6 dark:bg-gray-800">
+      <h2 className="mb-4 text-xl font-bold">Dashboard Cards with Trend-Based Colors</h2>
+
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {/* Transaction Card - Positive Trend (Green) */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">
@@ -76,8 +81,16 @@ export function TrendColorExample() {
               >
                 <defs>
                   <linearGradient id="colorTransactions" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={transactionTrendValues.stopColor} stopOpacity={transactionTrendValues.stopOpacity} />
-                    <stop offset="95%" stopColor={transactionTrendValues.stopColor} stopOpacity={0} />
+                    <stop
+                      offset="5%"
+                      stopColor={transactionTrendValues.stopColor}
+                      stopOpacity={transactionTrendValues.stopOpacity}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor={transactionTrendValues.stopColor}
+                      stopOpacity={0}
+                    />
                   </linearGradient>
                 </defs>
                 <Area
@@ -92,18 +105,19 @@ export function TrendColorExample() {
             </ResponsiveContainer>
           </div>
         </div>
-        
+
         {/* Customers Card - Positive Trend (Green) */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">
                 <div className={`mr-3 rounded-lg ${customerTrendValues.iconBg} p-2`}>
                   <Users className={`h-5 w-5 ${customerTrendValues.iconText}`} />
                 </div>
-                <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  Customers
-                </h3>
+                <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Customers</h3>
               </div>
               <div className="flex items-center">
                 <span className={`mr-2 ${customerTrendValues.changeText}`}>+8.2%</span>
@@ -122,7 +136,11 @@ export function TrendColorExample() {
               >
                 <defs>
                   <linearGradient id="colorCustomers" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={customerTrendValues.stopColor} stopOpacity={customerTrendValues.stopOpacity} />
+                    <stop
+                      offset="5%"
+                      stopColor={customerTrendValues.stopColor}
+                      stopOpacity={customerTrendValues.stopOpacity}
+                    />
                     <stop offset="95%" stopColor={customerTrendValues.stopColor} stopOpacity={0} />
                   </linearGradient>
                 </defs>
@@ -138,9 +156,12 @@ export function TrendColorExample() {
             </ResponsiveContainer>
           </div>
         </div>
-        
+
         {/* Avg Transaction Card - Negative Trend (Red) */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">
@@ -171,8 +192,16 @@ export function TrendColorExample() {
               >
                 <defs>
                   <linearGradient id="colorAvgTransaction" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={avgTransactionTrendValues.stopOpacity} />
-                    <stop offset="95%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={0} />
+                    <stop
+                      offset="5%"
+                      stopColor={avgTransactionTrendValues.stopColor}
+                      stopOpacity={avgTransactionTrendValues.stopOpacity}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor={avgTransactionTrendValues.stopColor}
+                      stopOpacity={0}
+                    />
                   </linearGradient>
                 </defs>
                 <Area
@@ -188,9 +217,12 @@ export function TrendColorExample() {
           </div>
         </div>
       </div>
-      
+
       {/* Main Chart - Full Width */}
-      <div className="mt-6 h-80 rounded-xl border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div
+        className="mt-6 h-80 rounded-xl border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-700
+          dark:bg-gray-800"
+      >
         <h3 className="mb-4 text-lg font-medium">Volume over Time</h3>
         <ResponsiveContainer width="100%" height="90%">
           <AreaChart

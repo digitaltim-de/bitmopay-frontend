@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 
 export type TrendDirection = "up" | "down" | "neutral";
 
@@ -52,7 +51,7 @@ export const getTrendColors = (trend: TrendDirection | undefined, defaultColor?:
  * Creates gradient definitions for chart components
  * @returns JSX for gradient definitions
  */
-export const ChartGradients: React.FC = () => {
+export const ChartGradients = () => {
   return (
     <defs>
       <linearGradient id="colorPositive" x1="0" y1="0" x2="0" y2="1">

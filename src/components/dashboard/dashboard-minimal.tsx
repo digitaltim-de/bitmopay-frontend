@@ -34,18 +34,19 @@ export function DashboardContent() {
   const averageTransactionTrend = -2.3; // negative value to show red charts
 
   // Pre-calculate all trend values for dashboard cards
-  const transactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorTransactions"), []);
+  const transactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(true, "colorTransactions"),
+    [],
+  );
 
-  const customerTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorCustomers"), []);
+  const customerTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorCustomers"), []);
 
-  const avgTransactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"), 
-    [averageTransactionTrend]);
+  const avgTransactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"),
+    [averageTransactionTrend],
+  );
 
-  const volumeTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorVol"), []);
+  const volumeTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorVol"), []);
 
   // Simulate loading state
   useEffect(() => {
@@ -62,7 +63,10 @@ export function DashboardContent() {
         <div className="h-8 w-64 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"></div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-24 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
+            <div
+              key={i}
+              className="h-24 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"
+            ></div>
           ))}
         </div>
         <div className="mt-2 h-80 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
@@ -75,10 +79,16 @@ export function DashboardContent() {
     <>
       {/* Notification Banner */}
       {showNotification && (
-        <div className="mb-6 overflow-hidden rounded-lg border border-emerald-200 bg-gradient-to-r from-emerald-50 to-emerald-100 shadow-sm dark:border-emerald-800 dark:from-emerald-900/30 dark:to-emerald-800/30">
+        <div
+          className="mb-6 overflow-hidden rounded-lg border border-emerald-200 bg-gradient-to-r from-emerald-50
+            to-emerald-100 shadow-sm dark:border-emerald-800 dark:from-emerald-900/30 dark:to-emerald-800/30"
+        >
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 shadow-inner dark:bg-emerald-800">
+              <div
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 shadow-inner
+                  dark:bg-emerald-800"
+              >
                 {/* Add your icon here, e.g., <Zap className="h-5 w-5 text-emerald-600 dark:text-emerald-300" /> */}
               </div>
               <div>
@@ -91,7 +101,10 @@ export function DashboardContent() {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <button onClick={() => setShowNotification(false)} className="rounded-full p-1.5 text-emerald-600 transition-colors">
+              <button
+                onClick={() => setShowNotification(false)}
+                className="rounded-full p-1.5 text-emerald-600 transition-colors"
+              >
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -101,9 +114,12 @@ export function DashboardContent() {
       )}
 
       {/* Main Dashboard Content */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         {/* Transaction Card - using pre-calculated values */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">
@@ -127,16 +143,17 @@ export function DashboardContent() {
         </div>
 
         {/* Customer Card */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">
                 <div className={`mr-3 rounded-lg ${customerTrendValues.iconBg} p-2`}>
                   <Users className={`h-5 w-5 ${customerTrendValues.iconText}`} />
                 </div>
-                <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  Customers
-                </h3>
+                <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Customers</h3>
               </div>
               <div className="flex items-center">
                 <span className={`mr-2 ${customerTrendValues.changeText}`}>+8.2%</span>
@@ -151,7 +168,10 @@ export function DashboardContent() {
         </div>
 
         {/* Average Transaction Card - Negative trend (Red) */}
-        <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+            dark:bg-gray-800"
+        >
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center">

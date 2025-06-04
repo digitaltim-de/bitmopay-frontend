@@ -41,9 +41,12 @@ export function ChartsSection({
   avgTransactionChange = 0,
 }: ChartsSectionProps) {
   // Determine trend directions based on percentage changes
-  const paymentTrend: TrendDirection = paymentVolumeChange > 0 ? "up" : paymentVolumeChange < 0 ? "down" : "neutral";
-  const subscribersTrend: TrendDirection = subscribersChange > 0 ? "up" : subscribersChange < 0 ? "down" : "neutral";
-  const avgTransactionTrend: TrendDirection = avgTransactionChange > 0 ? "up" : avgTransactionChange < 0 ? "down" : "neutral";
+  const paymentTrend: TrendDirection =
+    paymentVolumeChange > 0 ? "up" : paymentVolumeChange < 0 ? "down" : "neutral";
+  const subscribersTrend: TrendDirection =
+    subscribersChange > 0 ? "up" : subscribersChange < 0 ? "down" : "neutral";
+  const avgTransactionTrend: TrendDirection =
+    avgTransactionChange > 0 ? "up" : avgTransactionChange < 0 ? "down" : "neutral";
 
   return (
     <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">

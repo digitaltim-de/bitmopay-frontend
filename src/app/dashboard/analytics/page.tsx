@@ -40,7 +40,7 @@ export default function AnalyticsPage() {
     console.log("Exporting analytics data...");
   };
   return (
-    <div className="p-4 lg:p-">
+    <div className="lg:p- p-4">
       <section className="space-y-8">
         <AnalyticsHeader
           timeRange={timeRange}
@@ -49,7 +49,6 @@ export default function AnalyticsPage() {
           setSelectedCoin={setSelectedCoin}
           handleExportData={handleExportData}
         />
-
         <SummaryCards
           totalPaymentVolume={totalPaymentVolume}
           totalSubscribers={totalSubscribers}
@@ -58,7 +57,8 @@ export default function AnalyticsPage() {
           paymentVolumeChange={paymentVolumeChange}
           subscribersChange={subscribersChange}
           avgTransactionChange={avgTransactionChange}
-        />        <ChartsSection
+        />{" "}
+        <ChartsSection
           paymentsByDayData={paymentsByDayData}
           subscriptionGrowthData={subscriptionGrowthData}
           avgTransactionValueData={avgTransactionValueData}

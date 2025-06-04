@@ -70,7 +70,7 @@ export const sidebarLinks: SidebarSection[] = [
     links: [
       {
         title: "Documentation",
-        href: "/dashboard/documentation",
+        href: "/documentation",
         icon: FileText,
       },
       {

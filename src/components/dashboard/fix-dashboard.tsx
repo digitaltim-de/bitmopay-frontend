@@ -9,7 +9,7 @@ import { ResponsiveContainer, AreaChart, Area } from "recharts";
 export function FixedDashboardExample() {
   const [selectedCoin, setSelectedCoin] = useState("all");
   const averageTransactionTrend = -2.3; // negative trend
-  
+
   // Sample data for the chart
   const areaChartData = [
     { name: "Jan", value: 400, transactions: 24, customers: 15, avgTransaction: 40 },
@@ -18,24 +18,24 @@ export function FixedDashboardExample() {
     { name: "Apr", value: 278, transactions: 39, customers: 30, avgTransaction: 28 },
     { name: "May", value: 189, transactions: 48, customers: 40, avgTransaction: 25 },
   ];
-  
+
   // Helper function to filter chart data by coin
   const getFilteredChartData = (data, coin) => {
-    return coin === "all" ? data : data.filter(item => item.coin === coin);
+    return coin === "all" ? data : data.filter((item) => item.coin === coin);
   };
-  
+
   // Example 1: Prepare the trend values outside of JSX
   const transactionTrendValues = getTrendStylesForDashboard(true, "colorTransactions");
   const customerTrendValues = getTrendStylesForDashboard(true, "colorCustomers");
   const avgTransactionTrendValues = getTrendStylesForDashboard(
-    averageTransactionTrend > 0, 
-    "colorAvgTransaction"
+    averageTransactionTrend > 0,
+    "colorAvgTransaction",
   );
-  
+
   return (
     <div>
       <h2>Transaction Chart - Fixed Example</h2>
-      
+
       {/* Example of correct card with pre-calculated trend values */}
       <div className="overflow-hidden rounded-xl border border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
         <div className="p-6">
@@ -44,9 +44,7 @@ export function FixedDashboardExample() {
               <div className={`mr-3 rounded-lg ${transactionTrendValues.iconBg} p-2`}>
                 <span className={`h-5 w-5 ${transactionTrendValues.iconText}`}>Icon</span>
               </div>
-              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Transactions
-              </h3>
+              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Transactions</h3>
             </div>
             <div className="flex items-center">
               <span className={`mr-2 ${transactionTrendValues.changeText}`}>+12.5%</span>
@@ -65,7 +63,11 @@ export function FixedDashboardExample() {
             >
               <defs>
                 <linearGradient id="colorTransactions" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={transactionTrendValues.stopColor} stopOpacity={transactionTrendValues.stopOpacity} />
+                  <stop
+                    offset="5%"
+                    stopColor={transactionTrendValues.stopColor}
+                    stopOpacity={transactionTrendValues.stopOpacity}
+                  />
                   <stop offset="95%" stopColor={transactionTrendValues.stopColor} stopOpacity={0} />
                 </linearGradient>
               </defs>

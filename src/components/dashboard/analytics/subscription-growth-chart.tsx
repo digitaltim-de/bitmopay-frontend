@@ -24,7 +24,7 @@ interface SubscriptionGrowthChartProps {
 
 export function SubscriptionGrowthChart({ data, trend = "up" }: SubscriptionGrowthChartProps) {
   const colors = getTrendColors(trend);
-  
+
   return (
     <Card className="border-0 shadow-md">
       <CardHeader>

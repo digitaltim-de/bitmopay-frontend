@@ -5,11 +5,13 @@ The `dashboard-content.tsx` file has syntax errors related to Immediately Invoke
 ## Step 1: Import useMemo
 
 At the top of your file, change:
+
 ```tsx
 import { useState, useEffect } from "react";
 ```
 
 To:
+
 ```tsx
 import { useState, useEffect, useMemo } from "react";
 ```
@@ -20,18 +22,19 @@ After your state declarations, add:
 
 ```tsx
 // Pre-calculate all trend values for dashboard cards
-const transactionTrendValues = useMemo(() => 
-  getTrendStylesForDashboard(true, "colorTransactions"), []);
+const transactionTrendValues = useMemo(
+  () => getTrendStylesForDashboard(true, "colorTransactions"),
+  [],
+);
 
-const customerTrendValues = useMemo(() => 
-  getTrendStylesForDashboard(true, "colorCustomers"), []);
+const customerTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorCustomers"), []);
 
-const avgTransactionTrendValues = useMemo(() => 
-  getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"), 
-  [averageTransactionTrend]);
+const avgTransactionTrendValues = useMemo(
+  () => getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"),
+  [averageTransactionTrend],
+);
 
-const volumeTrendValues = useMemo(() => 
-  getTrendStylesForDashboard(true, "colorVol"), []);
+const volumeTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorVol"), []);
 ```
 
 ## Step 3: Replace Each IIFE in the Code
@@ -39,6 +42,7 @@ const volumeTrendValues = useMemo(() =>
 ### Example 1: Transactions Card (around line 527)
 
 Replace this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   {(() => {
@@ -49,9 +53,7 @@ Replace this:
           <div className={`mr-3 rounded-lg ${trendValues.iconBg} p-2`}>
             <CreditCard className={`h-5 w-5 ${trendValues.iconText}`} />
           </div>
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Transactions
-          </h3>
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Transactions</h3>
         </div>
         <div className="flex items-center">
           <span className={`mr-2 ${trendValues.changeText}`}>+12.5%</span>
@@ -63,15 +65,14 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   <div className="flex items-center">
     <div className={`mr-3 rounded-lg ${transactionTrendValues.iconBg} p-2`}>
       <CreditCard className={`h-5 w-5 ${transactionTrendValues.iconText}`} />
     </div>
-    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-      Transactions
-    </h3>
+    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Transactions</h3>
   </div>
   <div className="flex items-center">
     <span className={`mr-2 ${transactionTrendValues.changeText}`}>+12.5%</span>
@@ -82,6 +83,7 @@ With this:
 ### Example 2: Transaction Chart (around line 527)
 
 Replace this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   {(() => {
@@ -93,7 +95,11 @@ Replace this:
       >
         <defs>
           <linearGradient id="colorTransactions" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={trendValues.stopColor} stopOpacity={trendValues.stopOpacity} />
+            <stop
+              offset="5%"
+              stopColor={trendValues.stopColor}
+              stopOpacity={trendValues.stopOpacity}
+            />
             <stop offset="95%" stopColor={trendValues.stopColor} stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -112,6 +118,7 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   <AreaChart
@@ -120,7 +127,11 @@ With this:
   >
     <defs>
       <linearGradient id="colorTransactions" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="5%" stopColor={transactionTrendValues.stopColor} stopOpacity={transactionTrendValues.stopOpacity} />
+        <stop
+          offset="5%"
+          stopColor={transactionTrendValues.stopColor}
+          stopOpacity={transactionTrendValues.stopOpacity}
+        />
         <stop offset="95%" stopColor={transactionTrendValues.stopColor} stopOpacity={0} />
       </linearGradient>
     </defs>
@@ -139,6 +150,7 @@ With this:
 ### Example 3: Customer Card (around line 562)
 
 Replace this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   {(() => {
@@ -149,9 +161,7 @@ Replace this:
           <div className={`mr-3 rounded-lg ${trendValues.iconBg} p-2`}>
             <Users className={`h-5 w-5 ${trendValues.iconText}`} />
           </div>
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Customers
-          </h3>
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Customers</h3>
         </div>
         <div className="flex items-center">
           <span className={`mr-2 ${trendValues.changeText}`}>+8.2%</span>
@@ -163,15 +173,14 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   <div className="flex items-center">
     <div className={`mr-3 rounded-lg ${customerTrendValues.iconBg} p-2`}>
       <Users className={`h-5 w-5 ${customerTrendValues.iconText}`} />
     </div>
-    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-      Customers
-    </h3>
+    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Customers</h3>
   </div>
   <div className="flex items-center">
     <span className={`mr-2 ${customerTrendValues.changeText}`}>+8.2%</span>
@@ -182,6 +191,7 @@ With this:
 ### Example 4: Customer Chart (around line 591)
 
 Replace this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   {(() => {
@@ -193,7 +203,11 @@ Replace this:
       >
         <defs>
           <linearGradient id="colorCustomers" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={trendValues.stopColor} stopOpacity={trendValues.stopOpacity} />
+            <stop
+              offset="5%"
+              stopColor={trendValues.stopColor}
+              stopOpacity={trendValues.stopOpacity}
+            />
             <stop offset="95%" stopColor={trendValues.stopColor} stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -212,6 +226,7 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   <AreaChart
@@ -220,7 +235,11 @@ With this:
   >
     <defs>
       <linearGradient id="colorCustomers" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="5%" stopColor={customerTrendValues.stopColor} stopOpacity={customerTrendValues.stopOpacity} />
+        <stop
+          offset="5%"
+          stopColor={customerTrendValues.stopColor}
+          stopOpacity={customerTrendValues.stopOpacity}
+        />
         <stop offset="95%" stopColor={customerTrendValues.stopColor} stopOpacity={0} />
       </linearGradient>
     </defs>
@@ -239,19 +258,21 @@ With this:
 ### Example 5: Average Transaction Card (around line 622)
 
 Replace this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   {(() => {
-    const trendValues = getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction");
+    const trendValues = getTrendStylesForDashboard(
+      averageTransactionTrend > 0,
+      "colorAvgTransaction",
+    );
     return (
       <>
         <div className="flex items-center">
           <div className={`mr-3 rounded-lg ${trendValues.iconBg} p-2`}>
             <TrendingUp className={`h-5 w-5 ${trendValues.iconText}`} />
           </div>
-          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Avg. Transaction
-          </h3>
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Avg. Transaction</h3>
         </div>
         <div className="flex items-center">
           <span className={`mr-2 ${trendValues.changeText}`}>
@@ -266,15 +287,14 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <div className="mb-4 flex items-center justify-between">
   <div className="flex items-center">
     <div className={`mr-3 rounded-lg ${avgTransactionTrendValues.iconBg} p-2`}>
       <TrendingUp className={`h-5 w-5 ${avgTransactionTrendValues.iconText}`} />
     </div>
-    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-      Avg. Transaction
-    </h3>
+    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Avg. Transaction</h3>
   </div>
   <div className="flex items-center">
     <span className={`mr-2 ${avgTransactionTrendValues.changeText}`}>
@@ -288,10 +308,14 @@ With this:
 ### Example 6: Average Transaction Chart (around line 655)
 
 Replace this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   {(() => {
-    const trendValues = getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction");
+    const trendValues = getTrendStylesForDashboard(
+      averageTransactionTrend > 0,
+      "colorAvgTransaction",
+    );
     return (
       <AreaChart
         data={getFilteredChartData(areaChartData, selectedCoin)}
@@ -299,7 +323,11 @@ Replace this:
       >
         <defs>
           <linearGradient id="colorAvgTransaction" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={trendValues.stopColor} stopOpacity={trendValues.stopOpacity} />
+            <stop
+              offset="5%"
+              stopColor={trendValues.stopColor}
+              stopOpacity={trendValues.stopOpacity}
+            />
             <stop offset="95%" stopColor={trendValues.stopColor} stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -318,6 +346,7 @@ Replace this:
 ```
 
 With this:
+
 ```tsx
 <ResponsiveContainer width="100%" height="100%">
   <AreaChart
@@ -326,7 +355,11 @@ With this:
   >
     <defs>
       <linearGradient id="colorAvgTransaction" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="5%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={avgTransactionTrendValues.stopOpacity} />
+        <stop
+          offset="5%"
+          stopColor={avgTransactionTrendValues.stopColor}
+          stopOpacity={avgTransactionTrendValues.stopOpacity}
+        />
         <stop offset="95%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={0} />
       </linearGradient>
     </defs>
@@ -345,40 +378,39 @@ With this:
 ### Example 7: Volume Chart (around line 749)
 
 Replace this:
+
 ```tsx
-{(() => {
-  const trendValues = getTrendStylesForDashboard(true, "colorVol");
-  return (
-    <>
-      <defs>
-        <linearGradient id="colorVol" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor={trendValues.stopColor} stopOpacity={0.8} />
-          <stop offset="95%" stopColor={trendValues.stopColor} stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <XAxis
-        dataKey="date"
-        tick={{ fontSize: 12 }}
-        tickLine={false}
-        axisLine={false}
-      />
-      <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
-      <CartesianGrid stroke="#f5f5f5" />
-      <Area
-        type="monotone"
-        dataKey="volume"
-        stroke={trendValues.strokeColor}
-        strokeWidth={2}
-        fillOpacity={1}
-        fill={trendValues.fillGradient}
-      />
-      <RechartsTooltip />
-    </>
-  );
-})()}
+{
+  (() => {
+    const trendValues = getTrendStylesForDashboard(true, "colorVol");
+    return (
+      <>
+        <defs>
+          <linearGradient id="colorVol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor={trendValues.stopColor} stopOpacity={0.8} />
+            <stop offset="95%" stopColor={trendValues.stopColor} stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <XAxis dataKey="date" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
+        <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
+        <CartesianGrid stroke="#f5f5f5" />
+        <Area
+          type="monotone"
+          dataKey="volume"
+          stroke={trendValues.strokeColor}
+          strokeWidth={2}
+          fillOpacity={1}
+          fill={trendValues.fillGradient}
+        />
+        <RechartsTooltip />
+      </>
+    );
+  })();
+}
 ```
 
 With this:
+
 ```tsx
 <defs>
   <linearGradient id="colorVol" x1="0" y1="0" x2="0" y2="1">
@@ -408,6 +440,7 @@ With this:
 ## Double-check the Code
 
 After making these changes, carefully check the JSX structure to ensure that all closing tags match their opening tags. Pay special attention to:
+
 - All div elements have matching closing tags
 - All ResponsiveContainer elements have matching closing tags
 - All AreaChart elements have matching closing tags

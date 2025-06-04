@@ -23,7 +23,7 @@ import {
   Zap,
   BarChart3,
   ArrowUp,
-  ArrowDown
+  ArrowDown,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -52,23 +52,24 @@ export function DashboardContent() {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [chartView, setChartView] = useState<"area" | "bar" | "line">("area");
   const [selectedCoin, setSelectedCoin] = useState<string>("all");
-  
+
   // Add a mock negative trend for average transaction value
   const averageTransactionTrend = -2.3; // negative value to show red charts
 
   // Pre-calculate all trend values for dashboard cards
-  const transactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorTransactions"), []);
+  const transactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(true, "colorTransactions"),
+    [],
+  );
 
-  const customerTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorCustomers"), []);
+  const customerTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorCustomers"), []);
 
-  const avgTransactionTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"), 
-    [averageTransactionTrend]);
+  const avgTransactionTrendValues = useMemo(
+    () => getTrendStylesForDashboard(averageTransactionTrend > 0, "colorAvgTransaction"),
+    [averageTransactionTrend],
+  );
 
-  const volumeTrendValues = useMemo(() => 
-    getTrendStylesForDashboard(true, "colorVol"), []);
+  const volumeTrendValues = useMemo(() => getTrendStylesForDashboard(true, "colorVol"), []);
 
   // Sample data for charts
   const areaChartData = [
@@ -81,7 +82,7 @@ export function DashboardContent() {
 
   // Helper function to filter chart data
   const getFilteredChartData = (data: any[], coin: string) => {
-    return coin === "all" ? data : data.filter(item => item.coin === coin);
+    return coin === "all" ? data : data.filter((item) => item.coin === coin);
   };
 
   // Simulate loading state
@@ -98,7 +99,10 @@ export function DashboardContent() {
         <div className="h-8 w-64 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"></div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-24 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
+            <div
+              key={i}
+              className="h-24 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"
+            ></div>
           ))}
         </div>
         <div className="mt-2 h-80 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
@@ -110,10 +114,16 @@ export function DashboardContent() {
     <>
       {/* Notification Banner */}
       {showNotification && (
-        <div className="mb-6 overflow-hidden rounded-lg border border-emerald-200 bg-gradient-to-r from-emerald-50 to-emerald-100 shadow-sm dark:border-emerald-800 dark:from-emerald-900/30 dark:to-emerald-800/30">
+        <div
+          className="mb-6 overflow-hidden rounded-lg border border-emerald-200 bg-gradient-to-r from-emerald-50
+            to-emerald-100 shadow-sm dark:border-emerald-800 dark:from-emerald-900/30 dark:to-emerald-800/30"
+        >
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 shadow-inner dark:bg-emerald-800">
+              <div
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 shadow-inner
+                  dark:bg-emerald-800"
+              >
                 <Zap className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />
               </div>
               <div>
@@ -128,13 +138,15 @@ export function DashboardContent() {
             <div className="flex items-center space-x-3">
               <a
                 href="#"
-                className="hidden text-sm font-medium text-emerald-700 transition-colors duration-200 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 sm:inline-block"
+                className="hidden text-sm font-medium text-emerald-700 transition-colors duration-200 hover:text-emerald-800
+                  dark:text-emerald-400 dark:hover:text-emerald-300 sm:inline-block"
               >
                 Learn more
               </a>
               <button
                 onClick={() => setShowNotification(false)}
-                className="rounded-full p-1.5 text-emerald-600 transition-colors duration-200 hover:bg-emerald-200 hover:text-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-800 dark:hover:text-emerald-300"
+                className="rounded-full p-1.5 text-emerald-600 transition-colors duration-200 hover:bg-emerald-200
+                  hover:text-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-800 dark:hover:text-emerald-300"
                 aria-label="Dismiss"
               >
                 <X className="h-4 w-4" />
@@ -161,7 +173,10 @@ export function DashboardContent() {
           {/* Dashboard Cards */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {/* Card 1: Transactions - Positive trend (green) */}
-            <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
@@ -189,8 +204,16 @@ export function DashboardContent() {
                   >
                     <defs>
                       <linearGradient id="colorTransactions" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={transactionTrendValues.stopColor} stopOpacity={transactionTrendValues.stopOpacity} />
-                        <stop offset="95%" stopColor={transactionTrendValues.stopColor} stopOpacity={0} />
+                        <stop
+                          offset="5%"
+                          stopColor={transactionTrendValues.stopColor}
+                          stopOpacity={transactionTrendValues.stopOpacity}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor={transactionTrendValues.stopColor}
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
                     <Area
@@ -207,7 +230,10 @@ export function DashboardContent() {
             </div>
 
             {/* Card 2: Customers - Positive trend (green) */}
-            <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
@@ -235,8 +261,16 @@ export function DashboardContent() {
                   >
                     <defs>
                       <linearGradient id="colorCustomers" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={customerTrendValues.stopColor} stopOpacity={customerTrendValues.stopOpacity} />
-                        <stop offset="95%" stopColor={customerTrendValues.stopColor} stopOpacity={0} />
+                        <stop
+                          offset="5%"
+                          stopColor={customerTrendValues.stopColor}
+                          stopOpacity={customerTrendValues.stopOpacity}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor={customerTrendValues.stopColor}
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
                     <Area
@@ -251,9 +285,12 @@ export function DashboardContent() {
                 </ResponsiveContainer>
               </div>
             </div>
-            
+
             {/* Card 3: Average Transaction - Negative trend (red) */}
-            <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div
+              className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm dark:border-gray-700
+                dark:bg-gray-800"
+            >
               <div className="p-6">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center">
@@ -273,7 +310,9 @@ export function DashboardContent() {
                 </div>
                 <div className="flex items-baseline">
                   <span className="text-2xl font-bold text-gray-900 dark:text-white">$112.43</span>
-                  <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">per transaction</span>
+                  <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
+                    per transaction
+                  </span>
                 </div>
               </div>
               <div className="h-[60px] w-full">
@@ -284,8 +323,16 @@ export function DashboardContent() {
                   >
                     <defs>
                       <linearGradient id="colorAvgTransaction" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={avgTransactionTrendValues.stopOpacity} />
-                        <stop offset="95%" stopColor={avgTransactionTrendValues.stopColor} stopOpacity={0} />
+                        <stop
+                          offset="5%"
+                          stopColor={avgTransactionTrendValues.stopColor}
+                          stopOpacity={avgTransactionTrendValues.stopOpacity}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor={avgTransactionTrendValues.stopColor}
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
                     <Area
@@ -300,7 +347,7 @@ export function DashboardContent() {
                 </ResponsiveContainer>
               </div>
             </div>
-            
+
             {/* Card 4: API Health */}
             <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
               <div className="mb-4 flex items-center justify-between">
@@ -308,9 +355,14 @@ export function DashboardContent() {
                   <div className="mr-3 rounded-lg bg-green-100 p-2 dark:bg-green-900/50">
                     <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">API Health</h3>
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    API Health
+                  </h3>
                 </div>
-                <Badge className="bg-green-500 text-white hover:bg-green-600 dark:bg-green-700 dark:text-green-100 dark:hover:bg-green-600">
+                <Badge
+                  className="bg-green-500 text-white hover:bg-green-600 dark:bg-green-700 dark:text-green-100
+                    dark:hover:bg-green-600"
+                >
                   Operational
                 </Badge>
               </div>
@@ -322,7 +374,10 @@ export function DashboardContent() {
           </div>
 
           {/* Main Chart */}
-          <div className="mb-6 mt-6 rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div
+            className="mb-6 mt-6 rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700
+              dark:bg-gray-800"
+          >
             <div className="mb-6 flex flex-col justify-between space-y-4 sm:flex-row sm:items-center sm:space-y-0">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white">Payment Volume</h2>
               <div className="flex space-x-2">
@@ -352,7 +407,7 @@ export function DashboardContent() {
                 </Button>
               </div>
             </div>
-            
+
             <div className="h-80">
               {/* Area Chart */}
               {chartView === "area" && (
@@ -363,8 +418,16 @@ export function DashboardContent() {
                   >
                     <defs>
                       <linearGradient id="colorVol" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={volumeTrendValues.stopColor} stopOpacity={0.8} />
-                        <stop offset="95%" stopColor={volumeTrendValues.stopColor} stopOpacity={0} />
+                        <stop
+                          offset="5%"
+                          stopColor={volumeTrendValues.stopColor}
+                          stopOpacity={0.8}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor={volumeTrendValues.stopColor}
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
                     <XAxis
@@ -387,7 +450,7 @@ export function DashboardContent() {
                   </AreaChart>
                 </ResponsiveContainer>
               )}
-              
+
               {/* Bar Chart */}
               {chartView === "bar" && (
                 <ResponsiveContainer width="100%" height="100%">
@@ -403,7 +466,7 @@ export function DashboardContent() {
                   </RechartsBarChart>
                 </ResponsiveContainer>
               )}
-              
+
               {/* Line Chart */}
               {chartView === "line" && (
                 <ResponsiveContainer width="100%" height="100%">
@@ -432,7 +495,9 @@ export function DashboardContent() {
 
         <TabsContent value="transactions" className="mt-4">
           <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Recent Transactions</h2>
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+              Recent Transactions
+            </h2>
             <p className="text-gray-500 dark:text-gray-400">
               This tab will display a list of your recent transactions with filtering options.
             </p>

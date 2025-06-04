@@ -23,7 +23,7 @@ interface AvgTransactionChartProps {
 
 export function AvgTransactionChart({ data, trend = "down" }: AvgTransactionChartProps) {
   const colors = getTrendColors(trend);
-  
+
   return (
     <Card className="border-0 shadow-md">
       <CardHeader>
