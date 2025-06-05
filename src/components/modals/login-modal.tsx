@@ -65,8 +65,8 @@ export function LoginModal({ isOpen, onClose, onOpenRegister }: AuthModalProps) 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-h-[90vh] overflow-hidden overflow-y-auto rounded-2xl border-0 p-0 shadow-lg sm:max-w-[460px]">
-        <div className="relative p-8">
+      <DialogContent className="overflow-hidden rounded-2xl border-0 p-0 shadow-lg sm:max-w-[460px]">
+        <div className="relative max-h-[90vh] overflow-y-auto p-8">
           <div className="mb-8 text-left">
             <h2 className="text-2xl font-bold tracking-tight">Login</h2>
             <p className="mt-2 text-gray-600 dark:text-gray-400">

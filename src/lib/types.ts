@@ -1,56 +1,59 @@
 export interface Coin {
-  name: string
-  icon: string
+  name: string;
+  icon: string;
 }
 
 export interface Integration {
-  name: string
-  icon: string
+  name: string;
+  icon: string;
 }
 
 export interface Partner {
-  name: string
-  logo: string
+  name: string;
+  logo: string;
 }
 
 export interface Feature {
-  title: string
-  description: string
-  icon: string
+  title: string;
+  description: string;
+  icon: string;
+  modalTitle?: string;
+  modalDescription?: string;
+  ctaText?: string;
 }
 
 export interface Stat {
-  value: string
-  label: string
+  value: string;
+  label: string;
 }
 
 export interface Solution {
-  title: string
-  description: string
-  icon: string
-  link: string
+  title: string;
+  description: string;
+  icon: string;
+  link: string;
 }
 
 export interface CodeBlock {
-  title: string
-  languages: Record<string, string>
+  title: string;
+  languages: Record<string, string>;
 }
 
 export interface DocumentationSection {
-  id: string
-  title: string
-  content: string
-  codeBlocks?: CodeBlock[]
+  id: string;
+  title: string;
+  content: string;
+  codeBlocks?: CodeBlock[];
   faqs?: Array<{
-    question: string
-    answer: string
-  }>
+    question: string;
+    answer: string;
+  }>;
 }
 
 export interface Documentation {
-  slug: string
-  title: string
-  description: string
-  icon: string
-  sections: DocumentationSection[]
+  slug: string;
+  title: string;
+  description: string;
+  icon: string;
+  sections: DocumentationSection[];
 }
