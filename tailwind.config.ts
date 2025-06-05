@@ -1,4 +1,4 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -29,7 +29,7 @@ const config = {
         gray: {
           DEFAULT: "#f7f7f7",
           foreground: "hsl(var(--slate-foreground))",
-          50:  "#f5f5f4",
+          50: "#f5f5f4",
           100: "#e7e5e4",
           200: "#d6d3d1",
           300: "#a8a29e",
@@ -39,7 +39,7 @@ const config = {
           700: "#292524",
           800: "#1c1917",
           900: "#0e0c0a",
-          950: "#0c0a09",  // entspricht Tailwind gray-950
+          950: "#0c0a09", // entspricht Tailwind gray-950
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -75,12 +75,12 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         emerald: {
-          50:  "#ffffff",
+          50: "#ffffff",
           100: "#f6fdd5",
           200: "#edfcab",
           300: "#e3fa80",
           400: "#daf956",
-          500: "#d1f72c",  // leicht angepasste Basis
+          500: "#d1f72c", // leicht angepasste Basis
           600: "#b6d72d",
           700: "#9cb72e",
           800: "#81962e",
@@ -127,6 +127,14 @@ const config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-15px)" },
         },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "translate(-50%, -50%) scale(0.95)" },
+          "100%": { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        },
+        "scale-out": {
+          "0%": { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+          "100%": { opacity: "0", transform: "translate(-50%, -50%) scale(0.95)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -134,6 +142,8 @@ const config = {
         scroll: "scroll 30s linear infinite",
         float: "float 3s ease-in-out infinite",
         "bounce-slow": "bounce 2s ease-in-out infinite",
+        "scale-in": "scale-in 0.2s ease-out",
+        "scale-out": "scale-out 0.2s ease-in",
       },
     },
   },

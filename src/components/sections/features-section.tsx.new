@@ -71,7 +71,9 @@ export function FeaturesSection({ features }: FeaturesSectionProps) {
               ctaText={feature.ctaText || "Learn more"}
             >
               <div>
-                <Card className="h-full cursor-pointer border-none shadow-sm transition-all hover:shadow-md">
+                <Card 
+                  className="h-full cursor-pointer border-none shadow-sm transition-all hover:shadow-md"
+                >
                   <CardContent className="p-8">
                     <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
                       {renderIcon(feature.icon)}
