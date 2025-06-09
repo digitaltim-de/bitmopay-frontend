@@ -845,7 +845,9 @@ function NavItem({
               ? "right-0 w-[500px]"
               : label === "More"
                 ? "right-0 w-[300px]"
-                : "w-screen max-w-[400px]"
+                : label === "Solutions"
+                  ? "w-screen max-w-[800px]"
+                  : "w-screen max-w-[400px]"
           }`}
           style={
             label !== "Contact" && label !== "More"
@@ -913,30 +915,53 @@ function NavItem({
             ) : (
               <>
                 <div className="relative py-2">
-                  {getFeatures &&
-                    getFeatures(label || "").map((feature) => (
-                      <Link
-                        key={feature.title}
-                        href={feature.href}
-                        className={`flex items-start rounded-md transition-all hover:bg-gray-50
-                          ${label === "More" ? "mx-1 px-2 py-2" : "mx-2 px-4 py-3"}`}
-                      >
-                        <div
-                          className={`flex flex-shrink-0 items-center justify-center pt-0.5
-                            ${label === "More" ? "h-5 w-5 text-inherit" : "h-8 w-8"}`}
-                        >
-                          {feature.icon}
-                        </div>
-                        <div className={`ml-3 flex-1 ${label === "More" ? "min-w-0" : ""}`}>
-                          <p className="text-sm font-bold text-gray-800">{feature.title}</p>
-                          <p
-                            className={`text-gray-500 ${label === "More" ? "text-[10px]" : "text-xs"}`}
+                  {label === "Solutions" ? (
+                    <div className="grid grid-cols-2 gap-2 p-2">
+                      {getFeatures &&
+                        getFeatures(label).map((feature) => (
+                          <Link
+                            key={feature.title}
+                            href={feature.href}
+                            className="flex items-start rounded-md px-3 py-3 transition-all hover:bg-gray-50"
                           >
-                            {feature.description}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}{" "}
+                            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center pt-0.5">
+                              {feature.icon}
+                            </div>
+                            <div className="ml-3 flex-1">
+                              <p className="text-sm font-bold text-gray-800">{feature.title}</p>
+                              <p className="text-xs text-gray-500">{feature.description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                    </div>
+                  ) : (
+                    <>
+                      {getFeatures &&
+                        getFeatures(label || "").map((feature) => (
+                          <Link
+                            key={feature.title}
+                            href={feature.href}
+                            className={`flex items-start rounded-md transition-all hover:bg-gray-50
+                              ${label === "More" ? "mx-1 px-2 py-2" : "mx-2 px-4 py-3"}`}
+                          >
+                            <div
+                              className={`flex flex-shrink-0 items-center justify-center pt-0.5
+                                ${label === "More" ? "h-5 w-5 text-inherit" : "h-8 w-8"}`}
+                            >
+                              {feature.icon}
+                            </div>
+                            <div className={`ml-3 flex-1 ${label === "More" ? "min-w-0" : ""}`}>
+                              <p className="text-sm font-bold text-gray-800">{feature.title}</p>
+                              <p
+                                className={`text-gray-500 ${label === "More" ? "text-[10px]" : "text-xs"}`}
+                              >
+                                {feature.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                    </>
+                  )}
                 </div>
               </>
             )}
