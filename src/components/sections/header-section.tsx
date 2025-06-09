@@ -337,26 +337,12 @@ export function HeaderSection() {
       }
     };
   }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b border-black/5 py-4 backdrop-blur-lg transition-all",
-        isScrolled
-          ? "!bg-white shadow-md backdrop-blur-sm dark:bg-gray-900/90"
-          : "bg-emerald-900 dark:bg-gray-900",
-      )}
-    >
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 py-4 backdrop-blur-lg transition-all">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Link
-              href="/"
-              className={cn(
-                "group flex items-center text-2xl font-bold",
-                isScrolled ? "text-gray-950" : "text-white",
-              )}
-            >
+            <Link href="/" className="group flex items-center text-2xl font-bold text-gray-950">
               <svg
                 className="mr-2 h-8 w-8 transition-transform group-hover:scale-110"
                 viewBox="0 0 24 24"
@@ -447,10 +433,9 @@ export function HeaderSection() {
                 }, 500);
               }}
             >
+              {" "}
               <button
-                className={`flex items-center justify-center rounded-full p-2 ${
-                  isScrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-emerald-800" }
-                  transition-colors`}
+                className="flex items-center justify-center rounded-full p-2 text-gray-700 transition-colors hover:bg-gray-100"
                 aria-label="Contact"
               >
                 <MessageCircle className="h-5 w-5" />
@@ -562,7 +547,7 @@ export function HeaderSection() {
                 e.stopPropagation();
                 setIsMenuOpen(!isMenuOpen);
               }}
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="text-gray-700 hover:text-gray-900 focus:outline-none"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               <svg
@@ -838,12 +823,11 @@ function NavItem({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {" "}
       <Link
         href={href}
-        className={`${isScrolled ? "hover:bg-gray-100" : "hover:bg-emerald-950"}
-          ${isScrolled ? "text-gray-950" : "text-white"} rounded-xl px-3 py-1 font-outfit font-semibold
-          ${isScrolled ? "hover:text-gray-950" : "hover:text-white"} flex items-center transition-colors
-          dark:text-gray-300 dark:hover:text-white`}
+        className="flex items-center rounded-xl px-3 py-1 font-outfit font-semibold text-gray-950 transition-colors
+          hover:bg-gray-100 hover:text-gray-950"
       >
         {label ? (
           <>
