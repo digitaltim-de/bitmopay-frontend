@@ -11,7 +11,7 @@ export function PaymentsHeader({ handleExportCSV }: PaymentsHeaderProps) {
   return (
     <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Payments</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Transactions</h1>
         <p className="text-gray-500 dark:text-gray-400">
           Manage and track all your payment transactions
         </p>

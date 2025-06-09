@@ -9,6 +9,7 @@ import {
   Settings,
   FileText,
   HelpCircle,
+  ArrowLeftRight,
 } from "lucide-react";
 
 export interface SidebarLink {
@@ -34,9 +35,9 @@ export const sidebarLinks: SidebarSection[] = [
         isActive: true,
       },
       {
-        title: "Payments",
-        href: "/dashboard/payments",
-        icon: CreditCard,
+        title: "Transactions",
+        href: "/dashboard/transactions",
+        icon: ArrowLeftRight,
       },
       {
         title: "Subscriptions",
