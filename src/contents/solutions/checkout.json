@@ -2,6 +2,7 @@
   "slug": "checkout",
   "title": "Accept Crypto Instantly with Bitmopay Checkout",
   "subtitle": "Secure, 100% crypto-first payment flow with no chargebacks or intermediaries.",
+  "icon": "Wallet",
   "heroButtons": [
     {
       "text": "Start Integration",

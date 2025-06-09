@@ -64,28 +64,21 @@ export function FeaturesSection({ features }: FeaturesSectionProps) {
       />
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         {features.map((feature, index) => (
-          <div key={index}>
-            <FeatureCardModal
-              title={feature.modalTitle || feature.title}
-              description={feature.description}
-              ctaText={feature.ctaText || "Learn more"}
-            >
-              <div>
-                <Card className="h-full cursor-pointer border-none shadow-sm transition-all hover:shadow-md">
-                  <CardContent className="p-8">
-                    <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
-                      {renderIcon(feature.icon)}
-                    </div>
-                    <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
-                    <p className="mb-4 text-sm text-gray-500">{feature.description}</p>
-                    <div className="mt-auto inline-flex items-center text-sm font-medium text-emerald-600">
-                      Learn more <ChevronRight className="ml-1 h-4 w-4" />
-                    </div>
-                  </CardContent>
-                </Card>
+          <Card
+            className="h-full border-none shadow-sm transition-all"
+            key={index}
+          >
+            <CardContent className="p-8">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+                {renderIcon(feature.icon)}
               </div>
-            </FeatureCardModal>
-          </div>
+              <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
+              <p className="mb-4 text-sm text-gray-500">{feature.description}</p>
+              <div className="mt-auto inline-flex items-center text-sm font-medium text-emerald-600">
+                Learn more <ChevronRight className="ml-1 h-4 w-4" />
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </Section>

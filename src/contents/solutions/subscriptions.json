@@ -2,6 +2,7 @@
   "slug": "subscriptions",
   "title": "Recurring Crypto Payments for SaaS & Platforms",
   "subtitle": "Charge your users weekly, monthly or yearly in crypto — fully automated.",
+  "icon": "RefreshCw",
   "heroButtons": [
     {
       "text": "Create Subscription Plan",

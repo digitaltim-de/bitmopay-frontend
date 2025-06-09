@@ -2,6 +2,7 @@
   "slug": "ecommerce",
   "title": "Crypto Payments for Online Stores",
   "subtitle": "Accept Bitcoin, Ethereum and stablecoins directly at your checkout - without chargebacks.",
+  "icon": "ShoppingCart",
   "heroButtons": [
     {
       "text": "Get Started",

@@ -2,6 +2,7 @@
   "slug": "buyer-protection",
   "title": "Optional Buyer Protection for Trust & Transparency",
   "subtitle": "Funds are held for 7 days and marked as secured at checkout – increasing buyer trust.",
+  "icon": "ShieldCheck",
   "heroButtons": [
     {
       "text": "Enable Escrow Mode",

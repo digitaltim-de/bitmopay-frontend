@@ -127,80 +127,57 @@ export function DigitalExchangeSection() {
             {/* Features content */}
             <div className="space-y-6">
               {features.map((feature, index) => (
-                <DigitalExchangeCardModal
-                  key={index}
-                  title={feature.title}
-                  description={feature.description}
-                  ctaText="Learn More About This Feature"
-                >
-                  <div
-                    className="group block cursor-pointer rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md
-                      dark:bg-gray-800"
-                  >
-                    <div className="flex items-start">
-                      <div className="mr-4 flex-shrink-0">
-                        <div
-                          className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600
-                            transition-colors group-hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400
-                            dark:group-hover:bg-emerald-900/50"
-                        >
-                          {feature.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <h3
-                          className="mb-2 text-xl font-semibold text-gray-900 transition-colors group-hover:text-emerald-700
-                            dark:text-white dark:group-hover:text-emerald-400"
-                        >
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                <div className="group block rounded-xl bg-white p-6 shadow-sm transition-all dark:bg-gray-800">
+                  <div className="flex items-start">
+                    <div className="mr-4 flex-shrink-0">
+                      <div
+                        className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600
+                          transition-colors group-hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400
+                          dark:group-hover:bg-emerald-900/50"
+                      >
+                        {feature.icon}
                       </div>
                     </div>
+                    <div>
+                      <h3
+                        className="mb-2 text-xl font-semibold text-gray-900 transition-colors group-hover:text-emerald-700
+                          dark:text-white dark:group-hover:text-emerald-400"
+                      >
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                    </div>
                   </div>
-                </DigitalExchangeCardModal>
+                </div>
               ))}
-            </div>
-
-            <div className="mt-8">
-              <Button variant='link' className="group">
-                More Features
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
             </div>
           </div>
 
           {/* Right side: Stats */}
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <DigitalExchangeCardModal
-                title="Real-time Analytics Dashboard"
-                description="Monitor your crypto transactions and performance metrics in one place with our powerful analytics dashboard."
-                ctaText="Explore Dashboard Features"
+              <div
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-white/80
+                  to-white/50 shadow-sm backdrop-blur-sm dark:from-gray-800/80 dark:to-gray-800/50"
               >
-                <div
-                  className="group relative cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-white/80
-                    to-white/50 shadow-sm backdrop-blur-sm dark:from-gray-800/80 dark:to-gray-800/50"
-                >
-                  <div className="relative aspect-[4/3] w-full">
-                    <Image
-                      src="https://cdn.dribbble.com/userupload/19248974/file/original-07317ffa368c0f97b2fc423f73d082ad.jpg?resize=1504x1128&vertical=center"
-                      alt="Crypto analytics dashboard visualization"
-                      fill
-                      className="object-cover brightness-75 transition-all duration-300 group-hover:scale-105
-                        group-hover:brightness-125"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src="https://cdn.dribbble.com/userupload/19248974/file/original-07317ffa368c0f97b2fc423f73d082ad.jpg?resize=1504x1128&vertical=center"
+                    alt="Crypto analytics dashboard visualization"
+                    fill
+                    className="object-cover brightness-75 transition-all duration-300 group-hover:scale-105
+                      group-hover:brightness-125"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
 
-                    <div className="groupText absolute bottom-4 left-4 right-4 text-white">
-                      <h3 className="mb-2 text-2xl font-bold">Real-time Analytics Dashboard</h3>
-                      <p className="text-sm text-white/80">
-                        Monitor your crypto transactions and performance metrics in one place
-                      </p>
-                    </div>
+                  <div className="groupText absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="mb-2 text-2xl font-bold">Real-time Analytics Dashboard</h3>
+                    <p className="text-sm text-white/80">
+                      Monitor your crypto transactions and performance metrics in one place
+                    </p>
                   </div>
                 </div>
-              </DigitalExchangeCardModal>
+              </div>
             </div>
           </div>
         </div>
