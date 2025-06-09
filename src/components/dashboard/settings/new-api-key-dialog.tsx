@@ -64,10 +64,9 @@ export function NewApiKeyDialog({ isOpen, setIsOpen, addNewApiKey }: NewApiKeyDi
     setNewlyCreatedKey(null);
     setIsOpen(false);
   };
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Generate New API Key</DialogTitle>
           <DialogDescription>Create a new API key for integration</DialogDescription>

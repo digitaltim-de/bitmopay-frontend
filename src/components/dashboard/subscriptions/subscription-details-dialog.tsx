@@ -41,7 +41,7 @@ export function SubscriptionDetailsDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="max-w-3xl sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Subscription Details</DialogTitle>
           <DialogDescription>

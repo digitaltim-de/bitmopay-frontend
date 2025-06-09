@@ -20,7 +20,7 @@ export function UpgradeProDialog({ isOpen, onOpenChange }: UpgradeProDialogProps
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       {" "}
-      <DialogContent className="p-0 sm:max-w-md">
+      <DialogContent className="p-0 sm:max-h-[98vh] sm:max-w-md">
         <div className="relative px-6 py-8">
           <DialogHeader className="mb-6">
             <DialogTitle className="text-center text-2xl font-bold">

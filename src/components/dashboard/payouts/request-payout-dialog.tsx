@@ -49,7 +49,7 @@ export function RequestPayoutDialog({
 }: RequestPayoutDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Request Payout</DialogTitle>
           <DialogDescription>Request a withdrawal of your earned funds</DialogDescription>

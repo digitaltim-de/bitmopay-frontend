@@ -83,11 +83,10 @@ export function RegisterModal({ isOpen, onClose, onOpenLogin }: AuthModalProps) 
     onClose();
     onOpenLogin();
   };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="overflow-hidden  rounded-2xl border-0 p-0 shadow-lg sm:max-w-[460px]">
-        <div className="relative p-8 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="overflow-hidden rounded-2xl border-0 p-0 shadow-lg sm:max-w-[460px]">
+        <div className="relative max-h-[98vh] overflow-y-auto p-8">
           {/* Header */}
           <div className="mb-8 text-left">
             <h2 className="text-2xl font-bold tracking-tight">Create Account</h2>

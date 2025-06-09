@@ -39,7 +39,7 @@ export function AddWalletDialog({ isOpen, onOpenChange, onAddWallet }: AddWallet
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Add New Wallet</DialogTitle>
           <DialogDescription>Add a new wallet address to receive payments</DialogDescription>

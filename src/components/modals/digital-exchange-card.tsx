@@ -26,19 +26,16 @@ export function DigitalExchangeCardModal({
 }: DigitalExchangeCardModalProps) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogTrigger asChild>{children}</DialogTrigger>{" "}
+      <DialogContent className="sm:max-h-[98vh] sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            {description}
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <div className="py-4">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            This feature helps you optimize your cryptocurrency payment experience and improve your business operations.
+            This feature helps you optimize your cryptocurrency payment experience and improve your
+            business operations.
           </p>
         </div>
         <div className="flex justify-between">

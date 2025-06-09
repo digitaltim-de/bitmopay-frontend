@@ -25,7 +25,7 @@ export function ConfirmDeleteKeyDialog({
 }: ConfirmDeleteKeyDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Revoke API Key</DialogTitle>
           <DialogDescription>

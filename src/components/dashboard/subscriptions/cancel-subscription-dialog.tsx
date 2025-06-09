@@ -28,7 +28,7 @@ export function CancelSubscriptionDialog({
 }: CancelSubscriptionDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Cancel Subscription</DialogTitle>
           <DialogDescription>

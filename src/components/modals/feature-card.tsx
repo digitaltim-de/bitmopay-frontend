@@ -22,7 +22,7 @@ function CenteredDialogContent({
     <DialogContent
       className={cn(
         `!data-[state=open]:animate-scale-in !data-[state=closed]:animate-scale-out transition-all
-        duration-200 sm:max-w-md`,
+        duration-200 sm:max-h-[98vh] sm:max-w-md`,
         className,
       )}
       {...props}

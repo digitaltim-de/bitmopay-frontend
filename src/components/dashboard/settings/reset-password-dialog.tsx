@@ -74,7 +74,7 @@ export function ResetPasswordDialog({ isOpen, setIsOpen }: ResetPasswordDialogPr
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="sm:max-h-[98vh]">
         <DialogHeader>
           <DialogTitle>Reset Password</DialogTitle>
           <DialogDescription>Enter your current password and a new password</DialogDescription>
