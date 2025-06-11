@@ -1,15 +1,18 @@
 "use client";
 
+import { Icon } from "@iconify-icon/react";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronRight, UserPlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Section } from "../shared/section";
 import HeadTitle from "@/components/shared/head-title";
 import Badge from "@/components/shared/badge";
+import { RegisterModal } from "../modals/register-modal";
+import { useAuth } from "../auth-provider";
 
 // Enhanced type definitions
 interface CardProps {
@@ -248,7 +251,7 @@ const cardsData = [
     description:
       "Accept one-time crypto payments via our fast checkout. 100% crypto. No fiat. No chargebacks. Seamless integration with your existing store.",
     buttonText: "Start Integration",
-    buttonHref: "/integration",
+    buttonHref: "/solutions/checkout",
   },
   {
     type: "standard",
@@ -260,7 +263,7 @@ const cardsData = [
     description:
       "Easily implement recurring crypto payments. Users are reminded 7, 3 and 1 day before expiry. Perfect for membership sites and subscription services.",
     buttonText: "Explore API Docs",
-    buttonHref: "/docs/api",
+    buttonHref: "/solutions/subscriptions",
   },
   {
     type: "image",
@@ -279,7 +282,7 @@ const cardsData = [
     description:
       "Give buyers peace of mind. If enabled, funds are held for 7 days and marked as 'secured' during checkout. Increase conversion rates with added trust.",
     buttonText: "Learn More",
-    buttonHref: "/buyer-protection",
+    buttonHref: "/solutions/buyer-protection",
   },
 ];
 
@@ -307,6 +310,7 @@ const itemVariants = {
 // Modernized StartAccepting component with enhanced layout and animations
 export function StartAccepting() {
   const [activeTab, setActiveTab] = useState("all");
+  const { openLoginModal, openRegisterModal, isAuthenticated, logout, user } = useAuth();
 
   // Filter cards based on active tab (for future expansion)
   const filteredCards = cardsData;
@@ -371,13 +375,15 @@ export function StartAccepting() {
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button
-                size="lg"
-                className="group inline-flex items-center bg-emerald-600 transition-all hover:bg-emerald-700"
+                className="flex items-center gap-1.5 text-gray-950"
+                onClick={openRegisterModal}
               >
-                <span>Register</span>
+                <UserPlus size={16} />
+                Register
               </Button>
 
               <Button variant="outline" size="lg">
+                <Icon icon="ic:baseline-discord" width="24" height="24" />
                 <span>Discord</span>
                 <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>

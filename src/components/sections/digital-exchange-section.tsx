@@ -126,23 +126,22 @@ export function DigitalExchangeSection() {
           <div className="order-2 lg:order-1">
             {/* Features content */}
             <div className="space-y-6">
-              {features.map((feature, index) => (
-                <div className="group block rounded-xl bg-white p-6 shadow-sm transition-all dark:bg-gray-800">
+              {features.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="group block rounded-xl bg-white p-6 shadow-sm transition-all dark:bg-gray-800"
+                >
                   <div className="flex items-start">
                     <div className="mr-4 flex-shrink-0">
                       <div
                         className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600
-                          transition-colors group-hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400
-                          dark:group-hover:bg-emerald-900/50"
+                          transition-colors dark:bg-emerald-900/30 dark:text-emerald-400"
                       >
                         {feature.icon}
                       </div>
                     </div>
                     <div>
-                      <h3
-                        className="mb-2 text-xl font-semibold text-gray-900 transition-colors group-hover:text-emerald-700
-                          dark:text-white dark:group-hover:text-emerald-400"
-                      >
+                      <h3 className="mb-2 text-xl font-semibold text-gray-900 transition-colors dark:text-white">
                         {feature.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
