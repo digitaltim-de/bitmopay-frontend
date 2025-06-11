@@ -16,8 +16,7 @@ export function SupportedCoinsModal() {
       <DialogTrigger>
         <div
           className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-emerald-300
-            bg-gradient-to-br from-emerald-100 to-emerald-200 p-4 shadow-sm transition-all hover:scale-105
-            hover:shadow-md"
+            bg-gradient-to-br from-emerald-100 to-emerald-200 p-4 shadow-sm transition-all hover:shadow-md"
         >
           <div className="mb-3 rounded-full bg-white p-3 shadow-sm">
             <div className="relative">

@@ -10,9 +10,8 @@ export function SupportedCoinCard({
 }) {
   return (
     <div
-      className={`bg-white rounded-xl p-4 shadow-sm flex flex-col items-center transition-transform hover:scale-105 ${
-        className || ""
-      }`}
+      className={`flex flex-col items-center rounded-xl bg-white p-4 shadow-sm transition-transform ${ className || ""
+        }`}
     >
       <div className="mb-3 rounded-full bg-blue-50 p-3">
         <Image
@@ -23,7 +22,7 @@ export function SupportedCoinCard({
           className="h-10 w-10 object-cover"
         />
       </div>
-      <h3 className="font-medium text-center">{coin.name}</h3>
+      <h3 className="text-center font-medium">{coin.name}</h3>
       <span className="text-xs text-muted-foreground">{coin.symbol}</span>
     </div>
   );
