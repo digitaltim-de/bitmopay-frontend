@@ -86,7 +86,7 @@ export default function PaymentsPage() {
   };
 
   return (
-    <div className="p-4 lg:p-6">
+    <div >
       <section className="mb-6">
         <PaymentsHeader handleExportCSV={handleExportCSV} />
 

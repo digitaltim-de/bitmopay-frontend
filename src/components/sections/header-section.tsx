@@ -374,10 +374,18 @@ export function HeaderSection() {
                 setActiveMenu={setActiveMenu}
                 activeMenu={activeMenu}
                 getFeatures={getFeatures}
-              />
+              />{" "}
               <NavItem
                 href="/documentation"
                 label="Documentation"
+                isScrolled={isScrolled}
+                setActiveMenu={setActiveMenu}
+                activeMenu={activeMenu}
+                getFeatures={getFeatures}
+              />
+              <NavItem
+                href="/api-reference"
+                label="API Reference"
                 isScrolled={isScrolled}
                 setActiveMenu={setActiveMenu}
                 activeMenu={activeMenu}
@@ -580,7 +588,7 @@ export function HeaderSection() {
                 <CreditCard className="mr-2 h-5 w-5 text-emerald-500" />
                 Pricing
               </Link>
-            </div>
+            </div>{" "}
             <div className="py-1">
               <Link
                 href="/documentation"
@@ -590,6 +598,17 @@ export function HeaderSection() {
               >
                 <BookOpen className="mr-2 h-5 w-5 text-emerald-500" />
                 Documentation
+              </Link>
+            </div>
+            <div className="py-1">
+              <Link
+                href="/api-reference"
+                className="flex w-full items-center justify-center rounded-md p-2 text-lg font-medium text-gray-800
+                  transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Code className="mr-2 h-5 w-5 text-emerald-500" />
+                API Reference
               </Link>
             </div>
             <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>

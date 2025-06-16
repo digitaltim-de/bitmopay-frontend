@@ -1,0 +1,50 @@
+{
+  "slug": "webhooks",
+  "title": "Webhooks",
+  "description": "Handle real-time payment notifications",
+  "icon": "Webhook",
+  "sections": [
+    {
+      "id": "webhook-overview",
+      "title": "Webhook Overview",
+      "content": "Webhooks allow you to receive real-time notifications about payment status changes. When a payment is confirmed, failed, or expires, Bitmopay will send a POST request to your specified callback URL."
+    },
+    {
+      "id": "webhook-payload",
+      "title": "Webhook Payload",
+      "content": "All webhook notifications are sent as POST requests with a JSON payload containing payment information.",
+      "endpoints": [
+        {
+          "method": "POST",
+          "url": "https://yoursite.com/webhook",
+          "description": "Webhook notification payload",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "type": "string",
+              "required": true,
+              "description": "application/json"
+            },
+            {
+              "name": "X-Bitmopay-Signature",
+              "type": "string",
+              "required": true,
+              "description": "HMAC SHA256 signature for verification"
+            }
+          ],
+          "requestExample": "{\n  \"event\": \"payment.confirmed\",\n  \"payment\": {\n    \"id\": \"payment_123456\",\n    \"amount\": 100.50,\n    \"currency\": \"USDT\",\n    \"crypto_amount\": \"100.25\",\n    \"status\": \"confirmed\",\n    \"confirmations\": 3,\n    \"transaction_hash\": \"0x1234567890abcdef...\",\n    \"order_id\": \"order_123456\"\n  }\n}"
+        }
+      ],
+      "codeBlocks": [
+        {
+          "title": "Webhook Verification",
+          "languages": {
+            "javascript": "const crypto = require('crypto');\n\nfunction verifyWebhook(payload, signature, secret) {\n  const hmac = crypto.createHmac('sha256', secret);\n  hmac.update(payload);\n  const digest = hmac.digest('hex');\n  \n  return signature === digest;\n}\n\n// Express.js example\napp.post('/webhook', (req, res) => {\n  const signature = req.headers['x-bitmopay-signature'];\n  const payload = JSON.stringify(req.body);\n  \n  if (verifyWebhook(payload, signature, process.env.WEBHOOK_SECRET)) {\n    // Process the webhook\n    console.log('Payment confirmed:', req.body.payment.id);\n    res.status(200).send('OK');\n  } else {\n    res.status(400).send('Invalid signature');\n  }\n});",
+            "python": "import hmac\nimport hashlib\nimport json\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\ndef verify_webhook(payload, signature, secret):\n    digest = hmac.new(\n        secret.encode('utf-8'),\n        payload.encode('utf-8'),\n        hashlib.sha256\n    ).hexdigest()\n    \n    return signature == digest\n\n@app.route('/webhook', methods=['POST'])\ndef webhook():\n    signature = request.headers.get('X-Bitmopay-Signature')\n    payload = request.get_data(as_text=True)\n    \n    if verify_webhook(payload, signature, os.getenv('WEBHOOK_SECRET')):\n        data = request.get_json()\n        print(f\"Payment confirmed: {data['payment']['id']}\")\n        return 'OK', 200\n    else:\n        return 'Invalid signature', 400",
+            "php": "<?php\nfunction verifyWebhook($payload, $signature, $secret) {\n    $digest = hash_hmac('sha256', $payload, $secret);\n    return $signature === $digest;\n}\n\n$signature = $_SERVER['HTTP_X_BITMOPAY_SIGNATURE'];\n$payload = file_get_contents('php://input');\n$secret = $_ENV['WEBHOOK_SECRET'];\n\nif (verifyWebhook($payload, $signature, $secret)) {\n    $data = json_decode($payload, true);\n    error_log('Payment confirmed: ' . $data['payment']['id']);\n    http_response_code(200);\n    echo 'OK';\n} else {\n    http_response_code(400);\n    echo 'Invalid signature';\n}\n?>"
+          }
+        }
+      ]
+    }
+  ]
+}

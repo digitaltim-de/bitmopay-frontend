@@ -1,0 +1,84 @@
+{
+  "slug": "transactions",
+  "title": "Transactions",
+  "description": "Monitor and manage payment transactions",
+  "icon": "Receipt",
+  "sections": [
+    {
+      "id": "list-transactions",
+      "title": "List Transactions",
+      "content": "Retrieve a list of all transactions for your account with optional filtering.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "url": "/api/v1/transactions",
+          "description": "Get a list of transactions",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "number",
+              "required": false,
+              "description": "Number of transactions to return (default: 50, max: 100)"
+            },
+            {
+              "name": "offset",
+              "type": "number",
+              "required": false,
+              "description": "Number of transactions to skip for pagination"
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "required": false,
+              "description": "Filter by transaction status: pending, confirmed, failed"
+            },
+            {
+              "name": "currency",
+              "type": "string",
+              "required": false,
+              "description": "Filter by cryptocurrency"
+            }
+          ],
+          "responseExample": "{\n  \"transactions\": [\n    {\n      \"id\": \"tx_123456\",\n      \"payment_id\": \"payment_123456\",\n      \"amount\": 100.50,\n      \"currency\": \"USDT\",\n      \"crypto_amount\": \"100.25\",\n      \"status\": \"confirmed\",\n      \"confirmations\": 3,\n      \"transaction_hash\": \"0x1234567890abcdef...\",\n      \"created_at\": \"2024-01-15T10:00:00Z\",\n      \"confirmed_at\": \"2024-01-15T10:05:00Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 150,\n    \"limit\": 50,\n    \"offset\": 0,\n    \"has_more\": true\n  }\n}"
+        }
+      ]
+    },
+    {
+      "id": "get-transaction",
+      "title": "Get Transaction",
+      "content": "Retrieve detailed information about a specific transaction.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "url": "/api/v1/transactions/{transaction_id}",
+          "description": "Get transaction details",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "type": "string",
+              "required": true,
+              "description": "The transaction ID"
+            }
+          ],
+          "responseExample": "{\n  \"id\": \"tx_123456\",\n  \"payment_id\": \"payment_123456\",\n  \"amount\": 100.50,\n  \"currency\": \"USDT\",\n  \"crypto_amount\": \"100.25\",\n  \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\",\n  \"status\": \"confirmed\",\n  \"confirmations\": 3,\n  \"transaction_hash\": \"0x1234567890abcdef...\",\n  \"network_fee\": \"0.50\",\n  \"created_at\": \"2024-01-15T10:00:00Z\",\n  \"confirmed_at\": \"2024-01-15T10:05:00Z\",\n  \"block_number\": 12345678\n}"
+        }
+      ]
+    }
+  ]
+}

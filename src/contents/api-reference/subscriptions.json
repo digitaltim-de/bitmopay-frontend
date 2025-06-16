@@ -1,0 +1,103 @@
+{
+  "slug": "subscriptions",
+  "title": "Subscriptions",
+  "description": "Manage recurring payment subscriptions",
+  "icon": "RefreshCw",
+  "sections": [
+    {
+      "id": "create-subscription",
+      "title": "Create Subscription",
+      "content": "Create a new recurring payment subscription for regular billing cycles.",
+      "endpoints": [
+        {
+          "method": "POST",
+          "url": "/api/v1/subscriptions",
+          "description": "Create a new subscription",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            },
+            {
+              "name": "Content-Type",
+              "type": "string",
+              "required": true,
+              "description": "application/json"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "amount",
+              "type": "number",
+              "required": true,
+              "description": "Subscription amount in USD"
+            },
+            {
+              "name": "currency",
+              "type": "string",
+              "required": true,
+              "description": "Cryptocurrency for payments"
+            },
+            {
+              "name": "interval",
+              "type": "string",
+              "required": true,
+              "description": "Billing interval: daily, weekly, monthly, yearly"
+            },
+            {
+              "name": "customer_email",
+              "type": "string",
+              "required": true,
+              "description": "Customer email address"
+            },
+            {
+              "name": "trial_days",
+              "type": "number",
+              "required": false,
+              "description": "Number of trial days (default: 0)"
+            }
+          ],
+          "requestExample": "{\n  \"amount\": 29.99,\n  \"currency\": \"USDT\",\n  \"interval\": \"monthly\",\n  \"customer_email\": \"customer@example.com\",\n  \"trial_days\": 7\n}",
+          "responseExample": "{\n  \"id\": \"sub_123456\",\n  \"amount\": 29.99,\n  \"currency\": \"USDT\",\n  \"interval\": \"monthly\",\n  \"status\": \"active\",\n  \"customer_email\": \"customer@example.com\",\n  \"trial_ends_at\": \"2024-01-22T10:00:00Z\",\n  \"next_payment_at\": \"2024-01-22T10:00:00Z\",\n  \"created_at\": \"2024-01-15T10:00:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "id": "manage-subscription",
+      "title": "Manage Subscription",
+      "content": "Update or cancel existing subscriptions.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "url": "/api/v1/subscriptions/{subscription_id}",
+          "description": "Get subscription details",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            }
+          ],
+          "responseExample": "{\n  \"id\": \"sub_123456\",\n  \"amount\": 29.99,\n  \"currency\": \"USDT\",\n  \"interval\": \"monthly\",\n  \"status\": \"active\",\n  \"customer_email\": \"customer@example.com\",\n  \"payments_count\": 3,\n  \"next_payment_at\": \"2024-02-15T10:00:00Z\",\n  \"created_at\": \"2024-01-15T10:00:00Z\"\n}"
+        },
+        {
+          "method": "DELETE",
+          "url": "/api/v1/subscriptions/{subscription_id}",
+          "description": "Cancel subscription",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            }
+          ],
+          "responseExample": "{\n  \"id\": \"sub_123456\",\n  \"status\": \"cancelled\",\n  \"cancelled_at\": \"2024-01-20T10:00:00Z\"\n}"
+        }
+      ]
+    }
+  ]
+}

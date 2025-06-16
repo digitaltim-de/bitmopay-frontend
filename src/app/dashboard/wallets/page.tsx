@@ -53,7 +53,7 @@ export default function WalletsPage() {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <>
       <section className="mb-6">
         {/* Wallets Header */}
         <WalletsHeader onAddWallet={() => setIsAddWalletOpen(true)} />
@@ -78,6 +78,6 @@ export default function WalletsPage() {
         onOpenChange={setIsAddWalletOpen}
         onAddWallet={handleAddWallet}
       />
-    </div>
+    </>
   );
 }

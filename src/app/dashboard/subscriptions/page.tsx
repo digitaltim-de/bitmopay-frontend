@@ -82,7 +82,7 @@ export default function SubscriptionsPage() {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div>
       <section className="mb-6">
         <SubscriptionsHeader onExportCSV={handleExportCSV} />
 

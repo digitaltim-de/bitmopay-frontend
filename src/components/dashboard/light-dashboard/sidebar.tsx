@@ -36,7 +36,7 @@ export function Sidebar({ sidebarLinks, isSidebarOpen, toggleSidebar }: SidebarP
       {/* Sidebar */}
       <aside
         className={cn(
-          `!sticky left-0 top-0 z-50 h-screen w-72 transform overflow-y-auto overscroll-contain bg-white
+          `!sticky left-0 top-0 z-50 h-screen w-72 transform overflow-y-auto !shrink-0 overscroll-contain bg-white
           shadow-xl transition-all duration-300 ease-in-out dark:bg-gray-800 lg:relative lg:translate-x-0`,
           isSidebarOpen ? "translate-x-0" : "-translate-x-full",
         )}

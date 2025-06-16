@@ -40,35 +40,33 @@ export default function AnalyticsPage() {
     console.log("Exporting analytics data...");
   };
   return (
-    <div className="lg:p- p-4">
-      <section className="space-y-8">
-        <AnalyticsHeader
-          timeRange={timeRange}
-          setTimeRange={setTimeRange}
-          selectedCoin={selectedCoin}
-          setSelectedCoin={setSelectedCoin}
-          handleExportData={handleExportData}
-        />
-        <SummaryCards
-          totalPaymentVolume={totalPaymentVolume}
-          totalSubscribers={totalSubscribers}
-          newSubscribers={newSubscribers}
-          avgTransactionValue={avgTransactionValue}
-          paymentVolumeChange={paymentVolumeChange}
-          subscribersChange={subscribersChange}
-          avgTransactionChange={avgTransactionChange}
-        />{" "}
-        <ChartsSection
-          paymentsByDayData={paymentsByDayData}
-          subscriptionGrowthData={subscriptionGrowthData}
-          avgTransactionValueData={avgTransactionValueData}
-          paymentMethodsData={paymentMethodsData}
-          colors={COLORS}
-          paymentVolumeChange={paymentVolumeChange}
-          subscribersChange={subscribersChange}
-          avgTransactionChange={avgTransactionChange}
-        />
-      </section>
-    </div>
+    <section className="space-y-8">
+      <AnalyticsHeader
+        timeRange={timeRange}
+        setTimeRange={setTimeRange}
+        selectedCoin={selectedCoin}
+        setSelectedCoin={setSelectedCoin}
+        handleExportData={handleExportData}
+      />
+      <SummaryCards
+        totalPaymentVolume={totalPaymentVolume}
+        totalSubscribers={totalSubscribers}
+        newSubscribers={newSubscribers}
+        avgTransactionValue={avgTransactionValue}
+        paymentVolumeChange={paymentVolumeChange}
+        subscribersChange={subscribersChange}
+        avgTransactionChange={avgTransactionChange}
+      />{" "}
+      <ChartsSection
+        paymentsByDayData={paymentsByDayData}
+        subscriptionGrowthData={subscriptionGrowthData}
+        avgTransactionValueData={avgTransactionValueData}
+        paymentMethodsData={paymentMethodsData}
+        colors={COLORS}
+        paymentVolumeChange={paymentVolumeChange}
+        subscribersChange={subscribersChange}
+        avgTransactionChange={avgTransactionChange}
+      />
+    </section>
   );
 }

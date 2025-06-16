@@ -490,7 +490,7 @@ export default function CustomersPage() {
   };
 
   return (
-    <div className="p-4 lg:p-6">
+    <div>
       <section className="mb-6">
         <CustomersHeader handleExportCSV={handleExportCSV} />
 

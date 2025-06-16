@@ -27,34 +27,32 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <section className="mb-6">
-        <SettingsHeader />
+    <section className="mb-6">
+      <SettingsHeader />
 
-        <Tabs defaultValue="profile" className="space-y-4">
-          <SettingsTabsNavigation />
+      <Tabs defaultValue="profile" className="space-y-4">
+        <SettingsTabsNavigation />
 
-          {/* Profile Tab */}
-          <TabsContent value="profile">
-            <ProfileTab initialProfileData={initialProfileData} />
-          </TabsContent>
+        {/* Profile Tab */}
+        <TabsContent value="profile">
+          <ProfileTab initialProfileData={initialProfileData} />
+        </TabsContent>
 
-          {/* Security Tab */}
-          <TabsContent value="security">
-            <SecurityTab />
-          </TabsContent>
+        {/* Security Tab */}
+        <TabsContent value="security">
+          <SecurityTab />
+        </TabsContent>
 
-          {/* Notifications Tab */}
-          <TabsContent value="notifications">
-            <NotificationsTab initialNotificationSettings={initialNotificationSettings} />
-          </TabsContent>
+        {/* Notifications Tab */}
+        <TabsContent value="notifications">
+          <NotificationsTab initialNotificationSettings={initialNotificationSettings} />
+        </TabsContent>
 
-          {/* API Keys Tab */}
-          <TabsContent value="api-keys">
-            <ApiKeysTab />
-          </TabsContent>
-        </Tabs>
-      </section>
-    </div>
+        {/* API Keys Tab */}
+        <TabsContent value="api-keys">
+          <ApiKeysTab />
+        </TabsContent>
+      </Tabs>
+    </section>
   );
 }

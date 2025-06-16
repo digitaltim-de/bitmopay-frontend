@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Menu, X, Search, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface DocumentationHeaderProps {
+interface ApiReferenceHeaderProps {
   toggleSidebar: () => void;
   isSidebarOpen: boolean;
 }
 
-export function DocumentationHeader({ toggleSidebar, isSidebarOpen }: DocumentationHeaderProps) {
+export function ApiReferenceHeader({ toggleSidebar, isSidebarOpen }: ApiReferenceHeaderProps) {
   return (
     <header
       className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-800
@@ -62,7 +62,7 @@ export function DocumentationHeader({ toggleSidebar, isSidebarOpen }: Documentat
               Bitmopay
             </span>
             <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-              API Documentation
+              API Reference
             </span>
           </Link>
         </div>
@@ -75,7 +75,7 @@ export function DocumentationHeader({ toggleSidebar, isSidebarOpen }: Documentat
             </div>
             <input
               type="text"
-              placeholder="Search documentation..."
+              placeholder="Search API reference..."
               className="w-64 rounded-lg border border-gray-200 bg-gray-50 py-1.5 pl-10 pr-4 text-sm transition-all
                 duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-emerald-500
                 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
@@ -90,11 +90,11 @@ export function DocumentationHeader({ toggleSidebar, isSidebarOpen }: Documentat
                 dark:hover:text-emerald-500"
             >
               Docs
-            </Link>{" "}
+            </Link>
             <Link
               href="/api-reference"
-              className="text-sm font-medium text-gray-900 hover:text-emerald-600 dark:text-gray-300
-                dark:hover:text-emerald-500"
+              className="border-b-2 border-emerald-600 text-sm font-medium text-emerald-600 dark:border-emerald-500
+                dark:text-emerald-500"
             >
               API Reference
             </Link>
