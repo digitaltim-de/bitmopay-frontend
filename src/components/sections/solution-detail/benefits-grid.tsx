@@ -43,11 +43,16 @@ export function BenefitsGrid({ benefits }: BenefitsGridProps) {
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {benefits.map((benefit, index) => (
           <div key={index} className="flex">
-            <div className="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900 dark:text-emerald-400">
+            <div
+              className="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100
+                text-emerald-600 dark:bg-emerald-900 dark:text-emerald-400"
+            >
               {renderIcon(benefit.icon)}
             </div>
             <div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{benefit.title}</h3>
+              <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                {benefit.title}
+              </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">{benefit.description}</p>
             </div>
           </div>

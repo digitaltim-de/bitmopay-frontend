@@ -13,7 +13,7 @@ import { StartAccepting } from "@/components/sections/start-accepting";
 import { HowIntegrate } from "@/components/sections/how-integrate";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { features, partners, stats, supportedCoins } from "@/lib/data";
+import { features, partners } from "@/lib/data";
 import { ScrollToTopButton } from "@/components/shared/scroll-to-top";
 
 export default function Home() {

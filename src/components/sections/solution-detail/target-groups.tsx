@@ -39,14 +39,19 @@ export function TargetGroups({ groups }: TargetGroupsProps) {
         subtitle="Bitmopay works seamlessly with various platforms and business models"
       />
 
-      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((group, index) => (
-          <Card key={index} className="border-none shadow-sm hover:shadow-md transition-all">
+          <Card key={index} className="border-none transition-all">
             <CardContent className="p-6">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900 dark:text-emerald-400">
+              <div
+                className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600
+                  dark:bg-emerald-900 dark:text-emerald-400"
+              >
                 {renderIcon(group.icon)}
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">{group.title}</h3>
+              <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                {group.title}
+              </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">{group.description}</p>
             </CardContent>
           </Card>
