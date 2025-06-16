@@ -2,7 +2,7 @@
 
 import { Section } from "@/components/shared/section";
 import HeadTitle from "@/components/shared/head-title";
-import { ShieldCheck, Wallet, Webhook, Coins, TestTube } from "lucide-react";
+import { ShieldCheck, Wallet, Webhook, Coins, TestTube, RefreshCw, FileText } from "lucide-react";
 
 interface Benefit {
   title: string;
@@ -27,6 +27,10 @@ const renderIcon = (iconName: string) => {
       return <Coins className="h-6 w-6" />;
     case "TestTube":
       return <TestTube className="h-6 w-6" />;
+    case "RefreshCw":
+      return <RefreshCw className="h-6 w-6" />;
+    case "FileText":
+      return <FileText className="h-6 w-6" />;
     default:
       return null;
   }

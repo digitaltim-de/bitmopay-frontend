@@ -3,7 +3,12 @@
 import { useEffect, useRef } from "react";
 import { Documentation, DocumentationSection } from "@/lib/types";
 import { CodeBlock } from "./code-block";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface DocumentationContentProps {
   documentation: Documentation;
@@ -46,9 +51,7 @@ export function DocumentationContent({
         ref={(el) => (sectionRefs.current[section.id] = el)}
         className="mb-12 scroll-mt-20"
       >
-        <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
-          {section.title}
-        </h2>
+        <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">{section.title}</h2>
 
         {section.content && (
           <div className="prose prose-gray max-w-none dark:prose-invert">
@@ -87,12 +90,12 @@ export function DocumentationContent({
   };
 
   return (
-    <div className="w-full max-w-3xl">
+    <div className="w-full">
       <div className="mb-8">
-        <h1 className="mb-2 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
           {documentation.title}
         </h1>
-        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-base text-gray-600 dark:text-gray-400 sm:text-lg">
           {documentation.description}
         </p>
       </div>
@@ -101,12 +104,13 @@ export function DocumentationContent({
       <div className="mb-8 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900">
         <h3 className="mb-3 font-medium text-gray-900 dark:text-white">On this page</h3>
         <nav>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {documentation.sections.map((section) => (
               <li key={`toc-${section.id}`}>
                 <button
                   onClick={() => setActiveSection(section.id)}
-                  className="text-sm text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 text-left"
+                  className="text-left text-sm text-emerald-600 hover:text-emerald-800 dark:text-emerald-400
+                    dark:hover:text-emerald-300"
                 >
                   {section.title}
                 </button>

@@ -15,7 +15,7 @@ export function DocumentationLayout({ documentation, allDocumentation }: Documen
   const [activeDoc, setActiveDoc] = useState<Documentation>(documentation);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(
-    documentation.sections[0]?.id || null
+    documentation.sections[0]?.id || null,
   );
 
   // Update active doc when documentation prop changes
@@ -33,18 +33,13 @@ export function DocumentationLayout({ documentation, allDocumentation }: Documen
       {/* Mobile sidebar backdrop */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-gray-900/50 z-40 lg:hidden"
+          className="fixed inset-0 z-40 bg-gray-900/50 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
-
       {/* Header */}
-      <DocumentationHeader 
-        toggleSidebar={toggleSidebar} 
-        isSidebarOpen={isSidebarOpen}
-      />
-
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row">
+      <DocumentationHeader toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />{" "}
+      <div className="container flex flex-col justify-center lg:flex-row">
         {/* Sidebar */}
         <DocumentationSidebar
           allDocumentation={allDocumentation}
@@ -57,9 +52,9 @@ export function DocumentationLayout({ documentation, allDocumentation }: Documen
         />
 
         {/* Main content */}
-        <main className="flex-1 py-8 lg:pl-8">
-          <DocumentationContent 
-            documentation={activeDoc} 
+        <main className="flex-1 px-4 py-8">
+          <DocumentationContent
+            documentation={activeDoc}
             activeSection={activeSection}
             setActiveSection={setActiveSection}
           />

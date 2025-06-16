@@ -3,7 +3,7 @@
 import { Section } from "@/components/shared/section";
 import HeadTitle from "@/components/shared/head-title";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShoppingBag, FileDigit, Globe, Code } from "lucide-react";
+import { ShoppingBag, FileDigit, Globe, Code, Users } from "lucide-react";
 
 interface TargetGroup {
   title: string;
@@ -26,6 +26,8 @@ const renderIcon = (iconName: string) => {
       return <Globe className="h-6 w-6" />;
     case "Code":
       return <Code className="h-6 w-6" />;
+    case "Users":
+      return <Users className="h-6 w-6" />;
     default:
       return null;
   }
