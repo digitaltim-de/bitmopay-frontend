@@ -384,14 +384,6 @@ export function HeaderSection() {
                 getFeatures={getFeatures}
               />
               <NavItem
-                href="/api-reference"
-                label="API Reference"
-                isScrolled={isScrolled}
-                setActiveMenu={setActiveMenu}
-                activeMenu={activeMenu}
-                getFeatures={getFeatures}
-              />
-              <NavItem
                 href="#"
                 label="More"
                 hasDropdown
@@ -598,17 +590,6 @@ export function HeaderSection() {
               >
                 <BookOpen className="mr-2 h-5 w-5 text-emerald-500" />
                 Documentation
-              </Link>
-            </div>
-            <div className="py-1">
-              <Link
-                href="/api-reference"
-                className="flex w-full items-center justify-center rounded-md p-2 text-lg font-medium text-gray-800
-                  transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Code className="mr-2 h-5 w-5 text-emerald-500" />
-                API Reference
               </Link>
             </div>
             <MobileNavItem href="#" label="More" isDropdown={true} getFeatures={getFeatures}>
@@ -821,7 +802,6 @@ function NavItem({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {" "}
       <Link
         href={href}
         className="flex items-center rounded-xl px-3 py-1 font-outfit font-semibold text-gray-950 transition-colors
