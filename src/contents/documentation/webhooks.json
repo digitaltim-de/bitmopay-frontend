@@ -1,0 +1,67 @@
+{
+  "slug": "webhooks",
+  "title": "Webhooks",
+  "description": "Learn how to receive real-time updates about your payments.",
+  "icon": "Webhook",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "content": "Webhooks allow you to receive real-time notifications about events that happen in your Bitmopay account. Instead of polling the API for updates, webhooks will send HTTP POST requests to your server when events occur."
+    },
+    {
+      "id": "setting-up-webhooks",
+      "title": "Setting Up Webhooks",
+      "content": "To set up a webhook, you need to provide a URL where Bitmopay can send event notifications. You can configure webhooks in the Bitmopay dashboard or via the API.",
+      "codeBlocks": [
+        {
+          "title": "Create a Webhook Endpoint",
+          "languages": {
+            "curl": "curl -X POST https://api.bitmopay.com/v1/webhook-endpoints \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"url\": \"https://example.com/webhooks/bitmopay\",\n    \"events\": [\"payment.completed\", \"payment.failed\"],\n    \"description\": \"Webhook for payment events\"\n  }'",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst webhookEndpoint = await bitmopay.webhookEndpoints.create({\n  url: 'https://example.com/webhooks/bitmopay',\n  events: ['payment.completed', 'payment.failed'],\n  description: 'Webhook for payment events'\n});\n\nconsole.log(webhookEndpoint);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\nwebhook_endpoint = bitmopay.webhook_endpoints.create(\n  url='https://example.com/webhooks/bitmopay',\n  events=['payment.completed', 'payment.failed'],\n  description='Webhook for payment events'\n)\n\nprint(webhook_endpoint)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$webhookEndpoint = $bitmopay->webhookEndpoints->create([\n  'url' => 'https://example.com/webhooks/bitmopay',\n  'events' => ['payment.completed', 'payment.failed'],\n  'description' => 'Webhook for payment events'\n]);\n\nprint_r($webhookEndpoint);"
+          }
+        }
+      ]
+    },
+    {
+      "id": "webhook-events",
+      "title": "Webhook Events",
+      "content": "Bitmopay sends different types of events to your webhook endpoint. Here are some of the most common events:\n\n- `payment.created`: A new payment has been created.\n- `payment.processing`: A payment is being processed.\n- `payment.completed`: A payment has been completed successfully.\n- `payment.failed`: A payment has failed.\n- `payment.expired`: A payment has expired.\n- `subscription.created`: A new subscription has been created.\n- `subscription.canceled`: A subscription has been canceled.\n- `subscription.payment_succeeded`: A subscription payment has succeeded.\n- `subscription.payment_failed`: A subscription payment has failed."
+    },
+    {
+      "id": "webhook-payload",
+      "title": "Webhook Payload",
+      "content": "When an event occurs, Bitmopay will send a POST request to your webhook endpoint with a JSON payload containing information about the event:",
+      "codeBlocks": [
+        {
+          "title": "Webhook Payload Example",
+          "languages": {
+            "json": "{\n  \"id\": \"evt_123456789\",\n  \"type\": \"payment.completed\",\n  \"created\": 1610000000,\n  \"data\": {\n    \"object\": {\n      \"id\": \"pay_123456789\",\n      \"amount\": 100,\n      \"currency\": \"USD\",\n      \"description\": \"Payment for Order #1234\",\n      \"status\": \"completed\",\n      \"metadata\": {\n        \"orderId\": \"1234\"\n      },\n      \"createdAt\": \"2023-01-01T12:00:00Z\",\n      \"completedAt\": \"2023-01-01T12:05:00Z\"\n    }\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "verifying-webhooks",
+      "title": "Verifying Webhooks",
+      "content": "To ensure that webhook requests are coming from Bitmopay, you should verify the signature included in the request headers:",
+      "codeBlocks": [
+        {
+          "title": "Verify Webhook Signature",
+          "languages": {
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\nimport express from 'express';\n\nconst app = express();\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\napp.post('/webhooks/bitmopay', express.raw({type: 'application/json'}), (req, res) => {\n  const signature = req.headers['bitmopay-signature'];\n  \n  try {\n    const event = bitmopay.webhooks.constructEvent(\n      req.body,\n      signature,\n      'YOUR_WEBHOOK_SECRET'\n    );\n    \n    // Handle the event\n    switch (event.type) {\n      case 'payment.completed':\n        const payment = event.data.object;\n        console.log(`Payment ${payment.id} was completed!`);\n        break;\n      // ... handle other event types\n      default:\n        console.log(`Unhandled event type ${event.type}`);\n    }\n    \n    res.json({received: true});\n  } catch (err) {\n    console.log(`Webhook Error: ${err.message}`);\n    res.status(400).send(`Webhook Error: ${err.message}`);\n  }\n});",
+            "python": "from flask import Flask, request, jsonify\nfrom bitmopay import Bitmopay\n\napp = Flask(__name__)\nbitmopay = Bitmopay('YOUR_API_KEY')\n\n@app.route('/webhooks/bitmopay', methods=['POST'])\ndef webhook():\n    payload = request.data\n    signature = request.headers.get('bitmopay-signature')\n    \n    try:\n        event = bitmopay.webhooks.construct_event(\n            payload,\n            signature,\n            'YOUR_WEBHOOK_SECRET'\n        )\n        \n        # Handle the event\n        if event.type == 'payment.completed':\n            payment = event.data.object\n            print(f\"Payment {payment.id} was completed!\")\n        # ... handle other event types\n        \n        return jsonify(received=True)\n    except Exception as e:\n        print(f\"Webhook Error: {str(e)}\")\n        return jsonify(error=str(e)), 400",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$payload = @file_get_contents('php://input');\n$signature = $_SERVER['HTTP_BITMOPAY_SIGNATURE'];\n\ntry {\n    $event = $bitmopay->webhooks->constructEvent(\n        $payload,\n        $signature,\n        'YOUR_WEBHOOK_SECRET'\n    );\n    \n    // Handle the event\n    switch ($event->type) {\n        case 'payment.completed':\n            $payment = $event->data->object;\n            echo \"Payment {$payment->id} was completed!\";\n            break;\n        // ... handle other event types\n        default:\n            echo \"Unhandled event type {$event->type}\";\n    }\n    \n    http_response_code(200);\n    echo json_encode(['received' => true]);\n} catch (Exception $e) {\n    echo 'Webhook Error: ' . $e->getMessage();\n    http_response_code(400);\n    exit();\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "testing-webhooks",
+      "title": "Testing Webhooks",
+      "content": "You can test your webhook implementation using the Bitmopay dashboard or by creating test events via the API. We recommend using a tool like [ngrok](https://ngrok.com/) to expose your local development server to the internet for testing."
+    }
+  ]
+}

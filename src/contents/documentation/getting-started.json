@@ -1,0 +1,49 @@
+{
+  "slug": "getting-started",
+  "title": "Getting Started",
+  "description": "Learn how to integrate Bitmopay into your application.",
+  "icon": "BookOpen",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "content": "Bitmopay provides a simple and secure way to accept cryptocurrency payments in your application. This guide will help you get started with integrating Bitmopay into your application.\n\nBefore you begin, you'll need to create a Bitmopay account and obtain your API keys from the dashboard."
+    },
+    {
+      "id": "installation",
+      "title": "Installation",
+      "content": "You can integrate Bitmopay using our client libraries or directly via our REST API.",
+      "codeBlocks": [
+        {
+          "title": "Install the SDK",
+          "languages": {
+            "npm": "npm install @bitmopay/sdk",
+            "yarn": "yarn add @bitmopay/sdk",
+            "pnpm": "pnpm add @bitmopay/sdk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "quick-start",
+      "title": "Quick Start",
+      "content": "Here's a simple example of how to create a payment request using the Bitmopay SDK:",
+      "codeBlocks": [
+        {
+          "title": "Create a payment request",
+          "languages": {
+            "curl": "curl -X POST https://api.bitmopay.com/v1/payments \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"amount\": 100,\n    \"currency\": \"USD\",\n    \"description\": \"Payment for Order #1234\",\n    \"redirectUrl\": \"https://example.com/success\"\n  }'",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst payment = await bitmopay.payments.create({\n  amount: 100,\n  currency: 'USD',\n  description: 'Payment for Order #1234',\n  redirectUrl: 'https://example.com/success'\n});\n\nconsole.log(payment.redirectUrl);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\npayment = bitmopay.payments.create(\n  amount=100,\n  currency='USD',\n  description='Payment for Order #1234',\n  redirect_url='https://example.com/success'\n)\n\nprint(payment.redirect_url)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$payment = $bitmopay->payments->create([\n  'amount' => 100,\n  'currency' => 'USD',\n  'description' => 'Payment for Order #1234',\n  'redirectUrl' => 'https://example.com/success'\n]);\n\necho $payment->redirectUrl;"
+          }
+        }
+      ]
+    },
+    {
+      "id": "next-steps",
+      "title": "Next Steps",
+      "content": "Now that you've created your first payment request, you can explore more advanced features:\n\n- [Authentication](/documentation/authentication)\n- [Create Payment](/documentation/create-payment)\n- [Subscriptions](/documentation/subscriptions)\n- [Webhooks](/documentation/webhooks)"
+    }
+  ]
+}

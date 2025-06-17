@@ -1,0 +1,58 @@
+{
+  "slug": "errors",
+  "title": "Errors",
+  "description": "Understanding API error codes and responses",
+  "icon": "AlertTriangle",
+  "sections": [
+    {
+      "id": "error-format",
+      "title": "Error Response Format",
+      "content": "Bitmopay uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided. Codes in the 5xx range indicate an error with Bitmopay's servers.",
+      "codeBlocks": [
+        {
+          "title": "Error Response Structure",
+          "languages": {
+            "json": "{\n  \"error\": {\n    \"code\": \"invalid_request\",\n    \"message\": \"The amount field is required\",\n    \"details\": {\n      \"field\": \"amount\",\n      \"issue\": \"missing_required_field\"\n    }\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "error-codes",
+      "title": "Common Error Codes",
+      "content": "Here are the most common error codes you might encounter when using the Bitmopay API:",
+      "endpoints": [
+        {
+          "method": "HTTP",
+          "url": "400 Bad Request",
+          "description": "Invalid request parameters",
+          "responseExample": "{\n  \"error\": {\n    \"code\": \"invalid_request\",\n    \"message\": \"The amount field is required\"\n  }\n}"
+        },
+        {
+          "method": "HTTP",
+          "url": "401 Unauthorized",
+          "description": "Invalid or missing API key",
+          "responseExample": "{\n  \"error\": {\n    \"code\": \"unauthorized\",\n    \"message\": \"Invalid API key provided\"\n  }\n}"
+        },
+        {
+          "method": "HTTP",
+          "url": "404 Not Found",
+          "description": "Resource not found",
+          "responseExample": "{\n  \"error\": {\n    \"code\": \"not_found\",\n    \"message\": \"Payment not found\"\n  }\n}"
+        },
+        {
+          "method": "HTTP",
+          "url": "429 Too Many Requests",
+          "description": "Rate limit exceeded",
+          "responseExample": "{\n  \"error\": {\n    \"code\": \"rate_limit_exceeded\",\n    \"message\": \"Rate limit exceeded. Please try again later.\"\n  }\n}"
+        },
+        {
+          "method": "HTTP",
+          "url": "500 Internal Server Error",
+          "description": "Server error",
+          "responseExample": "{\n  \"error\": {\n    \"code\": \"internal_error\",\n    \"message\": \"An internal server error occurred\"\n  }\n}"
+        }
+      ]
+    }
+  ]
+}

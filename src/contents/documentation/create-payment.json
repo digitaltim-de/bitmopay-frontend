@@ -1,0 +1,52 @@
+{
+  "slug": "create-payment",
+  "title": "Create Payment",
+  "description": "Learn how to create payment requests for your customers.",
+  "icon": "CreditCard",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "content": "The Payments API allows you to create payment requests that your customers can use to pay with cryptocurrency. When you create a payment, Bitmopay generates a unique payment page URL that you can redirect your customer to."
+    },
+    {
+      "id": "create-payment",
+      "title": "Create a Payment",
+      "content": "To create a payment, send a POST request to the `/v1/payments` endpoint with the payment details:",
+      "codeBlocks": [
+        {
+          "title": "Create a Payment",
+          "languages": {
+            "curl": "curl -X POST https://api.bitmopay.com/v1/payments \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"amount\": 100,\n    \"currency\": \"USD\",\n    \"description\": \"Payment for Order #1234\",\n    \"redirectUrl\": \"https://example.com/success\",\n    \"cancelUrl\": \"https://example.com/cancel\",\n    \"metadata\": {\n      \"orderId\": \"1234\",\n      \"customerEmail\": \"customer@example.com\"\n    }\n  }'",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\nconst payment = await bitmopay.payments.create({\n  amount: 100,\n  currency: 'USD',\n  description: 'Payment for Order #1234',\n  redirectUrl: 'https://example.com/success',\n  cancelUrl: 'https://example.com/cancel',\n  metadata: {\n    orderId: '1234',\n    customerEmail: 'customer@example.com'\n  }\n});\n\n// Redirect the customer to the payment page\nconsole.log(payment.redirectUrl);",
+            "python": "from bitmopay import Bitmopay\n\nbitmopay = Bitmopay('YOUR_API_KEY')\n\npayment = bitmopay.payments.create(\n  amount=100,\n  currency='USD',\n  description='Payment for Order #1234',\n  redirect_url='https://example.com/success',\n  cancel_url='https://example.com/cancel',\n  metadata={\n    'orderId': '1234',\n    'customerEmail': 'customer@example.com'\n  }\n)\n\n# Redirect the customer to the payment page\nprint(payment.redirect_url)",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n$payment = $bitmopay->payments->create([\n  'amount' => 100,\n  'currency' => 'USD',\n  'description' => 'Payment for Order #1234',\n  'redirectUrl' => 'https://example.com/success',\n  'cancelUrl' => 'https://example.com/cancel',\n  'metadata' => [\n    'orderId' => '1234',\n    'customerEmail' => 'customer@example.com'\n  ]\n]);\n\n// Redirect the customer to the payment page\necho $payment->redirectUrl;"
+          }
+        }
+      ]
+    },
+    {
+      "id": "payment-response",
+      "title": "Payment Response",
+      "content": "The API will return a payment object with details about the payment, including a `redirectUrl` that you can use to redirect your customer to the payment page:",
+      "codeBlocks": [
+        {
+          "title": "Payment Response",
+          "languages": {
+            "json": "{\n  \"id\": \"pay_123456789\",\n  \"amount\": 100,\n  \"currency\": \"USD\",\n  \"description\": \"Payment for Order #1234\",\n  \"status\": \"pending\",\n  \"redirectUrl\": \"https://pay.bitmopay.com/pay/123456789\",\n  \"cancelUrl\": \"https://example.com/cancel\",\n  \"metadata\": {\n    \"orderId\": \"1234\",\n    \"customerEmail\": \"customer@example.com\"\n  },\n  \"createdAt\": \"2023-01-01T12:00:00Z\",\n  \"expiresAt\": \"2023-01-01T13:00:00Z\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "payment-parameters",
+      "title": "Payment Parameters",
+      "content": "The following parameters are available when creating a payment:\n\n- `amount` (required): The amount to charge in the specified currency.\n- `currency` (required): The currency code (e.g., USD, EUR).\n- `description` (required): A description of the payment.\n- `redirectUrl` (required): The URL to redirect to after a successful payment.\n- `cancelUrl` (optional): The URL to redirect to if the customer cancels the payment.\n- `metadata` (optional): Additional data to attach to the payment."
+    },
+    {
+      "id": "payment-status",
+      "title": "Payment Status",
+      "content": "A payment can have one of the following statuses:\n\n- `pending`: The payment has been created but not yet paid.\n- `processing`: The payment has been received and is being processed.\n- `completed`: The payment has been completed successfully.\n- `failed`: The payment has failed.\n- `expired`: The payment has expired.\n- `cancelled`: The payment has been cancelled."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "faqs",
+  "title": "FAQs",
+  "description": "Frequently asked questions about the Bitmopay API.",
+  "icon": "HelpCircle",
+  "sections": [
+    {
+      "id": "general",
+      "title": "General Questions",
+      "content": "",
+      "faqs": [
+        {
+          "question": "What is Bitmopay?",
+          "answer": "Bitmopay is a cryptocurrency payment gateway that allows businesses to accept Bitcoin, Ethereum, and other cryptocurrencies as payment. Our API provides a simple way to integrate cryptocurrency payments into your application."
+        },
+        {
+          "question": "Which cryptocurrencies are supported?",
+          "answer": "Bitmopay supports a wide range of cryptocurrencies, including Bitcoin (BTC), Ethereum (ETH), USDT, USDC, BNB, Solana (SOL), and many more. Check the dashboard for the full list of supported cryptocurrencies."
+        },
+        {
+          "question": "How much does it cost to use Bitmopay?",
+          "answer": "Bitmopay charges a 0.5% fee per transaction. There are no setup fees, monthly fees, or hidden charges."
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "title": "API Questions",
+      "content": "",
+      "faqs": [
+        {
+          "question": "How do I get started with the API?",
+          "answer": "To get started with the API, you need to create a Bitmopay account and obtain your API keys from the dashboard. Then, you can use our client libraries or make direct HTTP requests to our API endpoints."
+        },
+        {
+          "question": "Are there any rate limits?",
+          "answer": "Yes, there are rate limits to protect the API from abuse. The default rate limit is 100 requests per minute per API key. If you need higher limits, please contact our support team."
+        },
+        {
+          "question": "Is there a sandbox environment for testing?",
+          "answer": "Yes, Bitmopay provides a sandbox environment for testing your integration without using real cryptocurrencies. You can toggle between live and sandbox modes in the dashboard."
+        }
+      ]
+    },
+    {
+      "id": "payments",
+      "title": "Payment Questions",
+      "content": "",
+      "faqs": [
+        {
+          "question": "How long do payments take to process?",
+          "answer": "Payment processing times depend on the cryptocurrency being used and network conditions. Bitcoin payments typically take 10-60 minutes to confirm, while Ethereum payments usually take 1-5 minutes. Stablecoin payments on fast networks like Solana can confirm in seconds."
+        },
+        {
+          "question": "What happens if a customer sends the wrong amount?",
+          "answer": "If a customer sends less than the required amount, the payment will be marked as underpaid and they will be prompted to send the remaining amount. If they send more than the required amount, the payment will be marked as overpaid and you can choose to refund the excess or credit it to the customer's account."
+        },
+        {
+          "question": "Can I issue refunds?",
+          "answer": "Yes, you can issue refunds for payments through the dashboard or API. Refunds are sent back to the original cryptocurrency address that made the payment."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security Questions",
+      "content": "",
+      "faqs": [
+        {
+          "question": "How secure is Bitmopay?",
+          "answer": "Bitmopay uses industry-standard security practices, including encryption, secure key management, and regular security audits. We also offer two-factor authentication (2FA) for account access."
+        },
+        {
+          "question": "How should I secure my API keys?",
+          "answer": "You should treat your API keys like passwords and keep them secure. Never share your API keys in publicly accessible areas such as GitHub, client-side code, etc. Use environment variables or a secure key management system to store your API keys."
+        },
+        {
+          "question": "Is Bitmopay compliant with regulations?",
+          "answer": "Bitmopay complies with relevant regulations in the jurisdictions where we operate. We implement KYC (Know Your Customer) and AML (Anti-Money Laundering) procedures as required by law."
+        }
+      ]
+    }
+  ]
+}

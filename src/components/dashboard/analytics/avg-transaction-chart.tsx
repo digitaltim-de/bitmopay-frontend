@@ -1,0 +1,66 @@
+"use client";
+
+import {
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+} from "recharts";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CustomTooltip } from "./custom-tooltip";
+import { getTrendColors, TrendDirection } from "./chart-utils.tsx";
+
+interface AvgTransactionChartProps {
+  data: Array<{
+    date: string;
+    value: number;
+  }>;
+  trend?: TrendDirection;
+}
+
+export function AvgTransactionChart({ data, trend = "down" }: AvgTransactionChartProps) {
+  const colors = getTrendColors(trend);
+
+  return (
+    <Card className="border-0 shadow-md">
+      <CardHeader>
+        <CardTitle className="text-lg font-semibold">Average Transaction Value</CardTitle>
+        <CardDescription>Average value per transaction over time</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="h-80">
+          <ResponsiveContainer width="100%" height="100%">
+            <RechartsBarChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <XAxis
+                dataKey="date"
+                tick={{ fontSize: 12 }}
+                tickMargin={10}
+                axisLine={{ stroke: "#e5e7eb" }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{ fontSize: 12 }}
+                tickMargin={10}
+                axisLine={{ stroke: "#e5e7eb" }}
+                tickLine={false}
+                tickFormatter={(value) => `$${value}`}
+              />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+              <RechartsTooltip content={<CustomTooltip />} />
+              <Bar
+                dataKey="value"
+                fill={colors.stroke}
+                radius={[4, 4, 0, 0]}
+                name="Avg Value"
+                animationDuration={1500}
+              />
+            </RechartsBarChart>
+          </ResponsiveContainer>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "payments",
+  "title": "Payments",
+  "description": "Create and manage cryptocurrency payments",
+  "icon": "CreditCard",
+  "sections": [
+    {
+      "id": "create-payment",
+      "title": "Create Payment",
+      "content": "Create a new payment request for your customers. The payment will be valid for 15 minutes by default.",
+      "endpoints": [
+        {
+          "method": "POST",
+          "url": "/api/v1/payments",
+          "description": "Create a new payment",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            },
+            {
+              "name": "Content-Type",
+              "type": "string",
+              "required": true,
+              "description": "application/json"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "amount",
+              "type": "number",
+              "required": true,
+              "description": "Payment amount in USD"
+            },
+            {
+              "name": "currency",
+              "type": "string",
+              "required": true,
+              "description": "Cryptocurrency to receive payment in (BTC, ETH, USDT, etc.)"
+            },
+            {
+              "name": "order_id",
+              "type": "string",
+              "required": false,
+              "description": "Your internal order ID"
+            },
+            {
+              "name": "callback_url",
+              "type": "string",
+              "required": false,
+              "description": "URL to receive webhook notifications"
+            },
+            {
+              "name": "redirect_url",
+              "type": "string",
+              "required": false,
+              "description": "URL to redirect user after payment"
+            }
+          ],
+          "requestExample": "{\n  \"amount\": 100.50,\n  \"currency\": \"USDT\",\n  \"order_id\": \"order_123456\",\n  \"callback_url\": \"https://yoursite.com/webhook\",\n  \"redirect_url\": \"https://yoursite.com/success\"\n}",
+          "responseExample": "{\n  \"id\": \"payment_123456\",\n  \"amount\": 100.50,\n  \"currency\": \"USDT\",\n  \"crypto_amount\": \"100.25\",\n  \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\",\n  \"status\": \"pending\",\n  \"expires_at\": \"2024-01-15T10:30:00Z\",\n  \"qr_code\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...\",\n  \"payment_url\": \"https://pay.bitmopay.com/payment_123456\"\n}"
+        }
+      ],
+      "codeBlocks": [
+        {
+          "title": "Create Payment Example",
+          "languages": {
+            "curl": "curl -X POST \"https://api.bitmopay.com/api/v1/payments\" \\\n  -H \"Authorization: Bearer your_api_key_here\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"amount\": 100.50,\n    \"currency\": \"USDT\",\n    \"order_id\": \"order_123456\"\n  }'",
+            "javascript": "const response = await fetch('https://api.bitmopay.com/api/v1/payments', {\n  method: 'POST',\n  headers: {\n    'Authorization': 'Bearer your_api_key_here',\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    amount: 100.50,\n    currency: 'USDT',\n    order_id: 'order_123456'\n  })\n});",
+            "python": "import requests\nimport json\n\nheaders = {\n    'Authorization': 'Bearer your_api_key_here',\n    'Content-Type': 'application/json'\n}\n\ndata = {\n    'amount': 100.50,\n    'currency': 'USDT',\n    'order_id': 'order_123456'\n}\n\nresponse = requests.post('https://api.bitmopay.com/api/v1/payments', \n                        headers=headers, \n                        data=json.dumps(data))",
+            "php": "<?php\n$headers = [\n    'Authorization: Bearer your_api_key_here',\n    'Content-Type: application/json'\n];\n\n$data = [\n    'amount' => 100.50,\n    'currency' => 'USDT',\n    'order_id' => 'order_123456'\n];\n\n$ch = curl_init();\ncurl_setopt($ch, CURLOPT_URL, 'https://api.bitmopay.com/api/v1/payments');\ncurl_setopt($ch, CURLOPT_POST, 1);\ncurl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));\ncurl_setopt($ch, CURLOPT_HTTPHEADER, $headers);\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n\n$response = curl_exec($ch);\ncurl_close($ch);"
+          }
+        }
+      ]
+    },
+    {
+      "id": "get-payment",
+      "title": "Get Payment",
+      "content": "Retrieve details of a specific payment by its ID.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "url": "/api/v1/payments/{payment_id}",
+          "description": "Get payment details",
+          "headers": [
+            {
+              "name": "Authorization",
+              "type": "string",
+              "required": true,
+              "description": "Bearer {your_api_key}"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "payment_id",
+              "type": "string",
+              "required": true,
+              "description": "The payment ID"
+            }
+          ],
+          "responseExample": "{\n  \"id\": \"payment_123456\",\n  \"amount\": 100.50,\n  \"currency\": \"USDT\",\n  \"crypto_amount\": \"100.25\",\n  \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\",\n  \"status\": \"confirmed\",\n  \"confirmations\": 3,\n  \"created_at\": \"2024-01-15T10:00:00Z\",\n  \"confirmed_at\": \"2024-01-15T10:05:00Z\",\n  \"transaction_hash\": \"0x1234567890abcdef...\"\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "authentication",
+  "title": "Authentication",
+  "description": "Learn how to authenticate your API requests.",
+  "icon": "Key",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "content": "All API requests to Bitmopay must be authenticated using API keys. You can obtain your API keys from the Bitmopay dashboard."
+    },
+    {
+      "id": "api-keys",
+      "title": "API Keys",
+      "content": "Bitmopay uses API keys to authenticate requests. You can view and manage your API keys in the Bitmopay dashboard.\n\nYour API keys carry many privileges, so be sure to keep them secure. Do not share your API keys in publicly accessible areas such as GitHub, client-side code, etc."
+    },
+    {
+      "id": "authentication-method",
+      "title": "Authentication Method",
+      "content": "To authenticate your API requests, include your API key in the Authorization header of your HTTP requests:",
+      "codeBlocks": [
+        {
+          "title": "API Key Authentication",
+          "languages": {
+            "curl": "curl -X GET https://api.bitmopay.com/v1/payments \\\n  -H \"Authorization: Bearer YOUR_API_KEY\"",
+            "node.js": "import { Bitmopay } from '@bitmopay/sdk';\n\n// Initialize the SDK with your API key\nconst bitmopay = new Bitmopay('YOUR_API_KEY');\n\n// The SDK will automatically include your API key in all requests\nconst payments = await bitmopay.payments.list();",
+            "python": "from bitmopay import Bitmopay\n\n# Initialize the SDK with your API key\nbitmopay = Bitmopay('YOUR_API_KEY')\n\n# The SDK will automatically include your API key in all requests\npayments = bitmopay.payments.list()",
+            "php": "<?php\nrequire_once('vendor/autoload.php');\n\n// Initialize the SDK with your API key\n$bitmopay = new \\Bitmopay\\Client('YOUR_API_KEY');\n\n// The SDK will automatically include your API key in all requests\n$payments = $bitmopay->payments->list();"
+          }
+        }
+      ]
+    },
+    {
+      "id": "error-handling",
+      "title": "Error Handling",
+      "content": "If your API key is invalid or expired, the API will return a 401 Unauthorized error. If you don't have permission to access a resource, the API will return a 403 Forbidden error.",
+      "codeBlocks": [
+        {
+          "title": "Authentication Error Response",
+          "languages": {
+            "json": "{\n  \"error\": {\n    \"code\": \"unauthorized\",\n    \"message\": \"Invalid API key provided.\"\n  }\n}"
+          }
+        }
+      ]
+    }
+  ]
+}
